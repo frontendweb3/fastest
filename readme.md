@@ -6,17 +6,11 @@
 ![ScreenShot](/assets/light.png)
 
 ---
----
----
----
+
 
 ![ScreenShot](/assets/desktop.png)
 
 ---
----
----
----
-
 
 ![ScreenShot](/assets/mobile.png)
 
