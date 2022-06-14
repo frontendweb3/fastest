@@ -1,0 +1,32 @@
+{{#if isSecondary}}
+<ul
+    class="my-4 xs:my-4 sm:mt-4 md:mt-3 lg:mt-0 xl:mt-0 2xl:mt-0 grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-flow-col xl:grid-flow-col 2xl:grid-flow-col">
+        
+        {{#foreach navigation}}
+            <li class=" text-center mx-2 text-sm">
+                <a target="_blank" href="{{url absolute="true"}}">
+                    {{label}}
+                </a>
+            </li>
+
+        {{/foreach}}
+
+</ul>
+
+{{else}}
+  <nav class="m-auto px-24 sm:px-24 md:px-32 lg:px-32 xl:px-32 2xl:px-32 mb-10">
+
+    <ul
+        class="grid grid-cols-1 grid-rows-1 xs:grid-rows-2 xs:grid-cols-2 sm:grid-rows-5 md:grid-rows-5 lg:grid-rows-5 xl:grid-rows-5 2xl:grid-rows-5 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
+        {{#foreach navigation}}
+      
+            <li class="text-left">
+                <a target="_blank" href="{{url absolute="true"}}">
+                    {{label}}
+                    </a>
+            </li>
+
+        {{/foreach}}
+    </ul>
+</nav>
+{{/if}}

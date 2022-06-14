@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth overflow-x-hidden" lang="{{@site.locale}}">
+
+<head>
+
+    {{#is "index home"}}
+    <link rel="icon" href="{{@site.icon}}" type="image/png">
+    {{/is}}
+    {{#is "post"}}
+    {{{block "metaTags"}}}
+    {{/is}}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="{{asset 'build/css/build.css'}}" />
+
+    <title>{{meta_title}}</title>
+
+
+
+    {{ghost_head}}
+
+
+
+
+</head>
+
+
+<body class=" {{body_class}} bg-white dark:bg-black dark:text-white antialiased scroll-smooth ">
+    {{> header}}
+
+    <main class="mt-6 flex flex-col dark:bg-black dark:text-white">
+
+        {{{body}}}
+
+    </main>
+
+    {{> footer}}
+    {{> banner}}
+
+
+
+    {{ghost_foot}}
+    
+    <script src="{{asset 'build/js/search.js'}}"></script>
+
+    <script src="{{asset 'build/js/main.js'}}"></script>
+
+
+</body>
+
+</html>

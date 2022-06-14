@@ -1,0 +1,25 @@
+{{!< default}}
+
+
+{{#foreach posts}}
+
+{{#has number="nth:3"  }}
+    {{#match @custom.adsense_enable "Enable"}}
+       {{> ads}}
+    {{/match}}
+{{/has}}
+
+{{> postCard }}
+
+{{/foreach}}
+
+
+
+
+{{pagination}}
+
+{{#match @custom.adsense_enable "Enable"}}
+       {{> ads}}
+{{/match}}
+
+{{> newsletter}}

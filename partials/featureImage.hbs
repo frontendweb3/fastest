@@ -1,0 +1,16 @@
+{{#if feature_image}}
+    <div  class="flex flex-col my-10 m-auto">
+        <img class="m-auto p-2  w-10/12"
+            srcset="{{img_url feature_image size="s"}} 300w,
+            {{img_url feature_image size="m"}} 600w,
+            {{img_url feature_image size="l"}} 1000w,
+            {{img_url feature_image size="xl"}} 2000w" sizes="(max-width: 1000px) 400px, 700px"
+            src="{{img_url feature_image size="m"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+        {{#if feature_image_caption}}
+        <p class="text-center mt-1 text-sm">
+            {{feature_image_caption}}
+        </p>
+        {{/if}}
+    </div>
+    {{/if}}

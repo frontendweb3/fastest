@@ -1,0 +1,13 @@
+routes:
+  /search/query/:
+    permalink: /search/query/
+    template:  query
+ 
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

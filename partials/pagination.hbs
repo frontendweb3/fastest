@@ -1,0 +1,13 @@
+<nav class="flex flex-row justify-center mx-10 p-3" role="navigation">
+    
+    {{#if prev}}
+        <a  class="focus:outline-none w-32  m-auto my-24 p-3 bg-blue-400  text-white text-center rounded-full" href="{{page_url prev}}"> Recent Posts</a>
+    {{/if}}
+
+    {{#if next}}
+        <a  class="focus:outline-none w-32  m-auto my-24 p-3 bg-blue-400  text-white text-center rounded-full" href="{{page_url next}}">Load More</a>
+    {{/if}}
+
+</nav>
+
+

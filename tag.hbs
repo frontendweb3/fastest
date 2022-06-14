@@ -1,0 +1,38 @@
+{{!< default}}
+
+
+{{#tag}}
+
+<div class="container m-auto mt-32  mb-16  w-5/6 xs:w-5/6 sm:w-5/6 md:w-5/6 lg:w-5/6 xl:w-5/6 2xl:w-5/6">
+
+    <h1 class=" text-gray-800 text-4xl xs:text-5xl sm:text-6xl md:text-7xl xl:text-8xl 2xl:text-9xl">{{name}}</h1>
+
+    <p class=" text-gray-600 text-xl xs:text-xl sm:text-xl md:text-1xl xl:text-2xl 2xl:text-2xl">
+        {{#if description}}
+        {{description}}
+        {{else}}
+       
+        {{/if}}
+    </p>
+
+
+</div>
+
+{{#get "posts" include="authors,tags" limit="3" filter="tag:{{slug}}" as |related|}}
+
+
+{{#foreach related}}
+
+{{#has number="nth:3"  }}
+    {{#match @custom.adsense_enable "Enable"}}
+       {{> ads}}
+    {{/match}}
+{{/has}}
+
+{{> postCard }}
+
+{{/foreach}}
+
+{{/get}}
+
+{{/tag}}

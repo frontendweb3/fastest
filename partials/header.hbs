@@ -1,0 +1,110 @@
+<header>
+    <div
+        class="flex dark:bg-black dark:text-white w-full flex-row px-2 xs:px-2 sm:px-2 md:px-10 lg:px-20 xl:px-20 xl:px-20 2xl:px-20 p-5 xs:p-3 sm:p-3 md:p-5 lg:px-5 xl:p-5 xl:p-6 2xl:p-6 justify-around content-center m-auto">
+        <button id="navbar-icon" class="focus:outline-none">
+
+            {{> Icons/nav}}
+        </button>
+
+        <a href="/" class="justify-items-center focus:outline-none m-auto w-64 justify-self-center">
+            {{#if @site.logo}}
+            <img src="{{@site.logo}}" alt="{{@site.title}}" />
+            {{else}}
+
+            <h1 class=" text-center text-1xl xs:text-1xl sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-4xl">
+                {{@site.title}} </h1>
+
+            {{/if}}
+
+        </a>
+
+        <div class="flex flex-row justify-around">
+            <ul
+                class="hidden m-auto sm:hidden md:flex justify-around lg:flex xl:flex 2xl:flex md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
+
+                <li class="mx-2">
+
+                    <a target="_blank" href="{{@site.url}}/search/query/">
+                        {{> Icons/search}}
+                    </a>
+
+                </li>
+
+                {{#if @site.facebook}}
+                <li class="mx-2">
+                    <a rel="noopener" target="_blank" href="{{facebook_url @site.facebook}}">
+                        {{> Icons/facebook}}
+                    </a>
+
+                </li>
+                {{/if}}
+
+                {{#if @site.twitter}}
+                <li class="mx-2">
+                    <a target="_blank" href="{{twitter_url @site.twitter}}">
+                        {{> Icons/twitter}}
+                    </a>
+                </li>
+                {{/if}}
+
+
+
+                {{#match @custom.instagram_url "!=" "None"}}
+
+                <li class="mx-2">
+                    <a target="_blank" href="{{@custom.instagram_url}}">
+                        {{> Icons/instagram}}
+                    </a>
+
+                </li>
+                {{/match}}
+
+                {{#match @custom.github_url "!=" "None"}}
+                <li class="mx-2">
+                    <a target="_blank" href="{{@custom.github_url}}">
+                        {{> Icons/github}}
+                    </a>
+
+                </li>
+                {{/match}}
+
+                {{#match @custom.linkedin_url "!=" "None"}}
+                <li class="mx-2">
+                    <a target="_blank" href="{{linkedin_url}}">
+                        {{> Icons/linkedin}}
+                    </a>
+
+                </li>
+                {{/match}}
+                <li onclick="moonClickButton()" id="moonClickIcon" class="cursor-pointer mx-2">
+                    {{> Icons/moon}}
+                </li>
+            </ul>
+            {{#unless @member}}
+
+            <a 
+                class="focus:outline-none ml-2 w-20 m-auto mx-5 text-center p-1 bg-blue-600 text-white rounded-full"
+                href="#/portal/signup" data-portal="signup">Pro</a>
+            {{else}}
+            <a 
+                class="focus:outline-none ml-2 w-20 m-auto mx-5 text-center p-1 bg-blue-600 text-white rounded-full"
+                href="#/portal/account" data-portal="account">Account</a>
+            {{/unless}}
+
+        </div>
+    </div>
+
+    {{#match @custom.third_nav_enable_on_website "Enable"}}
+        {{> third-nav}}
+    {{/match}}
+
+
+  
+</header>
+
+<div id="navOpen"  class="hidden bg-blue-400 text-white w-full h-screen overflow-y-scroll fixed top-0 left-0" >
+    <button id="closeIcon" class="m-10 focus:outline-none">
+        {{> Icons/cross}}
+    </button>
+    {{"navigation"}}
+</div>
