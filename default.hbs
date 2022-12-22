@@ -1,51 +1,47 @@
 <!DOCTYPE html>
-<html class="dark scroll-smooth overflow-x-hidden" lang="{{@site.locale}}">
+
+<html lang="{{@site.locale}}" class="dark scroll-smooth overflow-x-hidden">
 
 <head>
-
-    {{#is "index home"}}
-    <link rel="icon" href="{{@site.icon}}" type="image/png">
-    {{/is}}
-    {{#is "post"}}
-    {{{block "metaTags"}}}
-    {{/is}}
-
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
 
-
+    {{!-- link production ready css file  --}}
     <link rel="stylesheet" href="{{asset 'build/css/build.css'}}" />
-
-    <title>{{meta_title}}</title>
-
+    {{!-- <link rel="stylesheet" href="http://localhost:2368/ghost/assets/ghost-dark-e9195020925a360d83163e1e87b514a6.css" /> --}}
 
 
-    {{ghost_head}}
-
-
-
+   {{!-- ghost header --}}
+      {{ghost_head}}
 
 </head>
 
 
-<body class=" {{body_class}} bg-white dark:bg-black dark:text-white antialiased scroll-smooth ">
+<body class="{{body_class}} bg-white dark:bg-black dark:text-white antialiased scroll-smooth ">
+  
+  {{!-- partials/header --}}
     {{> header}}
 
-    <main class="mt-6 flex flex-col dark:bg-black dark:text-white">
+    <main class="mt-6 flex flex-col">
 
+{{!-- Render other pages  --}}
         {{{body}}}
 
     </main>
-
+{{!-- partials/footer --}}
     {{> footer}}
+
+{{!-- partials/banner --}}
     {{> banner}}
 
-
-
+{{!-- ghost header --}}
     {{ghost_foot}}
-    
-    <script src="{{asset 'build/js/search.js'}}"></script>
 
-    <script src="{{asset 'build/js/main.js'}}"></script>
+        <script src="{{asset 'build/js/main.js'}}"></script>
+
 
 
 </body>

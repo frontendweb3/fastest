@@ -7,32 +7,34 @@
 
     <h1 class=" text-gray-800 text-4xl xs:text-5xl sm:text-6xl md:text-7xl xl:text-8xl 2xl:text-9xl">{{name}}</h1>
 
-    <p class=" text-gray-600 text-xl xs:text-xl sm:text-xl md:text-1xl xl:text-2xl 2xl:text-2xl">
-        {{#if description}}
-        {{description}}
-        {{else}}
-       
-        {{/if}}
-    </p>
+    {{#if description}}
+        <p class=" text-gray-600 text-xl xs:text-xl sm:text-xl md:text-1xl xl:text-2xl 2xl:text-2xl">
+            {{description}}       
+        </p>
+    {{/if}}
 
 
 </div>
 
-{{#get "posts" include="authors,tags" limit="3" filter="tag:{{slug}}" as |related|}}
+{{!--  get posts related to tag base on  tag slug --}}
 
+    {{#get "posts" include="authors,tags" limit="3" filter="tag:{{slug}}" as |related|}}
 
-{{#foreach related}}
+   {{!-- loop posts base on article --}}
+        {{#foreach related}}
 
-{{#has number="nth:3"  }}
-    {{#match @custom.adsense_enable "Enable"}}
-       {{> ads}}
-    {{/match}}
-{{/has}}
+    {{!--  check condition define in config section in package.json and add adsense code after every third post --}}
+            {{#has number="nth:3"  }}
+                {{#match @custom.adsense_enable "Enable"}}
+                    {{> ads}}
+                {{/match}}
+            {{/has}}
 
-{{> postCard }}
+        {{!-- partials/postCard.hbs --}}
+            {{> postCard }}
 
-{{/foreach}}
+        {{/foreach}}
 
-{{/get}}
+    {{/get}}
 
 {{/tag}}

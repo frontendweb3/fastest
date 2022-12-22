@@ -1,25 +1,29 @@
-{{!< default}}
+{{!--  Add default.hbs layout file --}}
+{{!< default}} 
 
+{{!-- loop all the posts and show on home page --}}
 
-{{#foreach posts}}
+{{#foreach posts}} 
 
-{{#has number="nth:3"  }}
+{{!--  check condition define in config section in package.json and add adsense code after every third post --}}
+    {{#has number="nth:3" }} 
+        {{#match @custom.adsense_enable "Enable" }} 
+            {{> ads}}
+        {{/match}}
+    {{/has}}
+    
+    {{!-- partials/postCard.hbs --}}
+    {{> postCard }}
+
+    {{/foreach}}
+
+    {{!-- Add pagination --}}
+    {{pagination}}
+
+{{!--  check condition define in config section in package.json and add adsense --}}
     {{#match @custom.adsense_enable "Enable"}}
-       {{> ads}}
+        {{> ads}}
     {{/match}}
-{{/has}}
 
-{{> postCard }}
-
-{{/foreach}}
-
-
-
-
-{{pagination}}
-
-{{#match @custom.adsense_enable "Enable"}}
-       {{> ads}}
-{{/match}}
-
-{{> newsletter}}
+{{!-- newsletter partials --}}
+    {{> newsletter}}
