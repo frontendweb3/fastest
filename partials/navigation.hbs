@@ -1,10 +1,10 @@
 {{#if isSecondary}}
 <ul
-    class="my-4 xs:my-4 sm:mt-4 md:mt-3 lg:mt-0 xl:mt-0 2xl:mt-0 grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-flow-col xl:grid-flow-col 2xl:grid-flow-col">
+    class="flex flex-row justify-center items-center">
         
         {{#foreach navigation}}
             <li class=" text-center mx-2 text-sm">
-                <a target="_blank" href="{{url absolute="true"}}">
+                <a target="_blank" class="text-green-600 dark:text-green-700" href="{{url absolute="true"}}">
                     {{label}}
                 </a>
             </li>
@@ -21,7 +21,7 @@
         {{#foreach navigation}}
       
             <li class="text-left">
-                <a target="_blank" href="{{url absolute="true"}}">
+                <a target="_blank" class="text-green-600 dark:text-green-700" href="{{url absolute="true"}}">
                     {{label}}
                     </a>
             </li>

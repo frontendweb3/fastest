@@ -1,31 +1,16 @@
-<button id="clickCommentButton"
-    style='background-color:#4643cce5'
-    class="commentButton focus:outline-none w-4/4 xs:w-4/4 sm:w-4/4 md:w-1/4 lg:w-1/4 xl:w-1/4 2xl:w-1/4 m-auto my-24 p-4 px-4 xs:px-4 sm:px-4 md:px-4 lg:px-4 xl:px-4 2xl:px-4 text-white items-center rounded-full">
-    Read comments
-</button>
 
-<div id="loadCommentinFastest" class=" hidden m-auto my-6 w-10/12">
-    <h2 class="my-10 m-auto text-left text-xl xs:text-1xl sm:text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl">
-        Write comments-
-    </h2>
+{{#if comments}}
 
+<div class="m-auto my-8 w-10/12">
     <p class="text-right text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm ">
-        Before comment write read our <a style='text-decoration: underline' href="https://officialrajdeepsingh.dev/terms-and-conditions/"> term and condtion </a>
+        Before comment read our <a style='text-decoration: underline' href="https://officialrajdeepsingh.dev/terms-and-conditions/">term and condition </a>
     </p>
-    <div class="mt-5 mb-5  p-4">
+    <div class="mt-5 mb-5 p-4">
 
-         <div id="disqus_thread"></div>
-                        <script>
-                        var disqus_config = function () {
-                            this.page.url = '{{url absolute="true"}}'
-                            this.page.identifier = '{{comment_id}}'
-                        };
-                        (function() {
-                        var d = document, s = d.createElement('script');
-                        s.src = 'https://officialrajdeepsingh.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                        })();
-                        </script>
+   {{!--  Enable comment on theme --}}
+       {{comments}}
     </div>
 </div>
+
+{{/if}}
+

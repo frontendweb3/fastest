@@ -1,38 +1,38 @@
 <header>
+    
+    {{!-- navbar for md,lg,xl and xl --}}
     <div
-        class="flex dark:bg-black dark:text-white w-full flex-row px-2 xs:px-2 sm:px-2 md:px-10 lg:px-20 xl:px-20 xl:px-20 2xl:px-20 p-5 xs:p-3 sm:p-3 md:p-5 lg:px-5 xl:p-5 xl:p-6 2xl:p-6 justify-around content-center m-auto">
-        <button id="navbar-icon" class="focus:outline-none">
-
+        class="hidden w-full flex-row px-2 xs:px-2 sm:px-2 md:px-10 lg:px-20 xl:px-20 2xl:px-20 p-5 xs:p-3 sm:p-3 md:p-5  xl:p-6 2xl:p-6 justify-around content-center m-auto xs:hidden sm:hidden md:flex lg:flex xl:flex 2xl:flex ">
+        
+        <button id="navbar-icon" class=" text-black  dark:text-gray-400 focus:outline-none">
+        
             {{> Icons/nav}}
+        
         </button>
 
         <a href="/" class="justify-items-center focus:outline-none m-auto w-64 justify-self-center">
+        
             {{#if @site.logo}}
-            <img src="{{@site.logo}}" alt="{{@site.title}}" />
+                <img src="{{@site.logo}}" alt="{{@site.title}}" />
             {{else}}
 
-            <h1 class=" text-center text-1xl xs:text-1xl sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-4xl">
-                {{@site.title}} </h1>
+            <h1 class="text-center text-[22px]"> {{@site.title}} </h1>
 
             {{/if}}
-
+        
         </a>
 
         <div class="flex flex-row justify-around">
-            <ul
-                class="hidden m-auto sm:hidden md:flex justify-around lg:flex xl:flex 2xl:flex md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
+            <ul class="hidden m-auto sm:hidden md:flex justify-around lg:flex xl:flex 2xl:flex md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
 
-                <li class="mx-2">
-
-                    <a target="_blank" href="{{@site.url}}/search/query/">
-                        {{> Icons/search}}
-                    </a>
-
+                <li class="mx-2 flex items-center">
+                    {{!-- partials/Icons/search --}}
+                    <button class="gh-search text-black  dark:text-gray-400" data-ghost-search>{{> Icons/search}}</button>
                 </li>
 
                 {{#if @site.facebook}}
-                <li class="mx-2">
-                    <a rel="noopener" target="_blank" href="{{facebook_url @site.facebook}}">
+                <li class="mx-2 flex items-center">
+                    <a class="text-black  dark:text-gray-400" rel="noopener" target="_blank" href="{{@site.facebook}}">
                         {{> Icons/facebook}}
                     </a>
 
@@ -40,8 +40,8 @@
                 {{/if}}
 
                 {{#if @site.twitter}}
-                <li class="mx-2">
-                    <a target="_blank" href="{{twitter_url @site.twitter}}">
+                <li class="mx-2 flex items-center">
+                    <a class="text-black  dark:text-gray-400" target="_blank" href="{{@site.twitter}}">
                         {{> Icons/twitter}}
                     </a>
                 </li>
@@ -51,7 +51,7 @@
 
                 {{#match @custom.instagram_url "!=" "None"}}
 
-                <li class="mx-2">
+                <li class="text-black  dark:text-gray-400"  class="mx-2 flex items-center">
                     <a target="_blank" href="{{@custom.instagram_url}}">
                         {{> Icons/instagram}}
                     </a>
@@ -60,8 +60,8 @@
                 {{/match}}
 
                 {{#match @custom.github_url "!=" "None"}}
-                <li class="mx-2">
-                    <a target="_blank" href="{{@custom.github_url}}">
+                <li class="mx-2 flex items-center">
+                    <a class="text-black  dark:text-gray-400"  target="_blank" href="{{@custom.github_url}}">
                         {{> Icons/github}}
                     </a>
 
@@ -69,17 +69,29 @@
                 {{/match}}
 
                 {{#match @custom.linkedin_url "!=" "None"}}
-                <li class="mx-2">
+                <li class="text-black  dark:text-gray-400"  class="mx-2 flex items-center">
+
                     <a target="_blank" href="{{linkedin_url}}">
                         {{> Icons/linkedin}}
                     </a>
 
                 </li>
                 {{/match}}
-                <li onclick="moonClickButton()" id="moonClickIcon" class="cursor-pointer mx-2">
-                    {{> Icons/moon}}
+                <li class="mx-2 flex items-center">
+
+                    <button id="theme-toggle" type="button" class="text-black  dark:text-gray-400 focus:outline-none  dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                       
+                       
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd">
+                            </path>
+                        </svg>
+
+                    </button>
                 </li>
-            </ul>
+               </ul>
             {{#unless @member}}
 
             <a 
@@ -94,15 +106,120 @@
         </div>
     </div>
 
-    {{#match @custom.third_nav_enable_on_website "Enable"}}
-        {{> third-nav}}
-    {{/match}}
 
+    {{!-- navbar for mobile --}}
+  <div
+        class="flex w-full flex-col px-2 xs:px-2 sm:px-2 md:px-10 lg:px-20 xl:px-20 2xl:px-20 p-5 xs:p-3 sm:p-3 md:p-5  xl:p-6 2xl:p-6 justify-around content-center m-auto xs:flex sm:flex md:hidden lg:hidden xl:hidden 2xl:hidden ">
+        
+        <button id="navbar-icon" class=" text-black  dark:text-gray-400 focus:outline-none">
+        
+            {{> Icons/nav}}
+        
+        </button>
+
+        <a href="/" class="block mx-auto justify-self-center my-5">
+        
+            {{#if @site.logo}}
+                <img src="{{@site.logo}}" alt="{{@site.title}}" />
+            {{else}}
+
+            <h1 class="text-center text-[22px]"> {{@site.title}} </h1>
+
+            {{/if}}
+        
+        </a>
+
+        <div class="flex flex-row justify-around">
+            <ul class="flex justify-between lg:flex xl:flex 2xl:flex md:flex-row lg:flex-row xl:flex-row 2xl:flex-row">
+
+                <li class="mx-2 flex items-center">
+                    {{!-- partials/Icons/search --}}
+                    <button class="gh-search text-black  dark:text-gray-400" data-ghost-search>{{> Icons/search}}</button>
+                </li>
+
+                {{#if @site.facebook}}
+                <li class="mx-2 flex items-center">
+                    <a class="text-black  dark:text-gray-400" rel="noopener" target="_blank" href="{{@site.facebook}}">
+                        {{> Icons/facebook}}
+                    </a>
+
+                </li>
+                {{/if}}
+
+                {{#if @site.twitter}}
+                <li class="mx-2 flex items-center">
+                    <a class="text-black  dark:text-gray-400" target="_blank" href="{{@site.twitter}}">
+                        {{> Icons/twitter}}
+                    </a>
+                </li>
+                {{/if}}
+
+
+
+                {{#match @custom.instagram_url "!=" "None"}}
+
+                <li class="text-black  dark:text-gray-400"  class="mx-2 flex items-center">
+                    <a target="_blank" href="{{@custom.instagram_url}}">
+                        {{> Icons/instagram}}
+                    </a>
+
+                </li>
+                {{/match}}
+
+                {{#match @custom.github_url "!=" "None"}}
+                <li class="mx-2 flex items-center">
+                    <a class="text-black  dark:text-gray-400"  target="_blank" href="{{@custom.github_url}}">
+                        {{> Icons/github}}
+                    </a>
+
+                </li>
+                {{/match}}
+
+                {{#match @custom.linkedin_url "!=" "None"}}
+                <li class="text-black  dark:text-gray-400"  class="mx-2 flex items-center">
+
+                    <a target="_blank" href="{{linkedin_url}}">
+                        {{> Icons/linkedin}}
+                    </a>
+
+                </li>
+                {{/match}}
+                <li class="mx-2 flex items-center">
+
+                    <button id="theme-toggle" type="button" class="text-black  dark:text-gray-400 focus:outline-none  dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                       
+                       
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd">
+                            </path>
+                        </svg>
+
+                    </button>
+                </li>
+               </ul>
+            {{#unless @member}}
+
+            <a 
+                class="focus:outline-none ml-2 w-20 m-auto mx-5 text-center p-1 bg-blue-600 text-white rounded-full"
+                href="#/portal/signup" data-portal="signup">Pro</a>
+            {{else}}
+            <a 
+                class="focus:outline-none ml-2 w-20 m-auto mx-5 text-center p-1 bg-blue-600 text-white rounded-full"
+                href="#/portal/account" data-portal="account">Account</a>
+            {{/unless}}
+
+        </div>
+    </div>
+
+    
 
   
 </header>
 
-<div id="navOpen"  class="hidden bg-blue-400 text-white w-full h-screen overflow-y-scroll fixed top-0 left-0" >
+
+<div id="navOpen"  class="hidden bg-slate-600  dark:bg-slate-800 dark:text-white text-white w-full h-screen overflow-y-scroll fixed top-0 left-0" >
     <button id="closeIcon" class="m-10 focus:outline-none">
         {{> Icons/cross}}
     </button>
