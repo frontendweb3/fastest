@@ -1,29 +1,19 @@
-# Installing the fastest theme with docker and docker-compose
+# Installing the fastest theme
 
-You can create your own ghost theme with docker. To create a theme with ghost and docker. you have the latest version of `ghost-cli`, `docker`, and `docker-compose` on your laptop.
-
-To start your project run the following `sudo docker-compose up --build --force-recreate` docker command in terminal.
-
-## ghost docker image
-
-[https://hub.docker.com/_/ghost](https://hub.docker.com/_/ghost)
-
-## Note
-
-`NODE_ENV: development` help to run ghost cms locally in you laptop.
+You can create your own ghost theme. To create a theme with ghost. you have the latest version of `ghost-cli` in your laptop.
 
 
 ## Demo of fastest
 
-![ScreenShot](/assets/light.png)
+![ScreenShot](./assets/light.png)
 
 ---
 
-![ScreenShot](/assets/desktop.png)
+![ScreenShot](./assets/desktop.png)
 
 ---
 
-![ScreenShot](/assets/mobile.png)
+![ScreenShot](./assets/mobile.png)
 
 
 ## Installing fastest theme
@@ -31,7 +21,7 @@ To start your project run the following `sudo docker-compose up --build --force-
 ### How to install fastest theme in the ghost?
 
 You install fastest theme by manually. first download code into github repo and then follow the steps.
-1. clone the repo with following command `git clone https://github.com/officialrajdeepsingh/ghostthemewithdocker.git` or download code for repo the[ghostthemewithdocker](https://github.com/officialrajdeepsingh/ghostthemewithdocker.git).
+1. clone the repo with following command `git clone https://github.com/frontendweb3/fastest` or download code for repo the [fastest](https://github.com/frontendweb3/fastest).
 2. Go to the ghost dashboard > settings > design > change-theme > click on upload button > activate the fastest theme.
 
 ## What kind thing change fastest theme?
@@ -40,7 +30,7 @@ You can add social media link, adsense Enable and disable, copyright, theme .
 
 ## How to add adsense in blog?
 
-you can paste your Adsense code into `partials/ads.hbs` file and then enable Adsense dashboard > settings > design > Site-wide > click on adsense enable button and select enable.
+You can paste your Adsense code into `partials/ads.hbs` file and then enable Adsense dashboard > settings > design > Site-wide > click on adsense enable button and select enable.
 
 ## Version
 
@@ -48,7 +38,7 @@ All changelogs help to improve website speed and user experience.
 
 ### Dec 22 2020
 
-* reduce the javascript and CSS
+* Reduce the javascript and CSS
 * Enable comment and search 
 * Remove third nav bar
 * Improve the website design
