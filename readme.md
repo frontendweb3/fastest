@@ -1,8 +1,8 @@
-# Installing fastest theme with docker and docker-compose
+# Installing the fastest theme with docker and docker-compose
 
-You can create own ghost theme with docker. To create theme with ghost and docker. you have latest version of `ghost-cli`, `docker`, and `docker-compose` in your laptop.
+You can create your own ghost theme with docker. To create a theme with ghost and docker. you have the latest version of `ghost-cli`, `docker`, and `docker-compose` on your laptop.
 
-To start your project run following `sudo  docker-compose up --build --force-recreate` docker command in terminal.
+To start your project run the following `sudo docker-compose up --build --force-recreate` docker command in terminal.
 
 ## ghost docker image
 
@@ -46,7 +46,7 @@ you can paste your Adsense code into `partials/ads.hbs` file and then enable Ads
 
 All changelogs help to improve website speed and user experience.
 
-### dec 22 2020
+### Dec 22 2020
 
 * reduce the javascript and CSS
 * Enable comment and search 
