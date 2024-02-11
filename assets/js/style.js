@@ -58,28 +58,7 @@
         });
         
         
-        
-        //  Hide Banners footer and header
-        
-        (function () {
-            // footer banner
-            if (!(window.localStorage.getItem("banner") === "hidden")) {
-                 HideBanner.classList.remove("hidden");
-            } else {
-                HideBanner.classList.add("hidden");
-            }
-        })();
-        
-        // call inside html accept button onClick
-        function accpeptButton() {
-            HideBanner.classList.add("hidden");
-            window.localStorage.setItem("banner", "hidden");
-        }
-        
-        
-        
-        
-        
+            
         // editor gallery
         (function() {
             const images = document.querySelectorAll('.kg-gallery-image img');
