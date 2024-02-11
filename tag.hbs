@@ -23,15 +23,9 @@
    {{!-- loop posts base on article --}}
         {{#foreach related}}
 
-    {{!--  check condition define in config section in package.json and add adsense code after every third post --}}
-            {{#has number="nth:3"  }}
-                {{#match @custom.adsense_enable "Enable"}}
-                    {{> ads}}
-                {{/match}}
-            {{/has}}
 
         {{!-- partials/postCard.hbs --}}
-            {{> postCard }}
+            {{> card }}
 
         {{/foreach}}
 
