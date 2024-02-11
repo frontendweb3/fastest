@@ -5,17 +5,10 @@
     {{!--Pass reading_time time to authors partials with block , learn more about about block https://ghost.org/docs/themes/helpers/block/     --}}
     {{#contentFor "fastestReadingTime"}}
 
-    <p class="text-grey-600 text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm ">
-        {{reading_time}}
-    </p>
+    <p class="text-grey-600 text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm "> {{reading_time}}</p>
+
     {{/contentFor}}
 
-{{!-- Add adsense base of if enable on theme  --}}
-    {{#match @custom.adsense_enable "Disable"}}
-
-        {{> ads}}
-
-    {{/match}}
 
     <article class="{{post_class}}  w-6/6 p-2">
 
@@ -43,16 +36,6 @@
             {{content}}
         </div>
 
-
-
     </article>
 
-
-    {{!-- Add adsense  --}}
-    {{#match @custom.adsense_enable "Disable"}}
-
-        {{> ads}}
-
-    {{/match}}
-
-    {{/post}}
+{{/post}}
