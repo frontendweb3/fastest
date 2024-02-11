@@ -12,15 +12,7 @@
 
 {{/contentFor}}
 
-{{#match @custom.adsense_enable "Enable"}}
-
-    {{> ads}}
-
-{{/match}}
-
 <article class="{{post_class}} w-6/6 p-2">
-
-
 
     <!-- article thumbnail with partials/authors -->
     {{> featureImage}}
@@ -43,22 +35,12 @@
         {{content}}
     </div>
 
-
-
-
 </article>
 
 
     {{!-- partials/comment --}}
     {{> comment}}
 
-
-{{!-- Add adsense  --}}
-{{#match @custom.adsense_enable "Enable"}}
-
-    {{> ads}}
-
-{{/match}}
 
 {{!-- Show related posts --}}
 {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors"}}
@@ -79,12 +61,6 @@
 
 {{/get}}
 
-{{!-- Add adsense  --}}
-{{#match @custom.adsense_enable "Enable"}}
-
-    {{> ads}}
-
-{{/match}}
 
 {{/post}}
 
