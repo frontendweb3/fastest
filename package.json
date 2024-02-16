@@ -33,30 +33,47 @@
     ],
     "mobile": "assets/mobile.png"
   },
+  "docs": "https://officialrajdeepsingh.dev",
   "config": {
-    "posts_per_page": 10,
+    "docs": "https://officialrajdeepsingh.dev",
+    "posts_per_page": 5,
     "image_sizes": {},
     "card_assets": true,
     "custom": {
       "copyright": {
         "type": "text",
         "default": "Copy right by frontend web.",
-        "description":"copy right message."
-
+        "description": "copy right message."
       },
-      "subscribe_title": {
+      "background_color": {
+        "type": "color",
+        "default": "#15171a",
+        "description": "Change the background color of your blog."
+      },
+      "newsletter_show": {
+        "type": "boolean",
+        "default": true,
+        "group": "homepage",
+        "description": "Show the newsletter."
+      },      
+      "newsletter_title": {
         "type": "text",
         "default": "We invest in the worlds potential.",
         "group": "homepage",
-        "description": "Form title for the subscriber." 
+        "description": "title for the newsletter."
       },
-      "subscribe_description": {
+      "newsletter_description": {
         "type": "text",
         "default": "We focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.",
         "group": "homepage",
-        "description": "Form description for the subscriber." 
+        "description": "description for the newsletter."
+      },
+      "newsletter_button_text": {
+        "type": "text",
+        "default": "Subscribe",
+        "group": "homepage",
+        "description": "button for the newsletter."
       }
-      
     }
   },
   "devDependencies": {
