@@ -1,29 +1,37 @@
 {{#if @custom.newsletter_show}}
 
-  {{#unless @member.paid}}
+    {{#is "home"}}
 
-    <div class="mb-12 w-full bg-center bg-cover h-screen" style="background-image: url('{{@site.cover_image}}');">
-      <div class="flex items-center justify-center w-full h-full bg-gray-900/40">
-        <div class="text-center container">
+        {{#unless @member.paid}}
 
-          <!-- Title -->
-          <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 sm:text-5xl md:text-6xl lg:text-8xl ">
-               {{@custom.newsletter_title}}
-          </h1>
+        <div class="{{#match @custom.newsletter_size "xl" }} h-screen {{else match @custom.newsletter_size "lg" }} h-[80vh] {{else match @custom.newsletter_size "md" }} h-[70vh] {{else}} h-[60vh]  {{/match}} mb-12 w-full bg-center bg-cover" style="background-image: url('{{@site.cover_image}}');">
 
-          <!-- Description -->
-          <p class="mb-8 text-lg sm:text-xl md:text-2xl lg:text-3xl  font-normal text-gray-500  sm:px-16 xl:px-48 dark:text-gray-400">
-               {{@custom.newsletter_description}}
-          </p>
+          <div class="flex items-center justify-center w-full h-full bg-gray-900/40">
 
-          <button style="background-color: {{@site.accent_color}};" class="cursor-pointer rounded-md px-6 py-2 font-semibold text-white" data-portal="signup"> 
+            <div class="text-center container">
+
+              <!-- Title -->
+              <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 sm:text-5xl md:text-6xl lg:text-8xl ">
+                {{@custom.newsletter_title}}
+              </h1>
+
+              <!-- Description -->
+              <p class="mb-8 text-lg sm:text-xl md:text-2xl lg:text-3xl  font-normal text-gray-800  sm:px-16 xl:px-48 ">
+                {{@custom.newsletter_description}}
+              </p>
+
+              <button style="background-color: {{@site.accent_color}};" class="cursor-pointer rounded-md px-6 py-2 font-semibold text-white" data-portal="signup">
                 {{@custom.newsletter_button_text }}
-          </button>
+              </button>
+
+            </div>
+
+          </div>
 
         </div>
-      </div>
-    </div>
 
-  {{/unless}}
+        {{/unless}}
+
+    {{/is}}
 
 {{/if}}
