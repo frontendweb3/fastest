@@ -1,24 +1,20 @@
-{{!< default}} {{#tag}} 
+{{!< default}} 
 
-<section class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-    <div class=" max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
-        <h2 class="py-1 border-b-2 border-indigo-500/75 mb-4 text-4xl capitalize tracking-tight font-bold text-gray-700 dark:text-white"> Tagged / {{name}} </h2>
-</div>
+{{#tag}} 
 
+<section class="container my-16 text-left mx-auto">
+        <h2 class="py-1 border-b-2 border-indigo-500/75 mb-4 text-4xl capitalize tracking-tight font-bold text-foreground"> Tagged / {{name}} </h2>
 </section>
 
     {{!-- get posts related to tag base on tag slug --}}
-
     {{#get "posts" include="authors,tags" limit="3" filter="tag:{{slug}}" as |related|}}
 
-    {{!-- loop posts base on article --}}
-    {{#foreach related}}
-
-    {{!-- partials/postCard.hbs --}}
-    {{> card }}
-
-    {{/foreach}}
+        {{!-- loop posts base on article --}}
+        {{#foreach related}}
+             {{!-- partials/postCard.hbs --}}
+             {{> card }}
+        {{/foreach}}
 
     {{/get}}
 
-    {{/tag}}
+{{/tag}}
