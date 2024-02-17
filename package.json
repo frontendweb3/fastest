@@ -33,29 +33,63 @@
     ],
     "mobile": "assets/mobile.png"
   },
-  "docs": "https://officialrajdeepsingh.dev",
   "config": {
     "docs": "https://officialrajdeepsingh.dev",
     "posts_per_page": 5,
-    "image_sizes": {},
     "card_assets": true,
     "custom": {
+      "background_color": {
+        "type": "color",
+        "default": "#ffffff",
+        "description": "Change the background color of your blog."
+      },
+      "text_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the text color of your blog."
+      },
+      "icons_text_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the text color of your blog."
+      },
+      "text_primary_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the primary text color of your blog and page."
+      },
+      "text_secondary_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the primary text color of your blog."
+      },
+      "text_accent_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the primary text color of your blog."
+      },
       "copyright": {
         "type": "text",
         "default": "Copy right by frontend web.",
-        "description": "copy right message."
+        "description": "Add copy right message in footer."
       },
-      "background_color": {
-        "type": "color",
-        "default": "#15171a",
-        "description": "Change the background color of your blog."
+      "newsletter_size": {
+        "type": "select",
+        "group": "homepage",
+        "options": [
+          "sm",
+          "md",
+          "lg",
+          "xl"
+        ],
+        "default": "lg"
       },
       "newsletter_show": {
         "type": "boolean",
         "default": true,
         "group": "homepage",
         "description": "Show the newsletter."
-      },      
+      },
       "newsletter_title": {
         "type": "text",
         "default": "We invest in the worlds potential.",
@@ -92,5 +126,8 @@
     "extends": [
       "@tryghost:theme"
     ]
+  },
+  "dependencies": {
+    "tailwindcss-animate": "^1.0.7"
   }
 }
