@@ -4,19 +4,19 @@
 
     <article class="{{post_class}} pt-8 pb-16 w-full lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between px-4 mx-auto max-w-screen-xl">
 
-        <section class="mx-auto w-full text-center prose-neutral prose-sm  prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg format-blue dark:format-invert">
+      <section class="mx-auto text-center w-full max-w-4xl prose-headings:text-primary prose-sm prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg">
 
-            <time class="w-full text-slate-600 dark:text-slate-400 font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}"> {{date format="DD MMMM YYYY"}} </time>
+            <time class="w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}"> {{date format="DD MMMM YYYY"}} </time>
             
             {{#match @page.show_title_and_feature_image}}
 
-            <h1 class="mb-4 text-3xl font-extrabold text-center leading-tight text-gray-900 lg:mb-6 lg:text-6xl dark:text-white"> {{title}} </h1>
+                <h1 class="mb-4 text-3xl font-extrabold text-center leading-tight text-gray-900 lg:mb-6 lg:text-6xl"> {{title}} </h1>
             
             {{/match}}
 
         </section>
 
-        <section class="mx-auto w-full max-w-4xl prose-neutral prose-sm  prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg format-blue dark:format-invert">
+       <section class="mx-auto w-full max-w-4xl prose-headings:text-primary prose-pre:overflow-y-scroll prose-pre:overflow-x-scroll prose-p:text-secondary prose-ol:text-secondary prose-ul:text-secondary prose-blockquote:border-l-2 prose-blockquote:border-secondary prose-blockquote:text-secondary prose-figure:text-secondary prose-figcaption:text-secondary prose-a:text-accent prose-sm prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg format-blue">
             {{content}}
         </section>
 
