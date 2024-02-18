@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="{{@site.locale}}" class="dark scroll-smooth overflow-x-hidden">
+<html lang="{{@site.locale}}" class="scroll-smooth overflow-x-hidden">
 
 <head>
 
@@ -8,56 +8,93 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="{{asset 'build/css/build.css'}}" /> {{!-- link production ready css file --}}
-    {{!-- <script src="https://unpkg.com/alpinejs" defer></script> Alpine js --}}
+    
+    {{ghost_head}} 
 
-    {{ghost_head}}
+    {{#is "post, page"}}
+        <script src="{{asset 'build/js/prism.js'}}"></script>
+    {{/is}}
+
+    {{#is "post, page"}}
+        {{#match @custom.prismjs_code_highlight "Tomorrow Theme" }}
+            <link rel="stylesheet" href="{{asset 'build/css/tomorrow.css'}}">
+        {{else match @custom.prismjs_code_highlight "Twilight Theme" }}
+            <link rel="stylesheet" href="{{asset 'build/css/twilight.css'}}">
+        {{else match @custom.prismjs_code_highlight "Okaidia Theme" }}
+            <link rel="stylesheet" href="{{asset 'build/css/okaidia.css'}}">
+        {{else match @custom.prismjs_code_highlight "Dark Theme" }}
+            <link rel="stylesheet" href="{{asset 'build/css/dark.css'}}">
+        {{else}}
+            <link rel="stylesheet" href="{{asset 'build/css/default-prism.css'}}">
+        {{/match}}
+    {{/is}}
+
+    <style>
+        :root {
+                --kg-breakout-adjustment: 0px;
+                {{#if @custom.text_primary_color}}
+                --primary-theme-text-color: {{@custom.text_primary_color}};
+                {{/if}}
+                {{#if @custom.text_color}}
+                --main-text-color: {{@custom.text_color}};
+                {{/if}}
+                {{#if @custom.text_secondary_color}}
+                --secondary-theme-text-color: {{@custom.text_secondary_color}};
+                {{/if}}
+                {{#if @custom.text_accent_color}}
+                --accent-theme-text-color: {{@custom.text_accent_color}};
+                {{/if}}
+            }
+    </style>
 
 </head>
 
-<body {{#if @custom.background_color }} style="background-color: {{@custom.background_color}};" {{/if}} class="{{body_class}} dark:bg-black dark:text-white antialiased scroll-smooth ">
+<body {{#if @custom.background_color }} style="background-color: {{@custom.background_color}};" {{/if}} class="{{body_class}} text-foreground antialiased scroll-smooth ">
 
     <header class="gap-10 w-screen grid grid-cols-1 md:grid-cols-3 px-6 py-6 lg:items-center lg:justify-between ">
 
-        <a class="justify-self-center items-center" href="/">
+        <a class="flex flex-row justify-self-center items-center" href="{{@site.url}}">
 
             {{#if @site.logo}}
-                <img src="{{@site.logo}}" class="w-[150px]" alt="{{@site.title}}" />
+                <img src="{{@site.logo}}" class="w-[160px]" alt="{{@site.title}}" />
             {{else}}
-                <h1 class="text-center text-[22px]"> {{@site.title}} </h1>
+                <h1 class="text-center text-lg"> {{@site.title}} </h1>
             {{/if}}
 
         </a>
 
+
         {{"navigation"}}
+
 
 
         <div class="flex-grow flex justify-center flex-row">
 
             <li class="mx-2 flex items-center">
-                <button class="text-white" data-ghost-search>{{> Icons/search}}</button>
+                <button style="color:{{@custom.icons_text_color}}" data-ghost-search>{{> Icons/search}}</button>
             </li>
 
             {{#if @site.facebook}}
-            <li class="mx-2 flex items-center ">
+                <li class="mx-2 flex items-center">
 
-                <a class="text-white" rel="noopener" target="_blank"
-                    href="{{facebook_url @site.facebook}}">
-                    {{> Icons/facebook}}
-                </a>
+                    <a style="color:{{@custom.icons_text_color}}" target="_blank" href="{{facebook_url @site.facebook}}">
+                        {{> Icons/facebook}}
+                    </a>
 
-            </li>
+                </li>
             {{/if}}
 
             {{#if @site.twitter}}
-            <li class="mx-2 flex items-center">
-                <a class="text-white  dark:text-gray-700" target="_blank" href="{{twitter_url @site.twitter}}">
-                    {{> Icons/twitter}}
-                </a>
-            </li>
+                <li class="mx-2 flex items-center">
+
+                    <a style="color:{{@custom.icons_text_color}}" target="_blank" href="{{twitter_url @site.twitter}}">
+                        {{> Icons/twitter}}
+                    </a>
+
+                </li>
             {{/if}}
 
             {{#unless @member}}
-
             <a style="background-color:{{@site.accent_color}}"
                 class="shadow-lg text-white w-20 mx-5 text-center p-1 rounded-sm" href="#/portal/signup"
                 data-portal="signup">Pro</a>
@@ -66,6 +103,7 @@
                 class="shadow-lg text-white w-20 mx-5 text-center p-1 rounded-sm" href="#/portal/account"
                 data-portal="account">Account</a>
             {{/unless}}
+
         </div>
 
     </header>
@@ -89,8 +127,6 @@
 
     {{!-- ghost header --}}
     {{ghost_foot}}
-
-    <script src="{{asset 'build/js/main.js'}}"></script> {{!-- build javascript --}}
 
 </body>
 
