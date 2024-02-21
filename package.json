@@ -1,94 +1,133 @@
 {
-    "name": "fastest",
-    "description": "Fastest ghost cms base theme. Fastest is lite wight, modern open-source theme",
-    "version": "1.0.8",
-    "engines": {
-        "ghost": ">=5.0.0"
-    },
-    "license": "MIT",
-    "scripts": {
-        "gulp": "gulp main",
-        "start": "npx tailwindcss -i ./assets/css/dev.css -o ./assets/build/css/build.css --watch"
-    },
-    "author": {
-        "name": "Rajdeep Singh",
-        "email": "officialrajdeepsingh@gmail.com",
-        "url": "https://officialrajdeepsingh.dev"
-    },
-    "repository" : {"type": "git", "url": "https://github.com/frontendweb3/fastest"},
-
-    "keywords": [
-        "ghost",
-        "theme",
-        "blog",
-        "light wight",
-        "ghost-theme"
+  "name": "fastest",
+  "description": "Fastest ghost cms base theme. Fastest is lite wight, modern open-source theme",
+  "version": "1.0.8",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "gulp": "gulp main",
+    "start": "npx tailwindcss -i ./assets/css/dev.css -o ./assets/build/css/build.css --watch"
+  },
+  "author": {
+    "name": "Rajdeep Singh",
+    "email": "officialrajdeepsingh@gmail.com",
+    "url": "https://officialrajdeepsingh.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frontendweb3/fastest"
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "blog",
+    "light wight",
+    "ghost-theme"
+  ],
+  "screenshots": {
+    "desktop": [
+      "assets/light.png",
+      "assets/desktop.png"
     ],
-    "screenshots": {
-        "desktop": [
-            "assets/light.png",
-            "assets/desktop.png"
+    "mobile": "assets/mobile.png"
+  },
+  "config": {
+    "docs": "https://officialrajdeepsingh.dev",
+    "posts_per_page": 5,
+    "card_assets": true,
+    "custom": {
+      "background_color": {
+        "type": "color",
+        "default": "#ffffff",
+        "description": "Change the background color of your blog."
+      },
+      "text_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the text color of your blog."
+      },
+      "icons_text_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the text color of your blog."
+      },
+      "text_primary_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the primary text color of your blog and page."
+      },
+      "text_secondary_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the primary text color of your blog."
+      },
+      "text_accent_color": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Change the primary text color of your blog."
+      },
+      "copyright": {
+        "type": "text",
+        "default": "Copy right by frontend web.",
+        "description": "Add copy right message in footer."
+      },
+      "newsletter_size": {
+        "type": "select",
+        "group": "homepage",
+        "options": [
+          "sm",
+          "md",
+          "lg",
+          "xl"
         ],
-        "mobile": "assets/mobile.png"
-    },
-    "config": {
-        "posts_per_page": 10,
-        "image_sizes": {},
-        "card_assets": true,
-        "custom": {
-            "enable_color_scheme": {
-                "type": "select",
-                "options": [
-                    "Light",
-                    "Dark"
-                ],
-                "default": "Dark"
-            },
-            "linkedin_url": {
-                "type": "text",
-                "default": "None"
-            },
-            "github_url": {
-                "type": "text",
-                "default": "None"
-            },
-            "instagram_url": {
-                "type": "text",
-                "default": "None"
-            },
-            "copyright": {
-                "type": "text",
-                "default": "Copy right by Rajdeep Singh"
-            },
-            "copyright_url": {
-                "type": "text",
-                "default": "https://officialrajdeepsingh.dev/pages/terms-and-conditions/"
-            },
-            "adsense_enable": {
-                "type": "select",
-                "options": [
-                    "Disable",
-                    "Enable"
-                ],
-                "default": "Disable"
-            }
-        }
-    },
-    "devDependencies": {
-        "@tailwindcss/typography": "^0.5.8",
-        "autoprefixer": "^10.4.13",
-        "gscan": "^4.22.0",
-        "gulp": "4.0.2",
-        "gulp-concat": "^2.6.1",
-        "gulp-livereload": "4.0.2",
-        "gulp-sourcemaps": "^3.0.0",
-        "gulp-uglify": "^3.0.2",
-        "postcss": "^8.4.20",
-        "tailwindcss": "^3.2.4"
-    },
-    "renovate": {
-        "extends": [
-            "@tryghost:theme"
-        ]
+        "default": "lg"
+      },
+      "newsletter_show": {
+        "type": "boolean",
+        "default": true,
+        "group": "homepage",
+        "description": "Show the newsletter."
+      },
+      "newsletter_title": {
+        "type": "text",
+        "default": "We invest in the worlds potential.",
+        "group": "homepage",
+        "description": "title for the newsletter."
+      },
+      "newsletter_description": {
+        "type": "text",
+        "default": "We focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.",
+        "group": "homepage",
+        "description": "description for the newsletter."
+      },
+      "newsletter_button_text": {
+        "type": "text",
+        "default": "Subscribe",
+        "group": "homepage",
+        "description": "button for the newsletter."
+      }
     }
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.17",
+    "gscan": "^4.42.0",
+    "gulp": "4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-livereload": "4.0.2",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
+  },
+  "renovate": {
+    "extends": [
+      "@tryghost:theme"
+    ]
+  },
+  "dependencies": {
+    "tailwindcss-animate": "^1.0.7"
+  }
 }

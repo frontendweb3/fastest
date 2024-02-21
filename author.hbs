@@ -1,76 +1,70 @@
+{{!< default}} 
 
 
-{{!< default}}
-
-{{#author}}
-
-{{!--  Author Section pass with block learn more about about block https://ghost.org/docs/themes/helpers/block/ --}}
-   {{#contentFor "authorName"}}
-      {{name}}
-    {{/contentFor}}
-
-<div class="container mt-20 mb-16 flex flex-col justify-center mx-auto">
-
-    <div class="flex flex-col mt-6 w-6/6 xs:w-5/6 sm:w-5/6 md:w-3/6 lg:w-3/6 xl:w-3/6 2xl:w-3/6 xs:mt-6 sm:mt-6 md:mt-6 lg:mt-0 xl:mt-0 2xl:mt-0 ">
+{{#author}} 
     
-        <h1 class="text-3xl mt-5 xs:text-3xl sm:text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl"> {{name}} </h1>
+    <div class="flex flex-col md:flex-row mx-1.5 md:mx-auto my-12 items-center md:w-[724px] rounded-lg shadow-md ">
 
-        {{#if bio}}
-            <p class="mt-0 xs:mt-0 sm:mt-0 md:mt-1 lg:mt-3 xl:mt-3 2xl:mt-3 text-md">
-                {{bio}}
-            </p>
-        {{/if}}
+        <div class="p-2 w-4/6 sm:w-4/6 md:w-3/6 lg:w-2/6 sm:rounded-none sm:rounded-l-lg">
+            <img class="w-full object-cover rounded-full" src="{{profile_image}}" alt="{{#if name}} {{name}} {{else}} profile image {{/if}}">
+        </div>
 
-        <ul class="flex flex-row  my-3">
+        <div class="w-full p-6 my-3 md:my-0">
 
-            <li class="text-md">{{location}}</li>
+            <h2 style="color:{{@custom.icons_text_color}}" class="text-xl sm:text-2xl md:text-4xl font-bold"> {{name}} </h2>
 
-               {{#if facebook}}
-                
-                    <li class="mx-3 text-sm flex items-center">
-                        <a target="_blank" href="https://facebook.com/{{facebook}}" >
+            {{#if bio}}
+                <p style="color:{{@custom.icons_text_color}}" class="text-xl my-4">{{bio}}</p>
+            {{/if}}
 
+            <ul class="flex mx-auto flex-row md:justify-start justify-center">
+                {{#if facebook}}
+                <li class="mx-3 text-sm flex items-center">
+                    <a style="color:{{@custom.icons_text_color}}" target="_blank" href="{{facebook_url}}" >
                         {{!-- Pass partials/Icons/facebook --}}
-                            {{> Icons/facebook}}
-
-                        </a>
-                    </li>
-                
+                        {{> Icons/facebook}}
+                    </a>
+                </li>
                 {{/if}}
-                {{#if twitter}} 
-                    <li class="mx-3 text-sm flex items-center">
-                        <a target="_blank" href="https://twitter.com/{{twitter}}" >
 
+                {{#if twitter}}
+                <li class="mx-3 text-sm flex items-center">
+                    <a style="color:{{@custom.icons_text_color}}" target="_blank" href="{{twitter_url}}">
                         {{!-- Pass partials/Icons/twitter --}}
-                            {{> Icons/twitter}}
+                        {{> Icons/twitter}}
 
-                        </a>
-                    </li>
+                    </a>
+                </li>
                 {{/if}}
-                {{#if website}} 
-                    <li class="mx-3 text-sm flex items-center">
-                        <a target="_blank" href="{{website}}" >
 
-                            {{!-- Pass partials/Icons/website --}}
-                            {{> Icons/website}}
-
-                        </a>
-                    </li>
+                {{#if website}}
+                <li class="mx-3 text-sm flex items-center">
+                    <a style="color:{{@custom.icons_text_color}}" target="_blank" href="{{website}}">
+                        {{!-- Pass partials/Icons/website --}}
+                        {{> Icons/website}}
+                    </a>
+                </li>
                 {{/if}}
-        </ul>
+
+            </ul>
+
+        </div>
+
     </div>
-</div>
 
+    <div class="container mx-auto my-12">
+        <h1 class="text-3xl font-bold tracking-tight text-foreground"> Published by {{name}}</h1>
+    </div>
 
-{{!--  get posts related to author base on author Id --}}
-    {{#get "posts" limit="all" filter="authors:{{slug}}+id:-{{id}}" order="published_at desc" include="authors"  }}
+    {{!-- get posts related to author base on author Id --}}
+    {{#get "posts" limit="all" filter="authors:{{slug}}+id:-{{id}}" order="published_at desc" include="authors" }}
 
-        {{#if posts}}
-                {{#foreach posts}}
-                        {{> postCard }}
-                {{/foreach}}
-        {{/if}}
+    {{#if posts}}
+    {{#foreach posts}}
+    {{> card }}
+    {{/foreach}}
+    {{/if}}
 
     {{/get}}
 
-{{/author}}
+    {{/author}}

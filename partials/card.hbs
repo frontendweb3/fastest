@@ -1,0 +1,92 @@
+<div class="mx-auto max-w-[25rem] sm:max-w-[38rem] md:max-w-[42rem] lg:max-w-[56rem] my-12 md:mx-auto grid bg-clip-border rounded-xl bg-white text-gray-700 shadow-md w-full grid-cols-2 lg:grid-cols-4">
+
+  <div class="rounded-none lg:rounded-r-none md:h-[364px] col-span-2 justify-self-auto relative m-0 overflow-hidden bg-clip-border lg:rounded-xl shrink-0">
+
+    <img srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
+      feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
+      sizes="(max-width: 1000px) 400px, 700px" src="{{img_url feature_image size=" m"}}"
+      class="object-cover w-full h-full" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+
+  </div>
+
+  <div class="p-6 col-span-2  flex flex-col justify-center  lg:col-start-3 lg:col-end-5 ">
+
+    <div class="flex row-span-2 flex-row justify-between">
+
+      {{#if primary_tag}}
+      <a href="{{url}}"
+        class="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">{{primary_tag.name}}</a>
+      {{/if}}
+
+      {{#unless access}}
+
+      {{#has visibility="members"}}
+      <h6
+        class="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">
+        Members only
+      </h6>
+      {{else}}
+      <h6
+        class="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-gray-700 uppercase">
+        Paid Members only
+      </h6>
+      {{/has}}
+
+      {{/unless}}
+
+    </div>
+
+    <div class="flex row-span-3  flex-col">
+      <h4 class="mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+        {{title}}
+      </h4>
+
+      <p class="mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+        {{excerpt words="30"}}
+      </p>
+    </div>
+
+    <div class="flex row-span-4 flex-row justify-between items-center">
+
+      {{!-- author for large screen --}}
+      <div class="hidden sm:flex items-center space-x-4">
+
+        <img src="{{primary_author.profile_image}}" alt="{{primary_author.name}}"
+          class="w-10 h-10 rounded-full " />
+        
+        <div class="flex flex-col justify-center items-center">
+          
+          <a class="w-full" href="{{primary_author.url}}">
+            <h3 class="text-sm font-medium">{{primary_author.name}}</h3>
+          </a>
+
+          <time datetime="{{date format='YYYY-MM-DD'}}" class="text-sm ">
+            {{date format="DD MMMM YYYY"}}
+          </time>
+
+        </div>
+
+
+      </div>
+
+      {{!-- author for small --}}
+      <a class="block sm:hidden" href="{{primary_author.url}}">
+        <h3 class="text-sm font-medium">{{primary_author.name}}</h3>
+      </a>
+
+      <a href="{{url}}" class="flex items-center gap-2 px-2.5 py-1 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20">
+
+          Learn More
+
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+          </svg>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>

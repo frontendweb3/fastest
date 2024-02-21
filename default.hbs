@@ -1,48 +1,132 @@
 <!DOCTYPE html>
 
-<html lang="{{@site.locale}}" class="dark scroll-smooth overflow-x-hidden">
+<html lang="{{@site.locale}}" class="scroll-smooth overflow-x-hidden">
 
 <head>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="{{asset 'build/css/build.css'}}" /> {{!-- link production ready css file --}}
     
+    {{ghost_head}} 
 
-    {{!-- link production ready css file  --}}
-    <link rel="stylesheet" href="{{asset 'build/css/build.css'}}" />
-    {{!-- <link rel="stylesheet" href="http://localhost:2368/ghost/assets/ghost-dark-e9195020925a360d83163e1e87b514a6.css" /> --}}
+    {{#is "post, page"}}
+        <script src="{{asset 'build/js/prism.js'}}"></script>
+    {{/is}}
 
+    {{#is "post, page"}}
+        {{#match @custom.prismjs_code_highlight "Tomorrow Theme" }}
+            <link rel="stylesheet" href="{{asset 'build/css/tomorrow.css'}}">
+        {{else match @custom.prismjs_code_highlight "Twilight Theme" }}
+            <link rel="stylesheet" href="{{asset 'build/css/twilight.css'}}">
+        {{else match @custom.prismjs_code_highlight "Okaidia Theme" }}
+            <link rel="stylesheet" href="{{asset 'build/css/okaidia.css'}}">
+        {{else match @custom.prismjs_code_highlight "Dark Theme" }}
+            <link rel="stylesheet" href="{{asset 'build/css/dark.css'}}">
+        {{else}}
+            <link rel="stylesheet" href="{{asset 'build/css/default-prism.css'}}">
+        {{/match}}
+    {{/is}}
 
-   {{!-- ghost header --}}
-      {{ghost_head}}
+    <style>
+        :root {
+                --kg-breakout-adjustment: 0px;
+                {{#if @custom.text_primary_color}}
+                --primary-theme-text-color: {{@custom.text_primary_color}};
+                {{/if}}
+                {{#if @custom.text_color}}
+                --main-text-color: {{@custom.text_color}};
+                {{/if}}
+                {{#if @custom.text_secondary_color}}
+                --secondary-theme-text-color: {{@custom.text_secondary_color}};
+                {{/if}}
+                {{#if @custom.text_accent_color}}
+                --accent-theme-text-color: {{@custom.text_accent_color}};
+                {{/if}}
+            }
+    </style>
 
 </head>
 
+<body {{#if @custom.background_color }} style="background-color: {{@custom.background_color}};" {{/if}} class="{{body_class}} text-foreground antialiased scroll-smooth ">
 
-<body class="{{body_class}} bg-white dark:bg-black dark:text-white antialiased scroll-smooth ">
-  
-  {{!-- partials/header --}}
-    {{> header}}
+    <header class="gap-10 w-screen grid grid-cols-1 md:grid-cols-3 px-6 py-6 lg:items-center lg:justify-between ">
+
+        <a class="flex flex-row justify-self-center items-center" href="{{@site.url}}">
+
+            {{#if @site.logo}}
+                <img src="{{@site.logo}}" class="w-[160px]" alt="{{@site.title}}" />
+            {{else}}
+                <h1 class="text-center text-lg"> {{@site.title}} </h1>
+            {{/if}}
+
+        </a>
+
+
+        {{"navigation"}}
+
+
+
+        <div class="flex-grow flex justify-center flex-row">
+
+            <li class="mx-2 flex items-center">
+                <button style="color:{{@custom.icons_text_color}}" data-ghost-search>{{> Icons/search}}</button>
+            </li>
+
+            {{#if @site.facebook}}
+                <li class="mx-2 flex items-center">
+
+                    <a style="color:{{@custom.icons_text_color}}" target="_blank" href="{{facebook_url @site.facebook}}">
+                        {{> Icons/facebook}}
+                    </a>
+
+                </li>
+            {{/if}}
+
+            {{#if @site.twitter}}
+                <li class="mx-2 flex items-center">
+
+                    <a style="color:{{@custom.icons_text_color}}" target="_blank" href="{{twitter_url @site.twitter}}">
+                        {{> Icons/twitter}}
+                    </a>
+
+                </li>
+            {{/if}}
+
+            {{#unless @member}}
+            <a style="background-color:{{@site.accent_color}}"
+                class="shadow-lg text-white w-20 mx-5 text-center p-1 rounded-sm" href="#/portal/signup"
+                data-portal="signup">Pro</a>
+            {{else}}
+            <a style="background-color:{{@site.accent_color}}"
+                class="shadow-lg text-white w-20 mx-5 text-center p-1 rounded-sm" href="#/portal/account"
+                data-portal="account">Account</a>
+            {{/unless}}
+
+        </div>
+
+    </header>
 
     <main class="mt-6 flex flex-col">
 
-{{!-- Render other pages  --}}
         {{{body}}}
 
     </main>
-{{!-- partials/footer --}}
-    {{> footer}}
 
-{{!-- partials/banner --}}
-    {{> banner}}
+    {{!-- partials/footer --}}
+    <footer class="gap-10 w-screen grid grid-cols-1 sm:grid-cols-2 p-6 items-center">
 
-{{!-- ghost header --}}
+        {{#if @custom.copyright}}
+        <h2 class="text-sm text-center">{{@custom.copyright}}</h2>
+        {{/if}}
+
+        {{navigation type="secondary"}}
+
+    </footer>
+
+    {{!-- ghost header --}}
     {{ghost_foot}}
-
-        <script src="{{asset 'build/js/main.js'}}"></script>
-
-
 
 </body>
 

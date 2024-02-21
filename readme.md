@@ -2,7 +2,6 @@
 
 You can create your own ghost theme. To create a theme with ghost. you have the latest version of `ghost-cli` in your laptop.
 
-
 ## Demo of fastest
 
 ![ScreenShot](./assets/light.png)
@@ -15,12 +14,12 @@ You can create your own ghost theme. To create a theme with ghost. you have the 
 
 ![ScreenShot](./assets/mobile.png)
 
-
 ## Installing fastest theme
 
 ### How to install fastest theme in the ghost?
 
 You install fastest theme by manually. first download code into github repo and then follow the steps.
+
 1. clone the repo with following command `git clone https://github.com/frontendweb3/fastest` or download code for repo the [fastest](https://github.com/frontendweb3/fastest).
 2. Go to the ghost dashboard > settings > design > change-theme > click on upload button > activate the fastest theme.
 
@@ -39,12 +38,11 @@ All changelogs help to improve website speed and user experience.
 ### Dec 22 2020
 
 * Reduce the javascript and CSS
-* Enable comment and search 
+* Enable comment and search
 * Remove third nav bar
 * Improve the website design
 * Enable dark and light mode
 * Fix other issue
-
 
 ### Jun 14 2022
 
