@@ -14,10 +14,8 @@ jobs:
       - run:  pnpm add gscan
       - name: check if zip avaiable or not
         run: |
-            if which zip > /dev/null; then
-                echo "wget command exists."
-            else
-                echo "wget command does not exist."
+            if ! [ -x "$(command -v zip)" ]; then
+               apt-get install zip -y
             fi
     #   - run : zip fastest.zip assets/build/*/*  partials/*/* author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
     #   - run: pnpm run gscan fastest.zip
