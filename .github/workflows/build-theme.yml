@@ -18,5 +18,7 @@ jobs:
                echo "installing zip command"
                apt-get install zip -y
             fi
-      - run : zip fastest.zip assets/build/*/*  partials/*/* author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
-      - run: pnpm run gscan fastest.zip
+      - run: ls -la
+      - run: pwd
+    #   - run : zip fastest.zip assets/build/*/*  partials/*/* author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
+    #   - run: pnpm run gscan fastest.zip
