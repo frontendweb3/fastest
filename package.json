@@ -84,6 +84,18 @@
         ],
         "default": "lg"
       },
+      "prismjs_code_highlight": {
+        "type": "select",
+        "group": "post",
+        "options": [
+          "Default Theme",
+          "Dark Theme",
+          "Okaidia Theme",
+          "Twilight Theme",
+          "Tomorrow Theme"
+        ],
+        "default": "Default Theme"
+      },
       "newsletter_show": {
         "type": "boolean",
         "default": true,

@@ -4,15 +4,23 @@ You can create your own ghost theme. To create a theme with ghost. you have the 
 
 ## Demo of fastest
 
-![ScreenShot](./assets/light.png)
+<div style="display:flex;">
+
+![ScreenShot](./assets/demo.png)
 
 ---
 
-![ScreenShot](./assets/desktop.png)
+![ScreenShot](./assets/demo-2.png)
 
 ---
 
-![ScreenShot](./assets/mobile.png)
+![ScreenShot](./assets/demo-3.png)
+
+---
+
+![ScreenShot](./assets/demo-4.png)
+
+</div>
 
 ## Installing fastest theme
 
@@ -26,10 +34,6 @@ You install fastest theme by manually. first download code into github repo and 
 ## What kind thing change fastest theme?
 
 You can add social media link, adsense Enable and disable, copyright, theme .
-
-## How to add adsense in blog?
-
-You can paste your Adsense code into `partials/ads.hbs` file and then enable Adsense dashboard > settings > design > Site-wide > click on adsense enable button and select enable.
 
 ## Version
 
