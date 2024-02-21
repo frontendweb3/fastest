@@ -1,0 +1,19 @@
+name: Build Ghost and test theme
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - run: pnpm add gscan
+      - uses: vimtor/action-zip@v1.1
+        with:
+          files: assets/build/ partials/ author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
+          dest: ${{ github.workspace }}/fastest.zip
+      - run: pnpm run gscan ${{ github.workspace }}/fastest.zip
