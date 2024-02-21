@@ -11,9 +11,12 @@ jobs:
       - uses: pnpm/action-setup@v3
         with:
           version: 8
-      - run: pnpm add gscan
-      - uses: vimtor/action-zip@v1.1
-        with:
-          files: assets/build/ partials/ author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
-          dest: ${{ github.workspace }}/fastest.zip
-      - run: pnpm run gscan ${{ github.workspace }}/fastest.zip
+      - run:  pnpm add gscan
+      - name: check if zip avaiable or not
+        run: |
+            if ! command -v zip &> /dev/null
+                echo "install the zip package ... "
+                apt-get install -y zip
+            fi
+      - run : zip fastest.zip assets/build/*/*  partials/*/* author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
+      - run: pnpm run gscan fastest.zip
