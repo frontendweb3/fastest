@@ -12,13 +12,17 @@ jobs:
         with:
           version: 8
       - run:  pnpm add gscan
-      - name: check if zip avaiable or not
-        run: |
-            if ! [ -x "$(command -v zip)" ]; then
-               echo "installing zip command"
-               apt-get install zip -y
-            fi
+      - name: Easy Zip Files
+        uses: vimtor/action-zip@v1.2
+        with:
+            files: assets/build/  partials/ author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
+            dest: ${{ github.workspace }}/fastest.zip
+        # run: |
+        #     if ! [ -x "$(command -v zip)" ]; then
+        #        echo "installing zip command"
+        #        apt-get install zip -y
+        #     fi
       - run: ls -la
       - run: pwd
     #   - run : zip fastest.zip assets/build/*/*  partials/*/* author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
-    #   - run: pnpm run gscan fastest.zip
+      - run: pnpm run gscan ${{ github.workspace }}/fastest.zip
