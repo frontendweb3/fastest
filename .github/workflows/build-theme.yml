@@ -20,4 +20,4 @@ jobs:
             dest: ${{ github.workspace }}/fastest.zip
       - run: pnpm gscan ./
       # - run: pnpm gscan -z ${{ github.workspace }}/fastest.zip
-      - run: ls ${{ github.workspace }}/fastest.zip
+      - run: ls ${{ github.workspace }}
