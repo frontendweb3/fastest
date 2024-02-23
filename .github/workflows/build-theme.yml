@@ -16,6 +16,6 @@ jobs:
       - name: Easy Zip Files
         uses: vimtor/action-zip@v1.2
         with:
-            files: assets/build/  partials/ author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
+            files: assets/build/ partials/ author.hbs default.hbs error.hbs index.hbs page.hbs post.hbs tag.hbs
             dest: ${{ github.workspace }}/fastest.zip
       - run: pnpm run gscan ${{ github.workspace }}/fastest.zip
