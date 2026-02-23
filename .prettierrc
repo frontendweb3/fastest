@@ -1,0 +1,6 @@
+{
+    "singleQuote": true,
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "overrides": [{ "files": "*.hbs", "options": { "parser": "html" } }],
+    "tailwindStylesheet": "./assets/css/dev.css"
+}
