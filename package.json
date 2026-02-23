@@ -2,13 +2,21 @@
   "name": "fastest",
   "description": "Fastest ghost cms base theme. Fastest is lite wight, modern open-source theme",
   "version": "1.0.8",
+  "type": "module",
   "engines": {
-    "ghost": ">=5.0.0"
+    "ghost": ">=6.0.0"
   },
   "license": "MIT",
   "scripts": {
-    "gulp": "gulp main",
-    "start": "npx tailwindcss -i ./assets/css/dev.css -o ./assets/build/css/build.css --watch"
+    "build": "node esbuild.config.js",
+    "dev": "npx nodemon --watch . --ext js,css,hbs --ignore assets/dist --ignore node_modules --exec \"node esbuild.config.js --watch\"",
+    "format": "prettier .",
+    "format-fix": "prettier --write .",
+    "preview": "node esbuild.config.js --preview",
+    "zip": "npm run build && bestzip $npm_package_name.zip assets/dist/* assets/images/* partials/* members/* *.hbs package.json",
+    "test-v5": "pnpm dlx gscan@latest . --v5",
+    "test-v6": "pnpm dlx gscan@latest . --v6",
+    "pretest": "npm run build"
   },
   "author": {
     "name": "Rajdeep Singh",
@@ -35,8 +43,27 @@
   },
   "config": {
     "docs": "https://officialrajdeepsingh.dev",
-    "posts_per_page": 5,
     "card_assets": true,
+    "image_sizes": {
+      "xxs": {
+        "width": 30
+      },
+      "xs": {
+        "width": 100
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 1200
+      },
+      "xl": {
+        "width": 2000
+      }
+    },
     "custom": {
       "background_color": {
         "type": "color",
@@ -119,20 +146,76 @@
         "default": "Subscribe",
         "group": "homepage",
         "description": "button for the newsletter."
+      },
+      "logo_dark": {
+        "type": "image",
+        "default": "",
+        "description": "Logo used in dark mode"
+      },
+      "card_style": {
+        "type": "select",
+        "options": [
+          "card-first",
+          "card-second",
+          "card-third"
+        ],
+        "default": "card-first",
+        "description": "Choose which post card to use see on across the site"
+      },
+      "copyright_enabled": {
+        "type": "boolean",
+        "default": true,
+        "description": "Show or hide the footer copyright text"
+      },
+      "copyright_text": {
+        "type": "text",
+        "default": "",
+        "description": "Optional custom copyright message; leave blank to use the default"
+      },
+      "font_color_for_light_mode": {
+        "type": "color",
+        "default": "#000000",
+        "description": "text color used for entire website in light mode"
+      },
+      "font_color_for_dark_mode": {
+        "type": "color",
+        "default": "#ffffff",
+        "description": "text color used for entire website in dark mode"
+      },
+      "background_color_for_light_mode": {
+        "type": "color",
+        "default": "#ffffff",
+        "description": "background color used throughout the website in light mode"
+      },
+      "background_color_for_dark_mode": {
+        "type": "color",
+        "default": "#000000",
+        "description": "background color used throughout the website in dark mode"
+      },
+      "sidebar_background_color_for_dark_mode": {
+        "type": "color",
+        "default": "#000000",
+        "description": "Sidebar background color used throughout the website in dark mode"
+      },
+      "sidebar_background_color_for_light_mode": {
+        "type": "color",
+        "default": "#ffffff",
+        "description": "Sidebar background color used throughout the website in light mode"
+      },
+      "featured_enable": {
+        "type": "boolean",
+        "default": true,
+        "description": "Enable or disable featured posts section on the homepage"
       }
     }
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "autoprefixer": "^10.4.17",
-    "gscan": "^4.42.0",
-    "gulp": "4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-livereload": "4.0.2",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1"
+    "@tailwindcss/typography": "^0.5.19",
+    "gscan": "^5.2.5",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.0",
+    "tailwindcss-animate": "^1.0.7",
+    "tw-animate-css": "^1.4.0"
   },
   "renovate": {
     "extends": [
@@ -140,6 +223,10 @@
     ]
   },
   "dependencies": {
-    "tailwindcss-animate": "^1.0.7"
+    "@tailwindcss/postcss": "^4.2.0",
+    "chokidar": "^5.0.0",
+    "esbuild": "^0.27.3",
+    "esbuild-plugin-tailwindcss": "^2.1.0",
+    "postcss": "^8.5.6"
   }
 }
