@@ -1,45 +1,65 @@
-{{!< default}}
+{{!< default}} 
 
-{{#post}}
+{{#post}} 
 
-  <article class="{{post_class}} pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between px-4 mx-auto max-w-screen">
-      
-      <section class="mx-auto text-center w-full max-w-4xl prose-neutral prose-sm prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg format-blue dark:format-invert">
-          
-          <time class="w-full text-slate-600 dark:text-slate-400 font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm " datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
-          <h1 class="mb-4 text-3xl font-extrabold text-center leading-tight text-gray-900 lg:mb-6 lg:text-6xl dark:text-white"> {{title}} </h1>
-          <p class="text-slate-600 dark:text-slate-400 text-xs xs:text-xs sm:text-xs md:text-sm lg:text-2xl ">{{excerpt}}</p>
+<article class="{{post_class}} prose-neutral prose-sm prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between  mx-auto">
+
+    <section class="mx-auto text-center flex flex-col w-full max-w-5xl prose-neutral prose-sm sm:prose-base lg:prose-lg format-blue dark:format-invert">
+
+        <time class="w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+
+    
+        <h1 class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">
+            {{title}}
+        </h1>
+
+        {{#if custom_excerpt}}
+        <p class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,2.5vw,1.8rem)] tracking-wide duration-400">
+            {{custom_excerpt}}
+        </p>
+        {{else}}
+             <p class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,2.5vw,1.8rem)] tracking-wide duration-400">
+            {{excerpt}}
+        </p>
+        {{/if}}
 
 
-          <header class="mb-4 lg:mb-6 not-prose mx-auto">
-              <address class="flex items-center justify-center mb-6 not-italic">
-                  <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                      <img class="mr-4 w-16 h-16 rounded-full" src="{{primary_author.profile_image}}" alt="{{primary_author.name}}">
-                      <div>
-                          <a href="{{primary_author.url}}" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{primary_author.name}}</a>
-                      </div>
-                  </div>
-              </address>
-          </header>
 
-          <div class="my-5">
+        <div class="flex mt-10 not-prose flex-row justify-center mx-auto items-center space-x-4">
 
-            {{#foreach tags visibility="public"}} 
-           
+            {{#if primary_author.profile_image}}
+            <img src="{{ img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}"
+                class="w-10 h-10 rounded-full " />
+            {{else}}
+            <img src="{{ asset "assets/images/profile.png"}}" alt="{{primary_author.name}}"
+                class="w-10 h-10 rounded-full " />
+            {{/if}}
 
-               <a href="{{url}}" class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400" > # {{name}}</a>
+            <div class="flex flex-row  space-x-4 justify-between items-center">
+                <a href="{{primary_author.url}}" rel="author" class="text-xl font-bold">{{primary_author.name}}</a>
+            </div>
 
+        </div>
+
+        <div class="my-10 space-x-5">
+
+            {{#foreach tags visibility="public"}}
+            <a href="{{url}}"
+                class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400">
+                # {{name}}</a>
             {{/foreach}}
 
-          </div>  
-      </section>
+        </div>
 
-        {{> featureImage}}
+    </section>
 
-       <section class="mx-auto w-full max-w-4xl prose-neutral prose-sm prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg format-blue dark:format-invert">
-            {{content}}
-       </section>
-  </article>
+    {{> featureImage}}
+
+    <section class="mx-auto max-w-4xl w-full">
+        {{content}}
+    </section>
+
+</article>
 
 
 
@@ -48,24 +68,25 @@
     {{> comment}}
 
 
-{{!-- Show related posts --}}
-{{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors"}}
+    {{!-- Show related posts --}}
+    {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors"}}
 
-{{!-- if posts is available then show it --}}
-{{#if posts}}
+        {{!-- if posts is available then show it --}}
+        {{#if posts}}
 
-<h2 class="mt-10 m-auto text-left w-5/6 text-xl xs:text-1xl sm:text-3xl md:text-4xl xl:text-5xl 2xl:text-6xl">
-    Read more
-</h2>
+        <div class="container mx-auto px-6 py-10 space-y-12 md:space-y-28 lg:py-12 lg:px-8 ">
+            <h3 class="mt-5 mb-20 text-left text-xl font-bold lg:text-2xl">
+                More By {{../primary_author.name}}
+            </h3>
+            {{!-- loop all post --}}
+            {{#foreach posts}}
+            {{> card }}
+            {{/foreach}}
+        </div>
+        
+        {{/if}}
 
-{{!-- loop all post --}}
-{{#foreach posts}}
-    {{> card }}
-{{/foreach}}
-
-{{/if}}
-
-{{/get}}
+    {{/get}}
 
 
 {{/post}}
