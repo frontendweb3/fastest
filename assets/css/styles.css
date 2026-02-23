@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import 'tw-animate-css';
+
+@source '../**/*.hbs';
+@source '../../**/*.hbs';
+@source '../assets/js/**/*.js';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@custom-variant dark (&:is(.dark *));
+
+
+/* CSS color variables for light and dark themes */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-border: var(--border);
+    --color-sidebar: var(--sidebar);
+}
+
+:root {
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.141 0.005 285.823);
+    --primary: oklch(0.21 0.006 285.885);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.967 0.001 286.375);
+    --secondary-foreground: oklch(0.21 0.006 285.885);
+    --border: oklch(0.92 0.004 286.32);
+}
+
+.dark {
+    --card: oklch(0.21 0.006 285.885);
+    --card-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.92 0.004 286.32);
+    --primary-foreground: oklch(0.21 0.006 285.885);
+    --secondary: oklch(0.274 0.006 286.033);
+    --secondary-foreground: oklch(0.985 0 0);
+    --border: oklch(1 0 0 / 10%);
+}
+
+/* Add Dynamic Fonts in site on entire website*/
+@layer utilities {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--gh-font-heading, 'Inter'), system-ui, sans-serif;
+    }
+
+    p span,
+    a,
+    li,
+    blockquote,
+    code {
+        font-family: var(--gh-font-body, 'Inter'), system-ui, sans-serif;
+    }
+}
+
+/* Add the support fonts in tailwindcss-typography */
+@layer components {
+    /* Body text in articles */
+    .prose :is(p, span, a, li, blockquote, code) {
+        font-family: var(--gh-font-body, 'Inter'), system-ui, sans-serif;
+    }
+
+    /* Headings inside prose */
+    .prose :is(h1, h2, h3, h4, h5, h6) {
+        font-family: var(--gh-font-heading, 'Inter'), system-ui, sans-serif;
+    }
+}
+
+
+.kg-width-wide{
+    @apply  md:-mx-[calc(12vw-2rem)]
+}
+
+.kg-width-wide figcaption{
+    @apply text-center
+}
+
+.kg-width-full{
+    @apply  mx-[calc(50%-50vw)] w-[calc(100vw+2px)] lg:mx-[calc(50%-50vw+(var(--kg-breakout-adjustment)/2))] lg:w-[calc(100vw-var(--kg-breakout-adjustment)+2px)]
+}
+
+
+.kg-width-full figcaption {
+    @apply text-center
+}
