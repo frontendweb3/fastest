@@ -1,0 +1,34 @@
+<footer class="gap-10 border-t w-full mt-5 md:mt-25 flex flex-col justify-center p-6 items-center">
+
+    <div class="mb-5 mt-5 flex items-center justify-center ps-2.5">
+            {{#if @site.logo}}
+                <img width="120" height="120" class="block dark:hidden" src="{{@site.logo}}"
+                    alt="{{@site.title}}" loading="lazy" decoding="async" />
+                {{#if @custom.logo_dark}}
+                <img width="120" height="120" class="hidden dark:block" src="{{@custom.logo_dark}}"
+                    alt="{{@site.title}}" loading="lazy" decoding="async" />
+                {{else}}
+                <img width="120" height="120" class="hidden dark:block" src="{{@site.logo}}"
+                    alt="{{@site.title}}" loading="lazy" decoding="async" />
+                {{/if}}
+            {{else}}
+            <span class="text-heading self-center text-lg font-semibold whitespace-nowrap">
+                {{@site.title}}
+            </span>
+            {{/if}}
+    </div>
+
+    <nav class="mx-auto"> {{navigation type="secondary"}} </nav>
+
+    <div class="mt-12 mx-auto">
+        {{#if @custom.copyright}}
+        <p class="text-center text-sm">Copyright &copy; {{date format="YYYY"}} {{@site.title}}. All rights reserved by
+            <a target="_blank" class="underline underline-offset-4 mx-1"
+                href="https://github.com/frontendweb3/">frontend web</a>.
+        </p>
+        {{else}}
+        <p class="text-sm text-center">{{@custom.copyright}}</p>
+        {{/if}}
+    </div>
+
+</footer>
