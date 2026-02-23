@@ -2,11 +2,10 @@
   <nav>
         <ul class="list-none flex justify-center flex-row items-center ">
             {{#foreach navigation}}
-      
-                <li class="text-left">
-
+    
+                <li class="text-left group">
                     <a href="{{url absolute="true"}}" 
-                        class="px-2 lg:px-6 py-6 text-md border-b-2 border-transparent hover:border-blue-600 leading-[22px] md:px-3 text-gray-500 hover:text-blue-500">
+                        class="px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent group-hover:border-blue-600 md:px-3 animate-in fade-in duration-500">
                          {{label}} 
                     </a>
                 </li>
@@ -23,10 +22,9 @@
 
             {{#foreach navigation}}
       
-                <li class="text-left">
-
+                <li class="text-left group">
                     <a href="{{url absolute="true"}}" 
-                        class="px-2 lg:px-6 py-6 text-md border-b-2 border-transparent hover:border-blue-600 leading-[22px] md:px-3 text-gray-500 hover:text-blue-500">
+                        class="px-2 lg:px-6 py-6 text-md border-b-2 border-transparent group-hover:border-blue-600 md:px-3 animate-in fade-in duration-500">
                          {{label}} 
                     </a>
                 </li>
