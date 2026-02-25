@@ -8,7 +8,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" type="text/css" href="{{asset 'dist/css/styles.css'}}" />
-    <link rel="preload" as="script" href="{{asset 'dist/js/index.js'}}" />
     <script src="{{asset 'dist/js/index.js'}}" defer></script>
 
     {{#is "post"}}
@@ -31,25 +30,6 @@
             document.documentElement.classList.remove('dark');
         }
     </script>
-
-
-    {{#is "post, page"}}
-    <script src="{{asset 'dist/js/prism.js'}}"></script>
-    {{/is}}
-
-    {{#is "post, page"}}
-    {{#match @custom.prismjs_code_highlight "Tomorrow Theme" }}
-    <link rel="stylesheet" href="{{asset 'dist/css/tomorrow.css'}}">
-    {{else match @custom.prismjs_code_highlight "Twilight Theme" }}
-    <link rel="stylesheet" href="{{asset 'dist/css/twilight.css'}}">
-    {{else match @custom.prismjs_code_highlight "Okaidia Theme" }}
-    <link rel="stylesheet" href="{{asset 'dist/css/okaidia.css'}}">
-    {{else match @custom.prismjs_code_highlight "Dark Theme" }}
-    <link rel="stylesheet" href="{{asset 'dist/css/dark.css'}}">
-    {{else}}
-    <link rel="stylesheet" href="{{asset 'dist/css/default-prism.css'}}">
-    {{/match}}
-    {{/is}}
 
     <style>
         
