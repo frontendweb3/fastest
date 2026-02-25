@@ -1,4 +1,4 @@
-  <article class="group mx-auto h-140 md:h-100 w-full lg:w-5/6 xl:w-5/6 bg-card text-card-foreground  md:mx-auto grid rounded-xl shadow-md grid-cols-2 lg:grid-cols-4">
+  <article class="group mx-auto h-150 lg:h-120 w-full p-5 lg:w-6/6 xl:w-5/6 bg-card text-card-foreground  md:mx-auto grid rounded-xl shadow-md grid-cols-2 lg:grid-cols-4">
     
     <div class="rounded-none lg:rounded-r-none col-span-2 justify-self-auto relative m-0 overflow-hidden lg:rounded-xl shrink-0">
       {{#if feature_image}}
@@ -18,7 +18,7 @@
 
         {{#if primary_tag}}
             <a href="{{primary_tag.url}}" class="inline-flex font-sans text-base antialiased font-semibold leading-relaxed tracking-normal gap-2 items-center py-0.5 no-underline uppercase hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
-                {{> "Icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
+                {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
                 {{primary_tag.name}}
             </a>
         {{/if}}
@@ -27,12 +27,12 @@
 
         {{#has visibility="members"}}
         <h6 class="mb-4 flex items-center gap-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
-          {{> "Icons/lock"}}
+          {{> "icons/lock"}}
           Members only
         </h6>
         {{else}}
         <h6 class="mb-4 flex items-center gap-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
-          {{> "Icons/lock"}}
+          {{> "icons/lock"}}
           Paid Members only
         </h6>
         {{/has}}
@@ -87,7 +87,7 @@
 
             Read More
 
-{{> "Icons/arrow"}} {{!-- partials/icons/arrow.hbs --}}
+            {{> "icons/arrow"}} {{!-- partials/icons/arrow.hbs --}}
 
         </a>
 

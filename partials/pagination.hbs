@@ -1,13 +1,13 @@
 <nav class="container mx-auto my-16 px-4 flex items-center" role="navigation" aria-label="Pagination">
     {{#if prev}}
         <a class="flex h-16 w-16 items-center justify-center rounded-full bg-foreground text-background text-md transition-transform hover:scale-105" href="{{page_url prev}}" aria-label="Previous page">
-            {{> "Icons/chevron-left"}}
+            {{> "icons/chevron-left"}}
         </a>
     {{/if}}
 
     {{#if next}}
         <a class="ml-auto flex h-16 w-16 items-center justify-center rounded-full animate-in bg-foreground text-background text-md transition-transform hover:scale-105" href="{{page_url next}}" aria-label="Next page">
-            {{> "Icons/chevron-right"}}           
+            {{> "icons/chevron-right"}}           
         </a>
     {{/if}}
 </nav>
