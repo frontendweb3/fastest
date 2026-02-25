@@ -95,3 +95,28 @@
 .kg-width-full figcaption {
     @apply text-center
 }
+
+/* post.hbs */
+
+
+pre {
+    @apply bg-primary/10 dark:bg-primary/20 text-primary-foreground overflow-x-auto rounded-xl p-6;
+}
+
+pre code {
+    @apply font-mono text-sm;
+}
+
+/* Remove borders/lines from highlight.js line-numbers wrapper so code blocks stay clean */
+
+.hljs-ln,
+.hljs-ln table,
+.hljs-ln tr,
+.hljs-ln td {
+    border: 0 !important;
+    outline: 0 !important;
+}
+
+.hljs-ln td {
+    padding: 0;
+}
