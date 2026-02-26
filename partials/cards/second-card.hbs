@@ -1,6 +1,7 @@
-  <article class="group mx-auto h-150 lg:h-120 w-full p-5 lg:w-6/6 xl:w-5/6 bg-card text-card-foreground  md:mx-auto grid rounded-xl shadow-md grid-cols-2 lg:grid-cols-4">
+  {{!-- #TODO: https://cloudcannon.com/blog/ --}}
+  <article class="group mx-auto w-full m-10 bg-card text-card-foreground md:mx-auto flex flex-col rounded-xl shadow-md transition-transform duration-300 ease-in-out hover:scale-[1.02]">
     
-    <div class="rounded-none lg:rounded-r-none col-span-2 justify-self-auto relative m-0 overflow-hidden lg:rounded-xl shrink-0">
+    <div class="rounded-none h-60 lg:h-70 col-span-2 justify-self-auto relative m-0 overflow-hidden lg:rounded-xl shrink-0">
       {{#if feature_image}}
         <img
           srcset="{{img_url feature_image size="s"}} 300w, {{img_url feature_image size="m"}} 600w, {{img_url feature_image size="l"}} 1000w, {{img_url feature_image size="xl"}} 2000w"
@@ -45,35 +46,25 @@
         <h4 class="mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal">
           {{title}}
         </h4>
-
-        <p class="mb-10 font-sans text-base antialiased font-normal leading-relaxed">
-          {{excerpt characters="100"}}
-        </p>
       </div>
 
-      <div class="flex flex-row justify-between items-center">
+      <div class="flex mt-5 flex-row justify-between items-center">
 
         {{!-- author --}}
         <div class="hidden sm:flex items-center space-x-4">
 
           {{#if primary_author.profile_image}}
               <img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}"
-                class="w-10 h-10 rounded-full " />
+                class="w-6 h-6 rounded-full " />
           {{else}}
-              <img src="{{asset "assets/images/profile.png"}}" alt="{{primary_author.name}}"
-                class="w-10 h-10 rounded-full " />
+              <img src="{{asset "images/profile.png"}}" alt="{{primary_author.name}}"
+                class="w-6 h-6 rounded-full " />
           {{/if}}          
           
           <div class="flex flex-col justify-center items-center">
-            
-            <a class="w-full" href="{{primary_author.url}}">
-              <h3 class="text-sm font-medium">{{primary_author.name}}</h3>
+            <a class="w-full text-sm font-medium" href="{{primary_author.url}}">
+              {{primary_author.name}}
             </a>
-
-            <time datetime="{{date format='YYYY-MM-DD'}}" class="text-sm ">
-              {{date format="DD MMMM YYYY"}}
-            </time>
-
           </div>
 
         </div>
@@ -82,6 +73,7 @@
         <a class="block sm:hidden text-sm font-medium" href="{{primary_author.url}}">
           {{primary_author.name}}
         </a>
+       
 
         <a href="{{url}}" class="flex items-center gap-2 px-2.5 py-1 font-sans text-xs hover:underline underline-offset-4 font-bold text-center uppercase align-middle animate-in fade-in duration-500 ease-in-out">
 

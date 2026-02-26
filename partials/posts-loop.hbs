@@ -1,0 +1,18 @@
+{{!-- Reusable wrapper for rendering post cards in grid or stacked layout. --}}
+{{#if posts.length}}
+    {{#match layout "two-column-grid"}}
+        <div class="container mx-auto px-6 py-10 lg:py-12 lg:px-8">
+            <div class="grid gap-12 p-5 lg:gap-16 lg:grid-cols-2">
+                {{#foreach posts}}
+                    {{> "cards/card" }}
+                {{/foreach}}
+            </div>
+        </div>
+    {{else}}
+        <div class="container mx-auto px-6 py-10 space-y-12 md:space-y-28 lg:py-12 lg:px-8">
+            {{#foreach posts}}
+                {{> "cards/card" }}
+            {{/foreach}}
+        </div>
+    {{/match}}
+{{/if}}

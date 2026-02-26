@@ -3,7 +3,7 @@
 
 <section class="container my-16  mx-auto">
 
-    <h1 class="flex items-center gap-4 text-5xl font-bold tracking-tight text-slate-900 md:text-6xl dark:text-white">
+    <h1 class="flex px-8 items-center gap-4 text-5xl font-bold tracking-tight text-slate-900 md:text-6xl dark:text-white">
         {{> "icons/tag"}} {{!-- partials/icons/tag.hbs --}}
         {{name}} 
     </h1>
@@ -12,14 +12,7 @@
 
     {{!-- get posts related to tag base on tag slug --}}
     {{#get "posts" include="authors,tags" limit="3" filter="tag:{{slug}}" as |related|}}
-        <div class="container mx-auto px-6 py-10 space-y-12 md:space-y-28 lg:py-12 lg:px-8 ">
-
-            {{!-- loop posts base on article --}}
-            {{#foreach related}}
-            {{!-- partials/postCard.hbs --}}
-            {{> card }}
-            {{/foreach}}
-        </div>
+        {{> "posts-loop" posts=related}}
     {{/get}}
 
 {{/tag}}

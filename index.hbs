@@ -1,15 +1,12 @@
 {{!< default}} 
 
-<div class="container mx-auto px-6 py-10 space-y-12 md:space-y-28 lg:py-12 lg:px-8 ">
+{{!-- # TODO: Create agent.md file. --}} 
+{{!-- # TODO: https://github.com/nicolas-cusan/tailwind-clamp --}}
+{{!-- # TODO: https://www.alwaystwisted.com/articles/building-fluid-typographic-scales-with-clamp-and-heading --}}
+{{!-- # TODO: https://www.alwaystwisted.com/articles/styling-with-the-heading-pseudo-class --}}
 
-{{#foreach posts}}
-
-    {{> card }} {{!-- partials/card.hbs --}}
-
-{{/foreach}}
-
-</div>
+{{> "posts-loop" posts=posts layout=@custom.home_layout}}
 
 <div class="container mx-auto px-6 py-10 lg:py-12 lg:px-8">
-{{pagination}} {{!-- Add pagination --}}
+    {{pagination}} {{!-- Add pagination --}}
 </div>

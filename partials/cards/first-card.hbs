@@ -1,0 +1,99 @@
+  <article class="group mx-auto h-150 lg:h-120 w-full lg:w-6/6 xl:w-5/6 bg-card text-card-foreground  md:mx-auto grid rounded-xl 
+  shadow-md grid-cols-2 lg:grid-cols-4">
+    
+    <div class="rounded-t-sm  col-span-2 justify-self-auto relative m-0 overflow-hidden lg:rounded-l-xl shrink-0">
+      {{#if feature_image}}
+        <img
+          srcset="{{img_url feature_image size="s"}} 300w, {{img_url feature_image size="m"}} 600w, {{img_url feature_image size="l"}} 1000w, {{img_url feature_image size="xl"}} 2000w"
+          sizes="(max-width: 1000px) 400px, 700px"
+          src="{{img_url feature_image size="m"}}"
+          class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-120"
+          alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+      {{/if}}
+
+    </div>
+
+    <div class="p-6 lg:p-8 col-span-2 flex flex-col justify-center lg:col-start-3 lg:col-end-5 ">
+
+      <div class="flex mt-2 flex-row justify-between">
+
+        {{#if primary_tag}}
+            <a href="{{primary_tag.url}}" class="inline-flex font-sans text-base antialiased font-semibold leading-relaxed tracking-normal gap-2 items-center py-0.5 no-underline uppercase hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
+                {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
+                {{primary_tag.name}}
+            </a>
+        {{/if}}
+
+        {{#unless access}}
+
+        {{#has visibility="members"}}
+        <h6 class="flex items-center gap-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
+          {{> "icons/lock"}}
+          Members only
+        </h6>
+        {{else}}
+        <h6 class="flex items-center gap-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
+          {{> "icons/lock"}}
+          Paid Members only
+        </h6>
+        {{/has}}
+
+        {{/unless}}
+
+      </div>
+
+      <div class="flex mt-5 flex-col">
+        <h4 class="mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal">
+          {{title}}
+        </h4>
+
+        <p class="mb-10 font-sans text-base antialiased font-normal leading-relaxed">
+          {{excerpt characters="100"}}
+        </p>
+      </div>
+
+      <div class="flex flex-row justify-between items-center">
+
+        {{!-- author --}}
+        <div class="hidden sm:flex items-center space-x-4">
+
+          {{#if primary_author.profile_image}}
+              <img src="{{img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}"
+                class="w-10 h-10 rounded-full " />
+          {{else}}
+              <img src="{{asset "images/profile.png"}}" alt="{{primary_author.name}}"
+                class="w-10 h-10 rounded-full " />
+          {{/if}}          
+          
+          <div class="flex flex-col justify-center items-center">
+            
+            <a class="w-full" href="{{primary_author.url}}">
+              <h3 class="text-sm font-medium">{{primary_author.name}}</h3>
+            </a>
+
+            <time datetime="{{date format='YYYY-MM-DD'}}" class="text-sm ">
+              {{date format="DD MMMM YYYY"}}
+            </time>
+
+          </div>
+
+        </div>
+
+        {{!-- author for small --}}
+        <a class="block sm:hidden text-sm font-medium" href="{{primary_author.url}}">
+          {{primary_author.name}}
+        </a>
+
+        <a href="{{url}}" class="flex items-center gap-2 px-2.5 py-1 font-sans text-xs hover:underline underline-offset-4 font-bold text-center uppercase align-middle animate-in fade-in duration-500 ease-in-out">
+
+            Read More
+
+            {{> "icons/arrow"}} {{!-- partials/icons/arrow.hbs --}}
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </article>

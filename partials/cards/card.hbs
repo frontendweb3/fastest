@@ -1,0 +1,7 @@
+{{!-- Local overrides still work for specific cases, otherwise fall back to the theme setting --}}
+
+{{#match @custom.card_style "card-second"}}
+        {{> "cards/second-card" }}
+    {{else}}
+        {{> "cards/first-card" }}
+{{/match}}
