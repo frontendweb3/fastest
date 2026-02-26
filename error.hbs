@@ -1,21 +1,83 @@
-{{!< default}} 
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" class="scroll-smooth">
 
-<section class="py-8 px-4 mx-auto max-w-screen lg:py-16 lg:px-6">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{{asset 'dist/css/styles.css' hasMinFile=" true"}}" />
+    <script src="{{asset 'dist/js/index.js'}}" defer></script>
+    <title>{{statusCode}} — {{message}}</title>
+   
+    {{> "header-style-script"}} {{!-- partials/header-style-script.hbs --}}
 
-  <div class="mx-auto max-w-screen-sm text-center">
+    {{ghost_head}}
 
-    <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600">
-      {{statusCode}}
-    </h1>
+</head>
 
-    <p class="mb-4 text-lg font-light text-gray-500 ">
-      {{message}}
-    </p>
+<body class="{{body_class}} bg-background text-foreground relative p-0 m-0 overscroll-none antialiased scroll-smooth">
 
-    <a href="{{@site.url}}" class="mt-10 text-center w-46 m-auto my-20 p-3 bg-black text-white items-center rounded-lg">
-      Home
-    </a>
+        {{!-- Header --}}
+        {{> "header"}}
 
-  </div>
+    <main class="mt-20">
+        
+        {{!-- Content --}}
+        <section class="my-16 w-full px-5 py-12 text-center">
+            <div class="mt-5 mb-8 inline-block">
+                <h1
+                    class="text-[130px] leading-none font-black tracking-tighter text-[#e9e9e9] select-none md:text-[360px]">
+                    {{statusCode}}
+                </h1>
+            </div>
 
-</section>
+            <p class="mb-4 text-xl font-bold md:text-2xl">
+                {{message}}
+            </p>
+
+            {{#if errorDetails}}
+            <section class="error-stack">
+                <h3>Theme errors</h3>
+                <ul class="flex flex-col items-start gap-6 text-left ">
+                    {{#foreach errorDetails}}
+                    <li  class="mb-4 text-sm font-bold md:text-xl">
+                        <em class="error-stack-function">{{{rule}}}</em>
+
+                        {{#foreach failures}}
+                        <p><span class="error-stack-file">Ref: {{ref}}</span></p>
+                        <p><span class="error-stack-file">Message: {{message}}</span></p>
+                        {{/foreach}}
+                    </li>
+                    {{/foreach}}
+                </ul>
+            </section>
+            {{/if}}
+
+            <div class="flex justify-center gap-4">
+                <a href="{{@site.url}}"
+                    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 group/button bg-primary text-primary-foreground [a]:hover:bg-primary/80 inline-flex h-10 shrink-0 items-center justify-center gap-1.5 rounded-lg border border-transparent bg-clip-padding px-3 text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-50 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 aria-invalid:ring-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
+                    <span class="material-symbols-outlined text-[20px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m12 19-7-7 7-7" />
+                            <path d="M19 12H5" />
+                        </svg>
+                    </span>
+                    Go back to Home
+                </a>
+            </div>
+        </section>
+
+        {{#get "posts" limit="3" include="tags,authors"}} {{!-- Fetch the
+        latest 3 posts with their tags and authors --}}
+           {{> "posts-loop" posts=posts layout=@custom.home_layout}}
+
+        {{/get}} 
+
+        {{> "footer" }} {{!-- partials/footer.hbs --}}
+    </main>
+
+    {{!-- foot --}} 
+    {{ghost_foot}}
+</body>
+
+</html>

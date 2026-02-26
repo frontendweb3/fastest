@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{{asset 'dist/css/styles.css' hasMinFile='true'}}" />
+    <script src="{{asset 'dist/js/index.js'}}" defer></script>
+    <meta name="robots" content="noindex,nofollow">
+    <title>{{statusCode}} — {{message}}</title>
+
+    {{> "header-style-script"}} {{!-- partials/header-style-script.hbs --}}
+
+    {{ghost_head}}
+</head>
+
+<body class="{{body_class}} bg-background text-foreground relative p-0 m-0 overscroll-none antialiased scroll-smooth">
+
+    {{!-- Header --}}
+    {{> "header"}}
+
+    <main class="mt-20">
+        {{!-- Content --}}
+        <section class="my-16 w-full px-5 py-12 text-center">
+            <div class="mt-5 mb-8 inline-block">
+                <h1
+                    class="text-[130px] leading-none font-black tracking-tighter text-[#e9e9e9] select-none md:text-[360px]">
+                    404
+                </h1>
+            </div>
+            
+            <p class="text-xl mt-4 font-semibold">Uh-oh! You’ve ventured beyond the source code!</p>
+            <p class="text-gray-500 mt-2">Even the best developers take a wrong turn sometimes.</p>
+
+            <div class="flex mt-10 justify-center gap-4">
+                <a href="{{@site.url}}"
+                    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 group/button bg-primary text-primary-foreground [a]:hover:bg-primary/80 inline-flex h-10 shrink-0 items-center justify-center gap-1.5 rounded-lg border border-transparent bg-clip-padding px-3 text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-50 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 aria-invalid:ring-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
+                       Go Back to Homepage
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    {{> "footer" }} {{!-- partials/footer.hbs --}}
+
+    {{!-- foot --}}
+    {{ghost_foot}}
+</body>
+
+</html>
