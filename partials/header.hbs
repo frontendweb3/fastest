@@ -22,13 +22,13 @@
     {{!-- Navigation --}}
     {{navigation}}
 
-    <div class="justify-center flex items-center gap-5">
+    <div class="justify-center flex flex-wrap items-center gap-5">
 
         {{!-- Custom Search Form --}}
         <button type="button" aria-label="Open Search form"
             class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
             data-ghost-search>
-            {{> "Icons/search"}}
+            {{> "icons/search"}}
             <span class="sr-only">Search</span>
         </button>
 
@@ -36,10 +36,10 @@
         <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"
             class="z-50 flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors hover:scale-110 dark:border-slate-700 dark:bg-slate-800">
             <span id="theme-toggle-light-icon" class="hidden" aria-hidden="true">
-                {{> "Icons/sun" }}
+                {{> "icons/sun" }}
             </span>
             <span id="theme-toggle-dark-icon" class="hidden" aria-hidden="true">
-                {{> "Icons/moon" }}
+                {{> "icons/moon" }}
             </span>
             <span class="sr-only">Toggle color theme</span>
         </button>
@@ -47,14 +47,14 @@
         {{#if @site.twitter}}
         <a aria-label="Visit our Twitter profile"
             class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-            href="{{social_url type=" twitter" }}" target="_blank" rel="noopener noreferrer">
+            href="{{social_url type="twitter" }}" target="_blank" rel="noopener noreferrer">
             {{> "icons/twitter"}} {{!-- partials/icons/twitter.hbs --}}
         </a>
         {{/if}}
         {{#if @site.facebook}}
         <a aria-label="Visit our Facebook profile"
             class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-            href="{{social_url type=" facebook" }}" target="_blank" rel="noopener noreferrer">
+            href="{{social_url type="facebook" }}" target="_blank" rel="noopener noreferrer">
             {{> "icons/facebook"}} {{!-- partials/icons/facebook.hbs --}}
         </a>
         {{/if}}
@@ -80,7 +80,7 @@
             {{/if}}
             {{/foreach}}
             {{else}}
-            <img class="h-9 w-9 rounded-full object-cover" src="{{asset "assets/images/profile.png"}}"
+            <img class="h-9 w-9 rounded-full object-cover" src="{{asset "images/profile.png"}}"
                 alt="{{@member.name}} avatar" decoding="async" />
             {{/if}}
             {{@member.name}}
