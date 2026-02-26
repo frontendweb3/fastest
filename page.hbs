@@ -1,24 +1,26 @@
 {{!< default}} 
-
+{{!-- #TODO: COLOR ON DARK MODE AND RESOMSIVE --}}
 {{#post}} 
 
-    <article class="{{post_class}} pt-8 pb-16 w-full lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between px-4 mx-auto max-w-screen-xl">
+ <article
+  class="prose md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full px-4 py-10 {{post_class}}">
 
-      <section class="mx-auto text-center w-full max-w-4xl prose-headings:text-primary prose-sm prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg">
+   
+        <section class="flex flex-col mx-auto text-center w-full max-w-4xl">
 
-            <time class="w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}"> {{date format="DD MMMM YYYY"}} </time>
-            
+            <time class=" w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}"> {{date format="DD MMMM YYYY"}} </time>
+
             {{#match @page.show_title_and_feature_image}}
-
-                <h1 class="mb-4 text-3xl font-extrabold text-center leading-tight text-gray-900 lg:mb-6 lg:text-6xl"> {{title}} </h1>
             
+            <h1 class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700"> {{title}} </h1>
+
             {{/match}}
 
         </section>
 
-       <section class="mx-auto w-full max-w-4xl prose-headings:text-primary prose-pre:overflow-y-scroll prose-pre:overflow-x-scroll prose-p:text-secondary prose-ol:text-secondary prose-ul:text-secondary prose-blockquote:border-l-2 prose-blockquote:border-secondary prose-blockquote:text-secondary prose-figure:text-secondary prose-figcaption:text-secondary prose-a:text-accent prose-sm prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg format-blue">
+       <div class="mx-auto w-full max-w-4xl">
             {{content}}
-        </section>
+        </div>
 
     </article>
 
