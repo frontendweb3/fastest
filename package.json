@@ -42,7 +42,7 @@
     "mobile": "assets/mobile.png"
   },
   "config": {
-    "docs": "https://officialrajdeepsingh.dev",
+    "posts_per_page": 12,
     "card_assets": true,
     "image_sizes": {
       "xxs": {
@@ -65,112 +65,28 @@
       }
     },
     "custom": {
-      "background_color": {
-        "type": "color",
-        "default": "#ffffff",
-        "description": "Change the background color of your blog."
-      },
-      "text_color": {
-        "type": "color",
-        "default": "#000000",
-        "description": "Change the text color of your blog."
-      },
-      "icons_text_color": {
-        "type": "color",
-        "default": "#000000",
-        "description": "Change the text color of your blog."
-      },
-      "text_primary_color": {
-        "type": "color",
-        "default": "#000000",
-        "description": "Change the primary text color of your blog and page."
-      },
-      "text_secondary_color": {
-        "type": "color",
-        "default": "#000000",
-        "description": "Change the primary text color of your blog."
-      },
-      "text_accent_color": {
-        "type": "color",
-        "default": "#000000",
-        "description": "Change the primary text color of your blog."
-      },
-      "copyright": {
-        "type": "text",
-        "default": "Copy right by frontend web.",
-        "description": "Add copy right message in footer."
-      },
-      "newsletter_size": {
-        "type": "select",
-        "group": "homepage",
-        "options": [
-          "sm",
-          "md",
-          "lg",
-          "xl"
-        ],
-        "default": "lg"
-      },
-      "prismjs_code_highlight": {
-        "type": "select",
-        "group": "post",
-        "options": [
-          "Default Theme",
-          "Dark Theme",
-          "Okaidia Theme",
-          "Twilight Theme",
-          "Tomorrow Theme"
-        ],
-        "default": "Default Theme"
-      },
-      "newsletter_show": {
-        "type": "boolean",
-        "default": true,
-        "group": "homepage",
-        "description": "Show the newsletter."
-      },
-      "newsletter_title": {
-        "type": "text",
-        "default": "We invest in the worlds potential.",
-        "group": "homepage",
-        "description": "title for the newsletter."
-      },
-      "newsletter_description": {
-        "type": "text",
-        "default": "We focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.",
-        "group": "homepage",
-        "description": "description for the newsletter."
-      },
-      "newsletter_button_text": {
-        "type": "text",
-        "default": "Subscribe",
-        "group": "homepage",
-        "description": "button for the newsletter."
-      },
       "logo_dark": {
         "type": "image",
         "default": "",
         "description": "Logo used in dark mode"
       },
+      "home_layout": {
+        "type": "select",
+        "options": [
+          "full-width",
+          "two-column-grid"
+        ],
+        "default": "full-width",
+        "description": "Control how posts are arranged on the homepage"
+      },
       "card_style": {
         "type": "select",
         "options": [
           "card-first",
-          "card-second",
-          "card-third"
+          "card-second"
         ],
         "default": "card-first",
         "description": "Choose which post card to use see on across the site"
-      },
-      "copyright_enabled": {
-        "type": "boolean",
-        "default": true,
-        "description": "Show or hide the footer copyright text"
-      },
-      "copyright_text": {
-        "type": "text",
-        "default": "",
-        "description": "Optional custom copyright message; leave blank to use the default"
       },
       "font_color_for_light_mode": {
         "type": "color",
@@ -192,20 +108,15 @@
         "default": "#000000",
         "description": "background color used throughout the website in dark mode"
       },
-      "sidebar_background_color_for_dark_mode": {
-        "type": "color",
-        "default": "#000000",
-        "description": "Sidebar background color used throughout the website in dark mode"
-      },
-      "sidebar_background_color_for_light_mode": {
-        "type": "color",
-        "default": "#ffffff",
-        "description": "Sidebar background color used throughout the website in light mode"
-      },
-      "featured_enable": {
+      "copyright_enabled": {
         "type": "boolean",
         "default": true,
-        "description": "Enable or disable featured posts section on the homepage"
+        "description": "Show or hide the footer copyright text"
+      },
+      "copyright_text": {
+        "type": "text",
+        "default": "",
+        "description": "Optional custom copyright message; leave blank to use the default"
       }
     }
   },
