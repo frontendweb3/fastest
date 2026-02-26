@@ -1,6 +1,6 @@
 {{#if isSecondary}}
   <nav>
-        <ul class="list-none flex justify-center flex-row items-center ">
+        <ul class="list-none flex flex-wrap gap-5 justify-center flex-row items-center ">
             {{#foreach navigation}}
     
                 <li class="text-left group">
@@ -18,13 +18,13 @@
 {{else}}
 
   <nav>
-        <ul class="list-none flex justify-center flex-row items-center ">
+        <ul class="list-none flex justify-center sm:flex-row flex-wrap gap-4 items-center ">
 
             {{#foreach navigation}}
-      
-                <li class="text-left group">
+
+                <li class="text-center group">
                     <a href="{{url absolute="true"}}" 
-                        class="px-2 lg:px-6 py-6 text-md border-b-2 border-transparent group-hover:border-blue-600 md:px-3 animate-in fade-in duration-500">
+                        class="px-2 lg:px-6 py-6 text-sm md:text-md border-b-2 border-transparent group-hover:border-blue-600 md:px-3 animate-in fade-in duration-500">
                          {{label}} 
                     </a>
                 </li>
@@ -32,6 +32,6 @@
             {{/foreach}}
                 
             </ul>
-        </nav>
+    </nav>
 
 {{/if}}
