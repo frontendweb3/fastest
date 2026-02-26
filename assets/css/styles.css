@@ -54,50 +54,77 @@
     h5,
     h6 {
         font-family: var(--gh-font-heading, 'Inter'), system-ui, sans-serif;
+        color: var(--color-foreground);
     }
 
-    p span,
+    p,
+    span,
     a,
     li,
     blockquote,
-    code {
+    code
+     {
         font-family: var(--gh-font-body, 'Inter'), system-ui, sans-serif;
+        color: var(--color-foreground);
     }
 }
 
-/* Add the support fonts in tailwindcss-typography */
+
+
+/* Allow Ghost wide/full media to break out of prose width */
 @layer components {
-    /* Body text in articles */
-    .prose :is(p, span, a, li, blockquote, code) {
-        font-family: var(--gh-font-body, 'Inter'), system-ui, sans-serif;
+
+    /* Add the support fonts in tailwindcss-typography */
+
+    .prose {
+        --tw-prose-body: var(--gh-font-body, 'Inter'), system-ui, sans-serif;
+        --tw-prose-headings: var(--gh-font-heading, 'Inter'), system-ui, sans-serif;
     }
 
-    /* Headings inside prose */
-    .prose :is(h1, h2, h3, h4, h5, h6) {
-        font-family: var(--gh-font-heading, 'Inter'), system-ui, sans-serif;
+    .prose :where(.kg-card, .kg-image-card, .kg-gallery-card, .kg-embed-card, .kg-bookmark-card) {
+        @apply w-full mx-auto;
     }
-}
 
+    .prose :where(.kg-card, .kg-image-card, .kg-gallery-card, .kg-embed-card, .kg-bookmark-card, .kg-bookmark-thumbnail ) img {
+        @apply w-full h-auto m-0;
+    }
+    .prose :where(.kg-bookmark-thumbnail) {
+        @apply -mt-0;
+    }
 
-.kg-width-wide{
-    @apply  md:-mx-[calc(12vw-2rem)]
-}
+    .prose :where(.kg-bookmark-thumbnail) img {
+        @apply -top-28 w-full h-auto object-cover m-0;
+    }
 
-.kg-width-wide figcaption{
-    @apply text-center
-}
+    .prose :where(.kg-embed-card) iframe {
+        @apply h-120 w-full;
+    }    
+    
+   .prose :where(.kg-card, .kg-image-card, .kg-gallery-card, .kg-embed-card, .kg-bookmark-card) figcaption {
+        @apply text-center;
+    }
+    .prose :where(.kg-width-wide) {
+        @apply w-[min(1100px,90vw)] max-w-[min(1100px,90vw)] lg:w-[min(1200px,85vw)] mx-auto;
+    }
 
-.kg-width-full{
-    @apply  mx-[calc(50%-50vw)] w-[calc(100vw+2px)] lg:mx-[calc(50%-50vw+(var(--kg-breakout-adjustment)/2))] lg:w-[calc(100vw-var(--kg-breakout-adjustment)+2px)]
-}
+    .prose :where(.kg-width-full) {
+        @apply relative left-1/2 right-1/2 w-screen max-w-[100vw] -translate-x-1/2 transform;
+    }
 
+    .prose :where(.kg-width-full, .kg-width-wide) img {
+        @apply w-full h-auto m-0;
+    }
 
-.kg-width-full figcaption {
-    @apply text-center
+    .prose :where(.kg-gallery-container, .kg-gallery-row) {
+        @apply w-full max-w-none mx-auto;
+    }
+
+    .prose :where(.kg-gallery-row) {
+        @apply w-full max-w-none flex-col! gap-1 md:flex-row! flex-wrap!;
+    }
 }
 
 /* post.hbs */
-
 
 pre {
     @apply bg-primary/10 dark:bg-primary/20 text-primary-foreground overflow-x-auto rounded-xl p-6;
