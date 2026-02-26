@@ -2,91 +2,110 @@
 
 {{#post}} 
 
-<article class="{{post_class}} prose-neutral prose-sm prose-ul:list-disc prose-ol:list-disc sm:prose-base lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between  mx-auto">
+<article
+    class="prose-sm sm:prose-base lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between mx-auto">
 
-    <section class="mx-auto text-center flex flex-col w-full max-w-5xl prose-neutral prose-sm sm:prose-base lg:prose-lg format-blue dark:format-invert">
+    {{!-- <section class="mx-auto text-center flex flex-col w-full format-blue max-w-5xl"> --}}
+        <section
+            class="prose mx-auto text-center flex flex-col w-full max-w-5xl prose-sm sm:prose-base lg:prose-lg dark:format-invert">
 
-        <time class="w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+            <time
+                class="w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm"
+                datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
 
-    
-        <h1 class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">
-            {{title}}
-        </h1>
+            <h1
+                class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">
+                {{title}} </h1>
 
-        {{#if custom_excerpt}}
-        <p class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,2.5vw,1.8rem)] tracking-wide duration-400">
-            {{custom_excerpt}}
-        </p>
-        {{else}}
-             <p class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,2.5vw,1.8rem)] tracking-wide duration-400">
-            {{excerpt}}
-        </p>
-        {{/if}}
-
-
-
-        <div class="flex mt-10 not-prose flex-row justify-center mx-auto items-center space-x-4">
-
-            {{#if primary_author.profile_image}}
-            <img src="{{ img_url primary_author.profile_image size="s"}}" alt="{{primary_author.name}}"
-                class="w-10 h-10 rounded-full " />
+            {{#if custom_excerpt}}
+            <p
+                class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,2.5vw,1.8rem)] tracking-wide duration-400">
+                {{custom_excerpt}} </p>
             {{else}}
-            <img src="{{ asset "assets/images/profile.png"}}" alt="{{primary_author.name}}"
-                class="w-10 h-10 rounded-full " />
+            <p
+                class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,2.5vw,1.8rem)] tracking-wide duration-400">
+                {{excerpt}} </p>
             {{/if}}
 
-            <div class="flex flex-row  space-x-4 justify-between items-center">
-                <a href="{{primary_author.url}}" rel="author" class="text-xl font-bold">{{primary_author.name}}</a>
+            {{#if authors}}
+
+            <div class="flex mt-10 not-prose flex-row gap-14 justify-center mx-auto items-center">
+                {{#foreach authors}}
+                <div class="flex flex-row justify-center items-center gap-3">
+                    {{#if profile_image}}
+                    <img src="{{ img_url profile_image size=" s"}}" alt="{{name}}"
+                        class="hidden sm:block w-10 h-10 rounded-full " />
+                    {{else}}
+                    <img src="{{ asset " images/profile.png"}}" alt="{{name}}"
+                        class="hidden sm:block w-10 h-10 rounded-full " />
+                    {{/if}}
+                    <div class="flex flex-row justify-between items-center">
+                        <a href="{{url}}" rel="author" class="text-xl font-bold">{{name}}</a>
+                    </div>
+                </div>
+                {{/foreach}}
             </div>
 
-        </div>
+            {{/if}}
+            <div class="my-12 space-x-5">
 
-        <div class="my-10 space-x-5">
+                {{#foreach tags visibility="public"}}
+                <a href="{{url}}"
+                    class="bg-purple-100 text-purple-800 text-xs font-medium no-underline hover:underline me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400">
+                    # {{name}}</a>
+                {{/foreach}}
 
-            {{#foreach tags visibility="public"}}
-            <a href="{{url}}"
-                class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400">
-                # {{name}}</a>
-            {{/foreach}}
+            </div>
 
-        </div>
+        </section>
 
-    </section>
+        {{!-- Feature Image --}}
+        {{> featureImage}}
 
-    {{> featureImage}}
+        {{!-- Content --}}
+        <section class="prose w-full max-w-4xl mx-auto">
+            {{content}}
+        </section>
 
-    <section class="mx-auto max-w-4xl w-full">
-        {{content}}
-    </section>
+        </article>
 
-</article>
-
-
-
-
-    {{!-- partials/comment --}}
-    {{> comment}}
+        {{!-- partials/comment --}}
+        {{> comment}}
 
 
-    {{!-- Show related posts --}}
-    {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors"}}
+        {{!-- Show related posts --}}
+        {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors"}}
 
         {{!-- if posts is available then show it --}}
         {{#if posts}}
 
         <div class="container mx-auto px-6 py-10 space-y-12 md:space-y-28 lg:py-12 lg:px-8 ">
-            <h3 class="mt-5 mb-20 text-left text-xl font-bold lg:text-2xl">
-                More By {{../primary_author.name}}
-            </h3>
+            <h3 class="mt-5 mb-20 text-left text-xl font-bold lg:text-2xl"> More By {{../primary_author.name}} </h3>
+
             {{!-- loop all post --}}
-            {{#foreach posts}}
-            {{> card }}
-            {{/foreach}}
+            {{> "posts-loop" posts=posts}}
+
         </div>
-        
+
         {{/if}}
 
-    {{/get}}
+        {{/get}}
 
 
-{{/post}}
+        {{/post}}
+
+
+
+        {{!-- Download Highlight.js Scripts --}}
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/jsx.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
+
+        {{!-- Highlight code and config the copy code button on code block --}}
+        <script src="{{asset " dist/js/post.js"}}"></script>
