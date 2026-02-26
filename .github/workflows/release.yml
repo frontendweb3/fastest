@@ -1,0 +1,60 @@
+# Builds the theme zip and uploads it as a release asset whenever a GitHub
+# Release is published. Uses only the built-in GITHUB_TOKEN — no extra secrets
+# or PATs are required. To trigger: publish a release in the GitHub UI or via
+# the API. The uploaded asset will be named logly-<tag>.zip.
+name: Release Zip
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-attach:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.2.0
+        with:
+          version: 9
+          run_install: false
+
+      - name: Enable corepack (safety)
+        run: corepack enable
+
+      - name: Check pnpm
+        run: pnpm --version
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build assets
+        run: pnpm run build
+
+      - name: Create release archive
+        run: |
+          mkdir -p dist-artifacts
+          pnpm bestzip dist-artifacts/logly-${{ github.event.release.tag_name }}.zip \
+            *.hbs \
+            partials \
+            assets/dist \
+            assets/images \
+            package.json \
+            README.md \
+            LICENSE
+
+      - name: Upload release asset
+        uses: softprops/action-gh-release@v2.5.0
+        with:
+          files: dist-artifacts/logly-${{ github.event.release.tag_name }}.zip
+          tag_name: ${{ github.event.release.tag_name }}
+          token: ${{ github.token }}

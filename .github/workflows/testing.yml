@@ -2,6 +2,7 @@ name: Testing ghost theme with Gscan
 
 on:
   - pull_request
+  - push
 
 jobs:
   install:
@@ -12,4 +13,4 @@ jobs:
         with:
           version: 8
       - run:  pnpm add gscan
-      - run: pnpm gscan ./
+      - run: pnpm dlx gscan@latest . --v6
