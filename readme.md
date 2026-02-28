@@ -1,94 +1,47 @@
-# Installing the fastest theme
+# Fastest
 
-You can create your own ghost theme. To create a theme with ghost. you have the latest version of `ghost-cli` in your laptop.
+Minimal, fast Ghost theme with Tailwind CSS and dark mode.
 
-## Demo of fastest
+## Demo
 
-<div style="display:flex;">
+<div style="display:flex;gap:12px;flex-wrap:wrap;">
 
-![ScreenShot](./assets/demo.png)
+![Desktop Demo](./assets/demo.png)
 
----
+![Desktop Demo 2](./assets/demo-2.png)
 
-![ScreenShot](./assets/demo-2.png)
+![Desktop Demo 3](./assets/demo-3.png)
 
----
+![Desktop Demo 4](./assets/demo-4.png)
 
-![ScreenShot](./assets/demo-3.png)
+![Desktop Demo 5](./assets/demo-5.png)
 
----
+![Desktop Demo 6](./assets/demo-6.png)
 
-![ScreenShot](./assets/demo-4.png)
+![Desktop](./assets/desktop.png)
+
+![Mobile](./assets/mobile.png)
 
 </div>
 
-## Installing fastest theme
+## Install (zip from latest release)
 
-### How to install fastest theme in the ghost?
+1. Visit the latest releases page: https://github.com/frontendweb3/fastest/releases/latest
+2. Download the packaged theme zip (e.g., `fastest.zip`).
+3. In Ghost Admin: `Settings → Design → Change theme → Upload theme`, pick the downloaded zip, then Activate.
 
-You install fastest theme by manually. first download code into github repo and then follow the steps.
+## Install (from source)
 
-1. clone the repo with following command `git clone https://github.com/frontendweb3/fastest` or download code for repo the [fastest](https://github.com/frontendweb3/fastest).
-2. Go to the ghost dashboard > settings > design > change-theme > click on upload button > activate the fastest theme.
+1. `git clone https://github.com/frontendweb3/fastest.git && cd fastest`
+2. `pnpm install` (or `npm install` / `yarn install`)
+3. Build or watch assets:
+    - Install package: `pnpm install`
+	- Watch: `pnpm dev`
+	- Build: `pnpm build`
+4. Upload the generated zip (if you create one) or the repo zip via Ghost Admin as above.
 
-## What kind thing change fastest theme?
+## Customization
 
-You can add social media link, adsense Enable and disable, copyright, theme .
-
-## Version
-
-All changelogs help to improve website speed and user experience.
-
-### Dec 22 2020
-
-* Reduce the javascript and CSS
-* Enable comment and search
-* Remove third nav bar
-* Improve the website design
-* Enable dark and light mode
-* Fix other issue
-
-### Jun 14 2022
-
-* Fix ads and reduce css
-* Remove ads block detector
-
-### March 30 2022
-
-* fix ads block issue on website
-
-### March 28 2022
-
-* Remove Jquery
-* Improve search functionally
-* Disable adblock
-* adblock detected and add custom adsense_adblock_enable property
-* fix small issue in css and design
-
-### March 21 2022
-
-* Add color support in custom setting
-* fix small issue in css and design
-
-### March 20 2022
-
-* update author social links on post page
-
-### March 17 2022
-
-* Add basic subscribe section
-* improve css
-
-### March 13 2022
-
-* Improve page layout
-
-### March 12 2022
-
-* Image page speed bug fix.
-
-### March 10 2022
-
-* Improve website CSS
-* Compress CSS and JS file
-* Config the search API  in theme
+- Configure colors, logos, and toggles in Ghost Admin → Settings → Design → Theme settings.
+- Typography and prose colors respect the theme custom settings for light/dark modes.
+- Includes search, comments, code highlighting, and responsive cards.
