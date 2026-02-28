@@ -36,7 +36,12 @@
   ],
   "screenshots": {
     "desktop": [
-      "assets/light.png",
+      "assets/demo.png",
+      "assets/demo-2.png",
+      "assets/demo-3.png",
+      "assets/demo-4.png",
+      "assets/demo-5.png",
+      "assets/demo-6.png",
       "assets/desktop.png"
     ],
     "mobile": "assets/mobile.png"
