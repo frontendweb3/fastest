@@ -18,7 +18,7 @@
       <div class="flex mt-2 flex-row justify-between">
 
         {{#if primary_tag}}
-            <a href="{{primary_tag.url}}" class="inline-flex font-sans text-base antialiased font-semibold leading-relaxed tracking-normal gap-2 items-center py-0.5 no-underline uppercase hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
+            <a href="{{primary_tag.url}}" class="inline-flex text-base antialiased font-semibold leading-relaxed tracking-normal gap-2 items-center py-0.5 no-underline uppercase hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
                 {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
                 {{primary_tag.name}}
             </a>
@@ -27,12 +27,12 @@
         {{#unless access}}
 
         {{#has visibility="members"}}
-        <h6 class="flex items-center gap-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
+        <h6 class="flex items-center gap-2 text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
           {{> "icons/lock"}}
           Members only
         </h6>
         {{else}}
-        <h6 class="flex items-center gap-2 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
+        <h6 class="flex items-center gap-2  text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
           {{> "icons/lock"}}
           Paid Members only
         </h6>
@@ -43,11 +43,11 @@
       </div>
 
       <div class="flex mt-5 flex-col">
-        <h4 class="mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal">
+        <h2 class="mb-2 text-2xl antialiased font-semibold leading-snug tracking-normal">
           {{title}}
-        </h4>
+        </h2>
 
-        <p class="mb-10 font-sans text-base antialiased font-normal leading-relaxed">
+        <p class="mb-10 text-base antialiased font-normal leading-relaxed">
           {{excerpt characters="100"}}
         </p>
       </div>
@@ -84,7 +84,7 @@
           {{primary_author.name}}
         </a>
 
-        <a href="{{url}}" class="flex items-center gap-2 px-2.5 py-1 font-sans text-xs hover:underline underline-offset-4 font-bold text-center uppercase align-middle animate-in fade-in duration-500 ease-in-out">
+        <a href="{{url}}" class="flex items-center gap-2 px-2.5 py-1 text-xs hover:underline underline-offset-4 font-bold text-center uppercase align-middle animate-in fade-in duration-500 ease-in-out">
 
             Read More
 
