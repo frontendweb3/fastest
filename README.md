@@ -27,7 +27,7 @@ Minimal, fast Ghost theme with Tailwind CSS and dark mode.
 ## Install (zip from latest release)
 
 1. Visit the latest releases page: https://github.com/frontendweb3/fastest/releases/latest
-2. Download the packaged theme zip (e.g., `fastest.zip`).
+2. Download the packaged theme zip (e.g., `fastest-3.0.3.zip`).
 3. In Ghost Admin: `Settings → Design → Change theme → Upload theme`, pick the downloaded zip, then Activate.
 
 ## Install (from source)
