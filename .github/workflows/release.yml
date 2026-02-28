@@ -9,7 +9,7 @@ on:
     types: [published]
 
 jobs:
-  build-and-attach:
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
