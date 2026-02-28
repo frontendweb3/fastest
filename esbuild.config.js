@@ -3,6 +3,7 @@ import chokidar from 'chokidar';
 import tailwindPlugin from 'esbuild-plugin-tailwindcss';
 
 const isWatch = process.argv.includes('--watch');
+
 const watchGlobs = [
     'assets/**/*.{js,css}',
     '*.hbs',
