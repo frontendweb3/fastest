@@ -3,7 +3,10 @@
   "description": "Fastest ghost cms base theme. Fastest is lite wight, modern open-source theme",
   "version": "1.0.8",
   "type": "module",
+  "packageManager": "pnpm@9.15.9",
   "engines": {
+    "node": ">=20",
+    "pnpm": ">=9",
     "ghost": ">=6.0.0"
   },
   "license": "MIT",
