@@ -12,73 +12,36 @@
 
 
 /* CSS color variables for light and dark themes */
+
 @theme inline {
+
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card-foreground: var(--card-foreground);
     --color-card: var(--card);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary: var(--secondary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary: var(--primary);
     --color-border: var(--border);
-    --color-sidebar: var(--sidebar);
 }
 
 :root {
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.141 0.005 285.823);
-    --primary: oklch(0.21 0.006 285.885);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.967 0.001 286.375);
-    --secondary-foreground: oklch(0.21 0.006 285.885);
     --border: oklch(0.92 0.004 286.32);
 }
 
 .dark {
     --card: oklch(0.21 0.006 285.885);
     --card-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.92 0.004 286.32);
-    --primary-foreground: oklch(0.21 0.006 285.885);
-    --secondary: oklch(0.274 0.006 286.033);
-    --secondary-foreground: oklch(0.985 0 0);
     --border: oklch(1 0 0 / 10%);
 }
 
-/* Add Dynamic Fonts in site on entire website*/
-@layer utilities {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: var(--gh-font-heading, 'Inter'), system-ui, sans-serif;
-        color: var(--color-foreground);
-    }
-
-    p,
-    span,
-    a,
-    li,
-    blockquote,
-    code
-     {
-        font-family: var(--gh-font-body, 'Inter'), system-ui, sans-serif;
-        color: var(--color-foreground);
-    }
-}
-
-
-
 /* Allow Ghost wide/full media to break out of prose width */
+
 @layer components {
 
     /* Add the support fonts in tailwindcss-typography */
-
     .prose {
-        --tw-prose-body: var(--gh-font-body, 'Inter'), system-ui, sans-serif;
-        --tw-prose-headings: var(--gh-font-heading, 'Inter'), system-ui, sans-serif;
+        --tw-prose-body: var(--gh-font-body);
+        --tw-prose-headings: var(--gh-font-heading);
     }
 
     .prose :where(.kg-card, .kg-image-card, .kg-gallery-card, .kg-embed-card, .kg-bookmark-card) {
@@ -124,18 +87,57 @@
     }
 }
 
+/* style for post.hbs */
+
+@utility prose-fastest {
+    
+    /* light mode */
+    --tw-prose-body: var(--prose-color);
+    --tw-prose-headings: var(--prose-color);
+    --tw-prose-lead: var(--prose-color);
+    --tw-prose-links: var(--prose-color);
+    --tw-prose-bold: var(--prose-color);
+    --tw-prose-counters: var(--prose-color);
+    --tw-prose-bullets: var(--prose-color);
+    --tw-prose-hr: var(--prose-color);
+    --tw-prose-quotes: var(--prose-color);
+    --tw-prose-quote-borders: var(--prose-color);
+    --tw-prose-captions: var(--prose-color);
+    --tw-prose-code: var(--prose-color);
+    --tw-prose-pre-code: var(--prose-color);
+    --tw-prose-pre-bg: rgba(0, 0, 0, 0.05);
+    --tw-prose-th-borders: var(--prose-color);
+    --tw-prose-td-borders: var(--prose-color);
+    /* dark mode */
+    --tw-prose-invert-body: var(--prose-color);
+    --tw-prose-invert-headings: var(--prose-color);
+    --tw-prose-invert-lead: var(--prose-color);
+    --tw-prose-invert-links: var(--prose-color);
+    --tw-prose-invert-bold: var(--prose-color);
+    --tw-prose-invert-counters: var(--prose-color);
+    --tw-prose-invert-bullets: var(--prose-color);
+    --tw-prose-invert-hr: var(--prose-color);
+    --tw-prose-invert-quotes: var(--prose-color);
+    --tw-prose-invert-quote-borders: var(--prose-color);
+    --tw-prose-invert-captions: var(--prose-color);
+    --tw-prose-invert-code: var(--prose-color);
+    --tw-prose-invert-pre-code: var(--prose-color);
+    --tw-prose-invert-pre-bg: rgba(255, 255, 255, 0.08);
+    --tw-prose-invert-th-borders: var(--prose-color);
+    --tw-prose-invert-td-borders: var(--prose-color);
+}
+
 /* post.hbs */
 
 pre {
-    @apply bg-primary/10 dark:bg-primary/20 text-primary-foreground overflow-x-auto rounded-xl p-6;
+    @apply overflow-x-auto rounded-xl p-6;
 }
 
 pre code {
-    @apply font-mono text-sm;
+    @apply text-sm;
 }
 
 /* Remove borders/lines from highlight.js line-numbers wrapper so code blocks stay clean */
-
 .hljs-ln,
 .hljs-ln table,
 .hljs-ln tr,
