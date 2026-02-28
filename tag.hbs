@@ -3,16 +3,19 @@
 
 <section class="container my-16  mx-auto">
 
-    <h1 class="flex px-8 items-center gap-4 text-5xl font-bold tracking-tight text-slate-900 md:text-6xl dark:text-white">
+    <h1 class="flex px-8 items-center gap-4 text-5xl font-bold tracking-tight  md:text-6xl">
         {{> "icons/tag"}} {{!-- partials/icons/tag.hbs --}}
         {{name}} 
     </h1>
-
+    {{#if description}}
+    <p class="px-8 mt-8 gap-4 text-sm font-semibold tracking-tight  md:text-xl"> {{description}} </p>
+    {{/if}}
+    
 </section>
 
     {{!-- get posts related to tag base on tag slug --}}
     {{#get "posts" include="authors,tags" limit="3" filter="tag:{{slug}}" as |related|}}
-        {{> "posts-loop" posts=related}}
+        {{> "posts-loop" posts=related layout=@custom.home_layout}}
     {{/get}}
 
 {{/tag}}
