@@ -1,12 +1,9 @@
 {{!< default}} 
-{{!-- #TODO: COLOR ON DARK MODE AND RESOMSIVE --}}
 {{#post}} 
 
- <article
-  class="prose md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full px-4 py-10 {{post_class}}">
+    <article class="prose-sm prose-fastest sm:prose-base space-y-10 lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between mx-auto"> 
 
-   
-        <section class="flex flex-col mx-auto text-center w-full max-w-4xl">
+        <section class="flex flex-col gap-2 mx-auto text-center w-full max-w-5xl">
 
             <time class=" w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}"> {{date format="DD MMMM YYYY"}} </time>
 
@@ -18,9 +15,8 @@
 
         </section>
 
-       <div class="mx-auto w-full max-w-4xl">
-            {{content}}
-        </div>
+        <section class="prose prose-fastest w-full max-w-4xl prose-sm sm:prose-base lg:prose-lg mx-auto"> {{content}} </section>
+
 
     </article>
 
