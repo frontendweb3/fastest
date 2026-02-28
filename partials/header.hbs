@@ -1,4 +1,4 @@
-<header class="container mx-auto w-full flex flex-col gap-10 lg:gap-0 lg:flex-row px-12 py-6 items-center justify-between">
+<header class="lg:sticky top-0 bg-background z-50 rounded-2xl container mx-auto w-full flex flex-col gap-10 lg:gap-0 lg:flex-row px-12 py-6 items-center justify-between backdrop-blur">
 
 
     <a class="flex items-center justify-center" href="{{@site.url}}">
@@ -21,7 +21,8 @@
 
     {{!-- Navigation --}}
     {{navigation}}
-
+    
+    {{!-- Social Links, theme toggle button  and Search icon --}}
     <div class="justify-center flex flex-wrap items-center gap-5">
 
         {{!-- Custom Search Form --}}
@@ -59,17 +60,17 @@
         </a>
         {{/if}}
 
-        <div class="hidden sm:block h-5 rounded-3xl w-0.5 bg-primary"></div>
+        <div class="hidden sm:block h-5 rounded-3xl w-0.5 bg-black dark:bg-white"></div>
 
         {{#unless @member}}
-        <a class="flex items-center gap-1 shadow-lg text-white rounded-full px-3 py-2 text-sm"
+        <a class="flex items-center gap-1 shadow-lg text-white! rounded-full px-3 py-2 text-sm"
             style="background-color:{{@site.accent_color}}" href="#/portal/signup" data-portal="signup">
             {{> "icons/crown"}}
-            <span>Pro</span>
+            <span class="text-white!">Pro</span>
         </a>
         {{else}}
         <a style="background-color:{{@site.accent_color}}" href="#/portal/account" aria-label="Open your account page"
-            class="hidden sm:flex items-center gap-2 shadow-lg text-white rounded-full px-2.5 py-2 transition-transform hover:scale-110">
+            class="hidden sm:flex items-center gap-2 shadow-lg text-white! rounded-full px-2.5 py-2 transition-transform hover:scale-110">
             {{#if @member.avatar_image}}
             {{!-- remove the query parameters from the Gravatar URL:
             https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
