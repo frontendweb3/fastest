@@ -1,14 +1,20 @@
-# Contribution guideline
+# Contributing
 
-All the code contributions are under MIT license. whatever you change all under the MIT license.
+- License: MIT. All contributions are MIT.
+- Stack: Ghost theme using Handlebars, Tailwind CSS, esbuild, and Ghost helpers.
 
-## How to Contribution
+## Quick Start
 
-The contribution is so easy in the fastest theme. You know about ghost installation and have basic knowledge about the ghost CMS, HTML, tailwind css, handlebars.js and gulp. All the configuration is already defined and you just run the npm script for it.
+1. Clone: `git clone https://github.com/frontendweb3/fastest.git && cd fastest`
+2. Install: `pnpm install` (or `npm install` / `yarn install`)
+3. Develop (watch mode): `pnpm dev` to rebuild Tailwind/JS on change.
+4. Build once: `pnpm build` (or `npm run build` / `yarn build`). Outputs to `assets/dist`.
+5. Format: `pnpm format` (or `npm run format` / `yarn format`).
+6. Theme checks: `pnpm test-v6` for Ghost 6, `pnpm test-v5` for Ghost 5.
 
-## steps
+## Contrib Tips
 
-1. clone the theme locally with `git clone https://github.com/frontendweb3/fastest.git`
-2. change the folder with `cd fastest` and run `pnpm install or npm install or yarn install`
-3. change anything related to tailwind CSS. Make sure to run separate sever for tailwind css using `pnpm start or yarn start'.
-4. change anything related to javascript then run `pnpm gulp or npm run gulp`. it will help to build or update the production-ready javascript file in the `assets/build/js` folder.
+- Keep changes small and focused; include relevant templates/partials and CSS/JS.
+- Run the build/watch before committing to ensure assets are up to date.
+- Follow existing style and accessibility patterns (semantic HTML, ARIA where needed).
+- Avoid committing console logs or unused code.
