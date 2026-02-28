@@ -13,7 +13,7 @@
     "format": "prettier .",
     "format-fix": "prettier --write .",
     "preview": "node esbuild.config.js --preview",
-    "zip": "npm run build && bestzip $npm_package_name.zip assets/dist/* assets/images/* partials/* members/* *.hbs package.json",
+    "zip": "npm run build && bestzip $npm_package_name.zip assets/dist/* partials/* *.hbs package.json LICENSE",
     "test-v5": "pnpm dlx gscan@latest . --v5",
     "test-v6": "pnpm dlx gscan@latest . --v6",
     "pretest": "npm run build"
@@ -91,22 +91,22 @@
       "font_color_for_light_mode": {
         "type": "color",
         "default": "#000000",
-        "description": "text color used for entire website in light mode"
+        "description": "Change the font color for the whole website in light mode."
       },
       "font_color_for_dark_mode": {
         "type": "color",
         "default": "#ffffff",
-        "description": "text color used for entire website in dark mode"
+        "description": "Change the font color for the whole website in dark mode."
       },
       "background_color_for_light_mode": {
         "type": "color",
         "default": "#ffffff",
-        "description": "background color used throughout the website in light mode"
+        "description": "Change the background color for the whole website in light mode."
       },
       "background_color_for_dark_mode": {
         "type": "color",
         "default": "#000000",
-        "description": "background color used throughout the website in dark mode"
+        "description": "Change the background color for the whole website in dark mode."
       },
       "copyright_enabled": {
         "type": "boolean",
