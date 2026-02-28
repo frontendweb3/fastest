@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
+      - run: pnpm --version
       - run:  pnpm add gscan
       - run: pnpm dlx gscan@latest . --v6
