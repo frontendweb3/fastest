@@ -2,7 +2,8 @@
 
 Minimal, fast Ghost theme with Tailwind CSS and dark mode.
 
-## Demo
+<details>
+<summary> Demo </summary>
 
 <div style="display:flex;gap:12px;flex-wrap:wrap;">
 
@@ -23,6 +24,9 @@ Minimal, fast Ghost theme with Tailwind CSS and dark mode.
 ![Mobile](./assets/mobile.png)
 
 </div>
+
+</details>
+
 
 ## Install (zip from latest release)
 
