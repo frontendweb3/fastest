@@ -4,23 +4,28 @@ Minimal, fast Ghost theme with Tailwind CSS and dark mode.
 
 <details>
 <summary> Demo </summary>
+	
+## Demo
+
+<video src="https://github.com/user-attachments/assets/612c6f95-d7af-4caa-8e13-ceb2c49a1c16" width="600"></video>
 
 <div style="display:flex;gap:12px;flex-wrap:wrap;">
 
+> Image 1
 ![Desktop Demo](./assets/demo.png)
-
+> Image 2
 ![Desktop Demo 2](./assets/demo-2.png)
-
+> Image 3
 ![Desktop Demo 3](./assets/demo-3.png)
-
+> Image 4
 ![Desktop Demo 4](./assets/demo-4.png)
-
+> Image 5
 ![Desktop Demo 5](./assets/demo-5.png)
-
+> Image 6
 ![Desktop Demo 6](./assets/demo-6.png)
-
+> Image 7
 ![Desktop](./assets/desktop.png)
-
+> Image 8
 ![Mobile](./assets/mobile.png)
 
 </div>
