@@ -4,8 +4,6 @@ Minimal, fast Ghost theme with Tailwind CSS and dark mode.
 
 <details>
 <summary> Demo </summary>
-	
-## Demo
 
 <video src="https://github.com/user-attachments/assets/612c6f95-d7af-4caa-8e13-ceb2c49a1c16" width="600"></video>
 
