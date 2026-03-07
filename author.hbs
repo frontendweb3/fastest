@@ -5,32 +5,35 @@
 <div class="flex flex-col md:flex-row gap-10 md:mx-auto my-12 items-center w-full lg:w-264 ">
 
 
-        {{#if profile_image}}
+    {{#if profile_image}}
 
-        <div class="group">
-            <div class="size-34 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
-                <img class="h-full w-full object-cover" src="{{profile_image}}" alt="{{name}}" loading="lazy"
-                    decoding="async" />
-            </div>
+    <div class="group">
+        <div class="size-34 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
+            <img class="h-full w-full object-cover" src="{{profile_image}}" alt="{{name}}" loading="lazy"
+                decoding="async" />
         </div>
+    </div>
 
-        {{else}}
+    {{else}}
 
-        <div class="group">
-            <div class="size-34 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
-                <img class="h-full w-full object-cover" src="{{asset "dist/images/profile.png"}}" alt="{{name}}"
-                    loading="lazy" decoding="async" />
-            </div>
+    <div class="group">
+        <div
+            class="rounded-full size-34  border border-gray-400 fill-white bg-gray-400 dark:fill-white dark:bg-gray-500 flex p-5 items-center justify-center">
+            <svg fill="currentColor"  viewBox="0 0 512 512">
+                <path
+                    d="M256,256A112,112,0,1,0,144,144,112,112,0,0,0,256,256Zm0,32c-69.42,0-208,42.88-208,128v64H464V416C464,330.88,325.42,288,256,288Z" />
+            </svg>
         </div>
+    </div>
 
-        {{/if}}
+    {{/if}}
 
     <div class="flex flex-col w-full p-6 space-y-6">
 
         <h2 class="text-xl sm:text-xl md:text-2xl font-bold"> {{name}} </h2>
 
         {{#if bio}}
-            <p class="text-md md:text-xl">{{bio}}</p>
+        <p class="text-md md:text-xl">{{bio}}</p>
         {{/if}}
 
         <div class="flex gap-5 justify-start">
@@ -110,7 +113,7 @@
 
     </div>
 
-</div>
+    </div>
 
     <div class="container mx-auto mt-28 mb-20">
         <h1 class="text-3xl  font-bold tracking-tight"> Published by {{name}}</h1>
@@ -119,7 +122,7 @@
     {{!-- get posts related to author base on author Id --}}
     {{#get "posts" filter="authors:{{slug}}+id:-{{id}}" order="published_at desc" include="authors" }}
 
-        {{> "posts-loop" posts=posts layout=@custom.home_layout}}
+    {{> "posts-loop" posts=posts layout=@custom.home_layout}}
 
     {{/get}}
 
