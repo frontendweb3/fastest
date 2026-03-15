@@ -6,7 +6,6 @@
 @source '../../**/*.hbs';
 @source '../assets/js/**/*.js';
 
-@custom-variant dark (&:where(.dark, .dark *));
 
 @custom-variant dark (&:is(.dark *));
 
@@ -88,7 +87,6 @@
 }
 
 /* style for post.hbs */
-
 @utility prose-fastest {
     
     /* light mode */
