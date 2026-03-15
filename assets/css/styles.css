@@ -2,9 +2,10 @@
 @plugin '@tailwindcss/typography';
 @import 'tw-animate-css';
 
+/* Add file to watch for changes in tailwind css */
 @source '../**/*.hbs';
 @source '../../**/*.hbs';
-@source '../assets/js/**/*.js';
+@source '../assets/**/*.{js,css,png,jpg,jpeg,gif,svg,webp,avif}';
 
 
 @custom-variant dark (&:is(.dark *));
