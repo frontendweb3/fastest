@@ -5,8 +5,6 @@
   "type": "module",
   "packageManager": "pnpm@9.15.9",
   "engines": {
-    "node": ">=20",
-    "pnpm": ">=9",
     "ghost": ">=6.0.0"
   },
   "license": "MIT",
