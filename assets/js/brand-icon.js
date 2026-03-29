@@ -50,7 +50,6 @@ export function initBrandIcons({
   attrs = {},
   root = document,
 } = {}) {
-  console.log("Brand icons facebook and instagram initialized:", facebook, instagram);
 
   if (!brandIcons || Object.keys(brandIcons).length === 0) {
     throw new Error("Brand icons object is required");
