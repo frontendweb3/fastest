@@ -3,8 +3,8 @@
 
 <section class="container mt-18 mb-28 mx-auto">
 
-    <h1 class="flex px-8 items-center gap-4 text-2xl md:text-3xl font-bold tracking-tight  lg:text-5xl">
-        {{> "icons/tag"}} {{!-- partials/icons/tag.hbs --}}
+    <h1 class="group flex px-8 items-center gap-4 text-2xl md:text-3xl font-bold tracking-tight lg:text-5xl align-middle animate-in fade-in duration-500 ease-in-out">
+        {{> "components/icon" name="tag" class="size-10 group-hover:animate-in group-hover:fade-in group-hover:-translate-x-2 group-hover:duration-500 group-hover:ease-in-out transition-transform" ariaLabel="tag icon"}}
         {{name}} 
     </h1>
     {{#if description}}
