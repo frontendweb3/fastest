@@ -7,7 +7,8 @@ import path from 'node:path';
 
 export default defineConfig(({ mode }) => {
     const isProduction = mode === 'production';
-
+    const packageName = JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).name
+    const packageVersion = JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).version
     return {
         plugins: [
             tailwindcss(),
@@ -24,9 +25,9 @@ export default defineConfig(({ mode }) => {
                 zipPack({
                     inDir: './',
                     outDir: './',
-                    outFileName: `${JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).name}.zip`,
+                    outFileName: `${packageName}-${packageVersion}.zip`,
                     filter: (fileName, filePath) => {
-                        if (filePath.includes('assets/dist')) return true;
+                        if (filePath.includes('assets/dist') || fileName === 'assets') return true
                         if (fileName.endsWith('.hbs')) return true;
                         if (filePath.includes('partials')) return true;
                         if (fileName === 'package.json') return true;
@@ -41,9 +42,8 @@ export default defineConfig(({ mode }) => {
             emptyOutDir: true,
             rollupOptions: {
                 input: {
-                    index: 'assets/js/index.js',
+                    main: 'assets/js/main.js',
                     post: 'assets/js/post.js',
-                    styles: 'assets/css/styles.css',
                 },
                 output: {
                     entryFileNames: 'js/[name].js',
