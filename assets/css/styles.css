@@ -126,15 +126,6 @@
     --tw-prose-invert-td-borders: var(--prose-color);
 }
 
-/* post.hbs */
-
-pre {
-    @apply overflow-x-auto rounded-xl p-6;
-}
-
-pre code {
-    @apply text-sm;
-}
 
 /* Remove borders/lines from highlight.js line-numbers wrapper so code blocks stay clean */
 .hljs-ln,
