@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      alpinejs:
+        specifier: ^3.15.8
+        version: 3.15.8
       postcss:
         specifier: ^8.5.6
         version: 8.5.6
@@ -18,9 +21,24 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.2.1
         version: 4.2.1(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.31.1))
+      '@thesvg/icons':
+        specifier: ^2.1.0
+        version: 2.1.0
       '@types/node':
         specifier: ^25.3.3
         version: 25.5.0
+      highlight.js:
+        specifier: ^11.11.1
+        version: 11.11.1
+      highlightjs-copy:
+        specifier: ^1.0.6
+        version: 1.0.6
+      highlightjs-line-numbers.js:
+        specifier: ^2.9.1
+        version: 2.9.1
+      lucide:
+        specifier: ^0.577.0
+        version: 0.577.0
       prettier-plugin-tailwindcss:
         specifier: ^0.7.2
         version: 0.7.2(prettier@3.8.1)
@@ -577,11 +595,24 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7
 
+  '@thesvg/icons@2.1.0':
+    resolution: {integrity: sha512-WiwlKuIXXuXEx3IUd/HjIiJIhdvYbsQl/HfqbtdgC3CcB/YEo6OKXGJ7R53DXccK8Qtj/fn1xCbbapZI8rHKfg==}
+    engines: {node: '>=18'}
+
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
   '@types/node@25.5.0':
     resolution: {integrity: sha512-jp2P3tQMSxWugkCUKLRPVUpGaL5MVFwF8RDuSRztfwgN1wmqJeMSbKlnEtQqU8UrhTmzEmZdu2I6v2dpp7XIxw==}
+
+  '@vue/reactivity@3.1.5':
+    resolution: {integrity: sha512-1tdfLmNjWG6t/CsPldh+foumYFo3cpyCHgBYQ34ylaMsJ+SNHQ1kApMIa8jN+i593zQuaw3AdWH0nJTARzCFhg==}
+
+  '@vue/shared@3.1.5':
+    resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
+
+  alpinejs@3.15.8:
+    resolution: {integrity: sha512-zxIfCRTBGvF1CCLIOMQOxAyBuqibxSEwS6Jm1a3HGA9rgrJVcjEWlwLcQTVGAWGS8YhAsTRLVrtQ5a5QT9bSSQ==}
 
   ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
@@ -624,6 +655,16 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  highlight.js@11.11.1:
+    resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
+    engines: {node: '>=12.0.0'}
+
+  highlightjs-copy@1.0.6:
+    resolution: {integrity: sha512-UaHIlJ4rkk5R4OVDnpgxevIuYdHggN5sPgs3E/2FKLxypvzAQVTOZl66hm8cEnhrEoLHTGkQymLtfJ/efyv24Q==}
+
+  highlightjs-line-numbers.js@2.9.1:
+    resolution: {integrity: sha512-OVLCl58g9hvY11jDCMDjyIM1HcWtElogmRpBBVb0KxMDXxtket58iHA4ex8HCWmQuR1rorYWkQ+4wn3S2T+xlg==}
 
   immediate@3.0.6:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
@@ -713,6 +754,9 @@ packages:
   lightningcss@1.31.1:
     resolution: {integrity: sha512-l51N2r93WmGUye3WuFoN5k10zyvrVs0qfKBhyC5ogUQ6Ew6JUSswh78mbSO+IU3nTWsyOArqPCcShdQSadghBQ==}
     engines: {node: '>= 12.0.0'}
+
+  lucide@0.577.0:
+    resolution: {integrity: sha512-PpC/m5eOItp/WU/GlQPFBXDOhq6HibL73KzYP37OX3LM7VmzWQF8voEj8QRWUFvy9FIKfeDQkWYoyS1D/MdWFA==}
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -1261,11 +1305,23 @@ snapshots:
       tailwindcss: 4.2.1
       vite: 7.3.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.31.1)
 
+  '@thesvg/icons@2.1.0': {}
+
   '@types/estree@1.0.8': {}
 
   '@types/node@25.5.0':
     dependencies:
       undici-types: 7.18.2
+
+  '@vue/reactivity@3.1.5':
+    dependencies:
+      '@vue/shared': 3.1.5
+
+  '@vue/shared@3.1.5': {}
+
+  alpinejs@3.15.8:
+    dependencies:
+      '@vue/reactivity': 3.1.5
 
   ansi-colors@4.1.3: {}
 
@@ -1317,6 +1373,12 @@ snapshots:
     optional: true
 
   graceful-fs@4.2.11: {}
+
+  highlight.js@11.11.1: {}
+
+  highlightjs-copy@1.0.6: {}
+
+  highlightjs-line-numbers.js@2.9.1: {}
 
   immediate@3.0.6: {}
 
@@ -1385,6 +1447,8 @@ snapshots:
       lightningcss-linux-x64-musl: 1.31.1
       lightningcss-win32-arm64-msvc: 1.31.1
       lightningcss-win32-x64-msvc: 1.31.1
+
+  lucide@0.577.0: {}
 
   magic-string@0.30.21:
     dependencies:

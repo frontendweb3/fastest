@@ -1,7 +1,7 @@
 {
   "name": "fastest",
   "description": "Fastest ghost cms base theme. Fastest is lite wight, modern open-source theme",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "type": "module",
   "packageManager": "pnpm@9.15.9",
   "engines": {
@@ -18,9 +18,9 @@
     "format-fix": "prettier --write .",
     "preview": "vite preview",
     "zip": "vite build",
-    "test-v5": "pnpm dlx gscan@latest . --v5",
-    "test-v6": "pnpm dlx gscan@latest . --v6",
-    "pretest": "npm run build"
+    "test": "pnpm dlx gscan@latest . --v6",
+    "pretest": "npm run build",
+    "clean": "rm -rf dist"
   },
   "author": {
     "name": "Rajdeep Singh",
@@ -33,9 +33,9 @@
   },
   "keywords": [
     "ghost",
-    "theme",
+    "dark theme",
     "blog",
-    "light wight",
+    "light theme",
     "ghost-theme"
   ],
   "screenshots": {
@@ -132,7 +132,12 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
+    "@thesvg/icons": "^2.1.0",
     "@types/node": "^25.3.3",
+    "highlight.js": "^11.11.1",
+    "highlightjs-copy": "^1.0.6",
+    "highlightjs-line-numbers.js": "^2.9.1",
+    "lucide": "^0.577.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.0",
@@ -147,6 +152,7 @@
     ]
   },
   "dependencies": {
+    "alpinejs": "^3.15.8",
     "postcss": "^8.5.6"
   }
 }
