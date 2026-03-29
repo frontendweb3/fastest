@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" type="text/css" href="{{asset 'dist/css/styles.css'}}" />
-    <script src="{{asset 'dist/js/index.js'}}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{{asset 'dist/css/main.css'}}" />
+    <script src="{{asset 'dist/js/main.js'}}" defer></script>
 
     {{#is "post"}}
     <!-- Highlight.js CSS (Dark Theme) -->
@@ -20,6 +20,29 @@
 
     {{> "style-script"}} {{!-- partials/style-script.hbs --}}
 
+    {{!-- Fix the white screen issue and the toggling between dark and light themes. --}}
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('themeSwitcher', () => ({
+                darkMode: localStorage.getItem('theme') === 'dark' ||  (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                toggle() {
+                    this.darkMode = !this.darkMode;
+                    localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
+                    this.updateTheme();
+                },
+                updateTheme() {
+                    if (this.darkMode) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                },
+                init() {
+                    this.updateTheme();
+                }
+            }))
+        })
+    </script>
 
     {{ghost_head}}
 
