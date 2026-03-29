@@ -70,9 +70,7 @@
             {{/if}}
             {{/foreach}}
             {{else}}
-            <img class="h-9 w-9 rounded-full object-cover" src="{{asset "dist/images/profile.png"}}"
-                alt="{{@member.name}} avatar" decoding="async" />
-            {{> "components/icon" name="user-round" class="text-white" ariaLabel="User icon"}}
+                {{> "components/icon" name="user-plus" class="text-white"   ariaLabel="User icon"}}
             {{/if}}
             {{@member.name}}
         </a>
