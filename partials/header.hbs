@@ -25,55 +25,44 @@
     {{!-- Social Links, theme toggle button  and Search icon --}}
     <div class="justify-center flex flex-wrap items-center gap-5">
 
-        {{!-- Custom Search Form --}}
-        <button type="button" aria-label="Open Search form"
-            class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-            data-ghost-search>
-            {{> "icons/search"}}
-            <span class="sr-only">Search</span>
-        </button>
+        {{!-- Search Form --}}
+        {{#> "components/button" dataGhostSearch=true id="search-toggle" variant="icon" ariaLabel="Toggle search"}}
+            {{> "components/icon" class="size-5" name="search" id="search-icon" ariaLabel="Search icon"}}
+        {{/ "components/button"}}
 
         {{!-- Theme Toggle Button --}}
-        <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode"
-            class="z-50 flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors hover:scale-110 dark:border-slate-700 dark:bg-slate-800">
-            <span id="theme-toggle-light-icon" class="hidden" aria-hidden="true">
-                {{> "icons/sun" }}
-            </span>
-            <span id="theme-toggle-dark-icon" class="hidden" aria-hidden="true">
-                {{> "icons/moon" }}
-            </span>
+        <button x-data="themeSwitcher" @click="toggle" :aria-pressed="darkMode.toString()"
+            :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'" type="button"
+            class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full p-2 text-sm font-medium tracking-wide transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
+            <span x-show="!darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="sun" ariaLabel="sun icon"}}</span>
+            <span x-show="darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="moon" ariaLabel="moon icon"}}</span>
             <span class="sr-only">Toggle color theme</span>
         </button>
 
         {{#if @site.twitter}}
-        <a aria-label="Visit our Twitter profile"
-            class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-            href="{{social_url type="twitter" }}" target="_blank" rel="noopener noreferrer">
-            {{> "icons/twitter"}} {{!-- partials/icons/twitter.hbs --}}
-        </a>
+        {{#> "components/button"  href=(social_url type="twitter")  target="_blank" size="lg" aria-label="Visit our Twitter profile"}}
+            {{> "components/icon" name="x" class="size-5 fill-current" brand="true" ariaLabel="Twitter icon"}}
+        {{/ "components/button"}}
         {{/if}}
+
         {{#if @site.facebook}}
-        <a aria-label="Visit our Facebook profile"
-            class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-            href="{{social_url type="facebook" }}" target="_blank" rel="noopener noreferrer">
-            {{> "icons/facebook"}} {{!-- partials/icons/facebook.hbs --}}
-        </a>
+        {{#> "components/button" href=(social_url type="facebook")  target="_blank" size="lg" aria-label="Visit our Facebook profile"}}
+            {{> "components/icon" name="facebook" class="size-7" brand="true" ariaLabel="Facebook icon"}}
+        {{/ "components/button"}}
         {{/if}}
 
         <div class="hidden sm:block h-5 rounded-3xl w-0.5 bg-black dark:bg-white"></div>
 
         {{#unless @member}}
-        <a class="flex items-center gap-1 shadow-lg text-white! rounded-full px-3 py-2 text-sm"
-            style="background-color:{{@site.accent_color}}" href="#/portal/signup" data-portal="signup">
-            {{> "icons/crown"}}
+        <a class="flex items-center gap-2.5 shadow-lg rounded-full px-3 py-2 text-sm" style="background-color:{{@site.accent_color}}" href="#/portal/signup" data-portal="signup">
+            {{> "components/icon" name="crown" class="text-white" ariaLabel="Crown icon"}}
             <span class="text-white!">Pro</span>
         </a>
         {{else}}
         <a style="background-color:{{@site.accent_color}}" href="#/portal/account" aria-label="Open your account page"
-            class="hidden sm:flex items-center gap-2 shadow-lg text-white! rounded-full px-2.5 py-2 transition-transform hover:scale-110">
+            class="hidden sm:flex items-center gap-2 shadow-lg text-white! rounded-full px-3.5 py-2.5 transition-transform hover:scale-110">
             {{#if @member.avatar_image}}
-            {{!-- remove the query parameters from the Gravatar URL:
-            https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
+            {{!-- remove the query parameters from the Gravatar URL: https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
             {{#foreach (split @member.avatar_image separator="?")}}
             {{#if @first}}
             <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar"
@@ -83,6 +72,7 @@
             {{else}}
             <img class="h-9 w-9 rounded-full object-cover" src="{{asset "dist/images/profile.png"}}"
                 alt="{{@member.name}} avatar" decoding="async" />
+            {{> "components/icon" name="user-round" class="text-white" ariaLabel="User icon"}}
             {{/if}}
             {{@member.name}}
         </a>
