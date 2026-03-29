@@ -1,13 +1,16 @@
 <nav role="navigation" aria-label="Pagination" class="container mx-auto my-16 px-4 flex items-center">
     {{#if prev}}
-        <a class="flex h-16 w-16 items-center justify-center rounded-full bg-foreground text-background text-md transition-transform hover:scale-105" href="{{page_url prev}}" aria-label="Previous page">
-            {{> "icons/chevron-left"}}
-        </a>
+    <a class="flex gap-2 h-16 w-28 items-center justify-center rounded-full text-md text-foreground transition-transform hover:scale-105"
+        href="{{page_url prev}}" aria-label="Previous page">
+        {{> "components/icon" name="chevron-left" ariaLabel="Chevron Left icon"}}   Previous
+    </a>
     {{/if}}
 
     {{#if next}}
-        <a class="ml-auto flex h-16 w-16 items-center justify-center rounded-full animate-in bg-foreground text-background text-md transition-transform hover:scale-105" href="{{page_url next}}" aria-label="Next page">
-            {{> "icons/chevron-right"}}           
-        </a>
+    <a class="ml-auto gap-2 flex h-16 w-28 items-center justify-center rounded-full animate-in text-md text-foreground transition-transform hover:scale-105"
+        href="{{page_url next}}" aria-label="Next page">
+        Next
+        {{> "components/icon" name="chevron-right" ariaLabel="Chevron Right icon"}}
+    </a>
     {{/if}}
 </nav>
