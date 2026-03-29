@@ -30,7 +30,7 @@
 
                 {{#foreach authors}}
 
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center p-2 space-x-3">
 
                     {{#if profile_image}}
                     <img src="{{ img_url profile_image size="s"}}" alt="{{name}}"
@@ -38,21 +38,13 @@
                     {{else}}
                     <div
                         class="rounded-full border border-gray-400 fill-white bg-gray-400 dark:fill-white dark:bg-gray-500 flex p-2 items-center justify-center">
-                        <svg fill="currentColor" width="24px" height="24px" viewBox="0 0 512 512">
-                            <path
-                                d="M256,256A112,112,0,1,0,144,144,112,112,0,0,0,256,256Zm0,32c-69.42,0-208,42.88-208,128v64H464V416C464,330.88,325.42,288,256,288Z" />
-                        </svg>
+                        {{> "components/icon" name="circle-user-round" class="size-6" ariaLabel="circle user icon"}}
                     </div>
                     {{/if}}
                     <div class="flex flex-row justify-between items-center">
                         <a href="{{url}}" rel="author" class="text-xl">{{name}}</a>
                     </div>
                 </div>
-
-                {{#if @first}}
-                <div class="w-px h-8 bg-black dark:bg-gray-100"></div>
-                {{/if}}
-
                 {{/foreach}}
             </div>
         </div>
@@ -74,7 +66,7 @@
     {{> featureImage}}
 
     {{!-- Content --}}
-        <section class="prose prose-fastest w-full max-w-4xl prose-sm sm:prose-base lg:prose-lg mx-auto"> {{content}} </section>
+        <section class="prose prose-fastest w-full max-w-4xl prose-sm prose-pre:px-0 sm:prose-base lg:prose-lg mx-auto"> {{content}} </section>
 
     </article>
 
