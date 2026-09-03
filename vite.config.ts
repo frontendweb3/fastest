@@ -1,16 +1,79 @@
-import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
-import zipPack from 'vite-plugin-zip-pack';
-import fs from 'node:fs';
-import path from 'node:path';
+import { defineConfig, Plugin } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+import zipPack from 'vite-plugin-zip-pack'
+import fs from 'node:fs'
+import path from 'node:path'
+
+function ghostHmrPlugin(): Plugin {
+    return {
+        name: 'ghost-hmr-hbs',
+        configureServer(server) {
+            // 1. Watch Handlebars templates
+            server.watcher.add('**/*.hbs');
+
+            // 2. Handle template changes for Ghost CMS and Tailwind CSS v4
+            server.watcher.on('change', (file) => {
+                if (file.endsWith('.hbs')) {
+                    // Invalidate module graph so Tailwind CSS re-scans .hbs for new classes
+                    server.moduleGraph.invalidateAll();
+                    // Trigger full browser reload for Ghost CMS
+                    server.ws.send({
+                        type: 'full-reload',
+                        path: '*',
+                    });
+                }
+            });
+        },
+    };
+}
+
+function ghostCleanZipPlugin(): Plugin {
+    let originalContent = '';
+    const defaultHbsPath = path.resolve('.', 'default.hbs');
+
+    return {
+        name: 'ghost-clean-zip',
+        apply: 'build',
+        buildStart() {
+            if (fs.existsSync(defaultHbsPath)) {
+                originalContent = fs.readFileSync(defaultHbsPath, 'utf-8');
+                const strippedContent = originalContent.replace(
+                    /\s*<!-- BEGIN HMR DEV SCRIPT -->[\s\S]*?<!-- END HMR DEV SCRIPT -->\s*/g,
+                    '\n'
+                );
+                fs.writeFileSync(defaultHbsPath, strippedContent, 'utf-8');
+            }
+        },
+        closeBundle: {
+            order: 'post',
+            handler() {
+                if (originalContent && fs.existsSync(defaultHbsPath)) {
+                    fs.writeFileSync(defaultHbsPath, originalContent, 'utf-8');
+                }
+            }
+        }
+    };
+}
 
 export default defineConfig(({ mode }) => {
     const isProduction = mode === 'production';
-    const packageName = JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).name
-    const packageVersion = JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).version
+
     return {
+        server: {
+            port: 5173,
+            strictPort: true,
+            cors: true,
+            origin: 'http://localhost:5173',
+            hmr: {
+                host: 'localhost',
+                port: 5173,
+                protocol: 'ws',
+            },
+        },
         plugins: [
+            ghostHmrPlugin(),
+            isProduction && ghostCleanZipPlugin(),
             tailwindcss(),
             ViteImageOptimizer({
                 test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
@@ -21,21 +84,27 @@ export default defineConfig(({ mode }) => {
                 png: { quality: 80 },
                 webp: { quality: 80 },
             }),
-            isProduction &&
-                zipPack({
-                    inDir: './',
-                    outDir: './',
-                    outFileName: `${packageName}-${packageVersion}.zip`,
-                    filter: (fileName, filePath) => {
-                        if (filePath.includes('assets/dist') || fileName === 'assets') return true
-                        if (fileName.endsWith('.hbs')) return true;
-                        if (filePath.includes('partials')) return true;
-                        if (fileName === 'package.json') return true;
-                        if (fileName === 'LICENSE') return true;
+            isProduction && zipPack({
+                inDir: './', // Root of your theme
+                outDir: './', // Where to place the zip
+                outFileName: `${JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).name}.zip`,
+                // Important: Filter what goes into the final zip
+                filter: (fileName, filePath) => {
+                    // Include compiled assets from dist
+                    if (filePath.includes('assets/dist') || fileName === 'assets') return true
+                    // Include hbs templates
+                    if (fileName.endsWith('.hbs')) return true;
+                    // Include partials folder
+                    if (filePath.includes('partials')) return true;
+                    // Include package.json
+                    if (fileName === 'package.json') return true;
+                    // Include LICENSE
+                    if (fileName === 'LICENSE') return true;
 
-                        return false;
-                    },
-                }),
+                    // Exclude everything else (node_modules, source assets, etc)
+                    return false;
+                }
+            })
         ],
         build: {
             outDir: 'assets/dist',
@@ -43,7 +112,7 @@ export default defineConfig(({ mode }) => {
             rollupOptions: {
                 input: {
                     main: 'assets/js/main.js',
-                    post: 'assets/js/post.js',
+                    post: 'assets/js/post.js'
                 },
                 output: {
                     entryFileNames: 'js/[name].js',
@@ -57,9 +126,9 @@ export default defineConfig(({ mode }) => {
                             return `images/${name}`;
                         }
                         return 'assets/[name][extname]';
-                    },
-                },
-            },
+                    }
+                }
+            }
         },
     };
-});
+})
