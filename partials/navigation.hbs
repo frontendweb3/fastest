@@ -1,11 +1,12 @@
 {{#if isSecondary}}
-  <nav>
-        <ul class="list-none flex flex-wrap gap-5 justify-center flex-row items-center ">
+  <nav aria-label="Secondary navigation">
+        <ul class="list-none flex flex-wrap gap-x-5 gap-y-3 justify-center flex-row items-center">
             {{#foreach navigation}}
     
                 <li class="text-left group">
                     <a href="{{url absolute="true"}}" 
-                        class="px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent group-hover:border-blue-600 md:px-3 animate-in fade-in duration-500">
+                        {{#if current}}aria-current="page"{{/if}}
+                        class="inline-block px-2 md:px-3 lg:px-6 py-2 text-sm border-b-2 group-hover:border-blue-600 transition-colors duration-300 {{#if current}}border-blue-600 font-semibold nav-current{{else}}border-transparent{{/if}}">
                          {{label}} 
                     </a>
                 </li>
@@ -17,14 +18,15 @@
 
 {{else}}
 
-  <nav>
-        <ul class="list-none flex justify-center sm:flex-row flex-wrap gap-4 items-center ">
+  <nav aria-label="Main navigation">
+        <ul class="list-none flex justify-center flex-wrap gap-x-4 gap-y-3 sm:gap-x-6 items-center">
 
             {{#foreach navigation}}
 
                 <li class="text-center group">
                     <a href="{{url absolute="true"}}" 
-                        class="px-2 lg:px-6 py-6 text-sm md:text-md border-b-2 border-transparent group-hover:border-blue-600 md:px-3 animate-in fade-in duration-500">
+                        {{#if current}}aria-current="page"{{/if}}
+                        class="inline-block px-2 md:px-3 lg:px-6 py-2 text-sm md:text-base border-b-2 group-hover:border-blue-600 transition-colors duration-300 {{#if current}}border-blue-600 font-semibold nav-current{{else}}border-transparent{{/if}}">
                          {{label}} 
                     </a>
                 </li>
