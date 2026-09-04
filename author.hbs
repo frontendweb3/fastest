@@ -1,106 +1,56 @@
-{{!< default}} 
-
-{{#author}} 
-
-<div class="flex flex-col md:flex-row gap-10 md:mx-auto my-12 items-center w-full lg:w-264 ">
+{{!< default}} {{#author}} <div class="flex flex-col md:flex-row gap-10 md:mx-auto my-12 items-center w-full lg:w-264 ">
 
 
-    {{#if profile_image}}
+  {{#if profile_image}}
 
-    <div class="group">
-        <div class="size-34 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
-            <img class="h-full w-full object-cover" src="{{profile_image}}" alt="{{name}}" loading="lazy"
-                decoding="async" />
-        </div>
+  <div class="group">
+    <div class="size-34 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
+      <img class="h-full w-full object-cover" src="{{profile_image}}" alt="{{name}}" loading="lazy" decoding="async" />
     </div>
+  </div>
 
-    {{else}}
+  {{else}}
 
-    <div class="group">
-        <div class="rounded-full  border border-gray-400 fill-white bg-gray-400 dark:fill-white dark:bg-gray-500 flex p-2 items-center justify-center">
-          {{> "components/icon" name="circle-user-round" class="size-34" ariaLabel="circle user icon"}}
-        </div>
+  <div class="group">
+    <div
+      class="rounded-full  border border-gray-400 fill-white bg-gray-400 dark:fill-white dark:bg-gray-500 flex p-2 items-center justify-center">
+      {{> "components/icon" name="circle-user-round" class="size-34" ariaLabel="circle user icon"}}
     </div>
+  </div>
 
+  {{/if}}
+
+  <div class="flex flex-col w-full p-6 space-y-6">
+
+    <h2 class="text-xl sm:text-xl md:text-2xl font-bold"> {{name}} </h2>
+
+    {{#if bio}}
+    <p class="text-md md:text-xl">{{bio}}</p>
     {{/if}}
 
-    <div class="flex flex-col w-full p-6 space-y-6">
-
-        <h2 class="text-xl sm:text-xl md:text-2xl font-bold"> {{name}} </h2>
-
-        {{#if bio}}
-        <p class="text-md md:text-xl">{{bio}}</p>
-        {{/if}}
-
-        <div class="flex gap-5 justify-start">
-            {{#if twitter}}
-            {{#> "components/button" href=(social_url type="twitter")  target="_blank" size="lg" aria-label="Visit our Twitter profile"}}
-              {{> "components/icon" name="x" class="size-7 fill-current" brand="true" ariaLabel="Twitter icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-
-            {{#if facebook}}
-            {{#> "components/button" href=(social_url type="facebook")  target="_blank" size="lg" aria-label="Visit our Facebook profile"}}
-              {{> "components/icon" name="facebook" class="size-7" brand="true" ariaLabel="Facebook icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-            {{#if threads}}
-            {{#> "components/button" href=(social_url type="threads")  target="_blank" size="lg" aria-label="Visit our Threads profile"}}
-              {{> "components/icon" name="threads" class="size-7" brand="true" ariaLabel="Threads icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-            
-            {{#if bluesky}}
-            {{#> "components/button" href=(social_url type="bluesky")  target="_blank" size="lg" aria-label="Visit our Bluesky profile"}}
-              {{> "components/icon" name="bluesky" class="size-7" brand="true" ariaLabel="Bluesky icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-            {{#if mastodon}}
-            {{#> "components/button" href=(social_url type="mastodon")  target="_blank" size="lg" aria-label="Visit our Mastodon profile"}}
-              {{> "components/icon" name="mastodon" class="size-7" brand="true" ariaLabel="Mastodon icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-            {{#if tiktok}}
-            {{#> "components/button" href=(social_url type="tiktok")  target="_blank" size="lg" aria-label="Visit our TikTok profile"}}
-              {{> "components/icon" name="tiktok" class="size-7" brand="true" ariaLabel="TikTok icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-            {{#if linkedin}}
-            {{#> "components/button" href=(social_url type="linkedin")  target="_blank" size="lg" aria-label="Visit our LinkedIn profile"}}
-              {{> "components/icon" name="linkedin" class="size-7" brand="true" ariaLabel="LinkedIn icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-            {{#if website}}
-            {{#> "components/button" href=(social_url type="website")  target="_blank" size="lg" aria-label="Visit our Website"}}
-              {{> "components/icon" name="globe" class="size-7" ariaLabel="Website icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-            {{#if youtube}}
-            {{#> "components/button" href=(social_url type="youtube")  target="_blank" size="lg" aria-label="Visit our YouTube profile"}}
-              {{> "components/icon" name="youtube" class="size-7" brand="true" ariaLabel="YouTube icon"}}
-            {{/ "components/button"}}
-            {{/if }}
-            {{#if instagram}}
-            {{#> "components/button" href=(social_url type="instagram")  target="_blank" size="lg" aria-label="Visit our Instagram profile"}}
-              {{> "components/icon" name="instagram" class="size-7" brand="true" ariaLabel="Instagram icon"}}
-            {{/ "components/button"}}
-            {{/if}}
-
-        </div>
-
+    <div class="flex flex-wrap gap-5 justify-start">
+      {{#social_accounts this}}
+      <a href="{{href}}" target="_blank" rel="noopener noreferrer" aria-label="Visit our {{name}} profile"
+        class="inline-flex items-center justify-center p-2 rounded-lg text-sm font-medium transition hover:opacity-75">
+        {{#> (concat "icons/" type)}}
+          {{> "icons/website"}}
+        {{/undefined}}
+      </a>
+      {{/social_accounts}}
     </div>
 
-    </div>
+  </div>
 
-    <div class="container mx-auto mt-28 mb-20">
-        <h1 class="text-3xl font-bold tracking-tight"> Published by {{name}}</h1>
-    </div>
+  </div>
 
-    {{!-- get posts related to author base on author Id --}}
-    {{#get "posts" filter="authors:{{slug}}+id:-{{id}}" order="published_at desc" include="authors" }}
+  <div class="container mx-auto mt-28 mb-20">
+    <h1 class="text-3xl font-bold tracking-tight"> Published by {{name}}</h1>
+  </div>
 
-    {{> "posts-loop" posts=posts layout=@custom.home_layout}}
+  {{/author}}
 
-    {{/get}}
+  {{> "posts-loop" posts=posts layout=@custom.home_layout}}
 
-    {{/author}}
+  <div class="container mx-auto px-6 py-10 lg:py-12 lg:px-8">
+    {{pagination}}
+  </div>
