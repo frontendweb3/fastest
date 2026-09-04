@@ -1,0 +1,6 @@
+# Ignore build output
+assets/dist/
+*.zip
+
+# Ignore Handlebars file with inline CSS & Handlebars interpolation to prevent Prettier formatting corruption
+partials/style-script.hbs
