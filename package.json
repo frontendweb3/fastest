@@ -8,16 +8,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "dev": "vite build --watch --mode development",
     "format": "prettier .",
     "format-fix": "prettier --write .",
-    "preview": "vite preview",
-    "zip": "vite build",
+    "dev": "vite",
+    "build": "vite build",
     "test": "pnpm dlx gscan@latest . --v6",
-    "pretest": "npm run build",
-    "clean": "rm -rf dist"
+    "screenshot": "node ./scripts/screenshots/capture.js",
+    "dist": "rm -rf ./assets/dist"
   },
   "author": {
     "name": "Rajdeep Singh",
@@ -76,10 +73,16 @@
         "default": "",
         "description": "Logo used in dark mode"
       },
+      "show_title_with_logo": {
+        "type": "boolean",
+        "default": true,
+        "description": "Show site title alongside logo in header"
+      },
       "home_layout": {
         "type": "select",
         "options": [
           "full-width",
+          "three-column-grid",
           "two-column-grid"
         ],
         "default": "full-width",
@@ -129,12 +132,12 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
-    "@thesvg/icons": "^2.1.0",
     "@types/node": "^25.3.3",
     "highlight.js": "^11.11.1",
     "highlightjs-copy": "^1.0.6",
     "highlightjs-line-numbers.js": "^2.9.1",
     "lucide": "^0.577.0",
+    "playwright": "^1.62.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.0",
