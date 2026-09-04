@@ -1,23 +1,26 @@
-{{!< default}} 
-{{#post}} 
+{{!< default}} {{#post}} <article
+    class="prose-sm prose-fastest sm:prose-base space-y-10 lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between mx-auto">
 
-    <article class="prose-sm prose-fastest sm:prose-base space-y-10 lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between mx-auto"> 
+    <section class="flex flex-col gap-2 mx-auto text-center w-full max-w-5xl">
 
-        <section class="flex flex-col gap-2 mx-auto text-center w-full max-w-5xl">
+        {{#match @page.show_title_and_feature_image}}
+        <time class=" w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm"
+            datetime="{{date format='YYYY-MM-DD'}}"> {{date format="DD MMMM YYYY"}} </time>
 
-            <time class=" w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}"> {{date format="DD MMMM YYYY"}} </time>
+        <h1
+            class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">
+            {{title}} </h1>
 
-            {{#match @page.show_title_and_feature_image}}
-            
-            <h1 class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700"> {{title}} </h1>
+        {{> featureImage}}
 
-            {{/match}}
+        {{/match}}
 
-        </section>
+    </section>
 
-        <section class="prose prose-fastest w-full max-w-4xl prose-sm sm:prose-base lg:prose-lg mx-auto"> {{content}} </section>
+    <section class="prose prose-fastest w-full max-w-4xl prose-sm sm:prose-base lg:prose-lg mx-auto"> {{content}}
+    </section>
 
 
     </article>
 
-{{/post}}
+    {{/post}}
