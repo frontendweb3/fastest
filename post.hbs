@@ -1,72 +1,95 @@
-{{!< default}} 
+{{!< default}} {{#post}} <article
+    class="prose-sm sm:prose-base lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between mx-auto">
 
-{{#post}} 
-        
-    <article class="prose-sm sm:prose-base lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between mx-auto"> 
-
-        <section  class="prose prose-fastest mx-auto text-center flex flex-col w-full max-w-5xl">
-
-            <time class="w-full font-extrabold text-xs xs:text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm 2xl:text-sm" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
-
-            <h1 class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">
+    <section class="prose prose-fastest mx-auto flex flex-col items-center w-full max-w-5xl">
+        {{#if tags}}
+        <div class="my-8 space-x-2  not-prose">
+            {{#foreach tags visibility="public"}}
+            <a href="{{url}}"
+                class="bg-purple-100 text-purple-800 text-xs font-medium no-underline hover:underline px-2.5 py-1 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400">
+                # {{name}}</a>
+            {{/foreach}}
+        </div>
+        {{/if}}
+        <h1
+            class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-heading text-center text-balance my-6 sm:my-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
             {{title}}
         </h1>
 
         {{#if custom_excerpt}}
-            <p class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,2.5vw,1.8rem)] tracking-wide duration-400">
+        <p
+            class="lead text-lg sm:text-xl font-normal text-muted-foreground leading-relaxed text-center text-balance max-w-6xl mx-auto mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-3 duration-500">
             {{custom_excerpt}}
         </p>
         {{else}}
+        {{#if excerpt}}
         <p
-            class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,2vw,1.5rem)] tracking-wide duration-400">
-            {{excerpt}}
+            class="lead text-lg sm:text-xl font-normal text-muted-foreground leading-relaxed text-center text-balance max-w-6xl mx-auto mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-3 duration-500">
+            {{excerpt characters="160"}}
         </p>
+        {{/if}}
         {{/if}}
 
         {{#if authors}}
-
-        <div class="flex  mt-10  not-prose items-center justify-center space-x-3">
-            <div class="flex items-center space-x-6">
-
+        <div class="flex flex-row items-center gap-3 my-4 not-prose">
+            {{!-- Overlapping Group Avatar Stack --}}
+            <div class="flex -space-x-3 overflow-hidden justify-center items-center">
                 {{#foreach authors}}
-
-                <div class="flex items-center p-2 space-x-3">
-
-                    {{#if profile_image}}
-                    <img src="{{ img_url profile_image size="s"}}" alt="{{name}}"
-                        class="hidden sm:block w-10 h-10 rounded-full " />
-                    {{else}}
-                    <div
-                        class="rounded-full border border-gray-400 fill-white bg-gray-400 dark:fill-white dark:bg-gray-500 flex p-2 items-center justify-center">
-                        {{> "components/icon" name="circle-user-round" class="size-6" ariaLabel="circle user icon"}}
-                    </div>
-                    {{/if}}
-                    <div class="flex flex-row justify-between items-center">
-                        <a href="{{url}}" rel="author" class="text-xl">{{name}}</a>
-                    </div>
+                {{#if profile_image}}
+                <img class="inline-block size-8 rounded-full ring-2 ring-background object-cover shadow-sm"
+                    src="{{img_url profile_image size=" s"}}" alt="{{name}}" />
+                {{else}}
+                <div
+                    class="inline-block size-8 rounded-full ring-2 ring-background bg-muted flex items-center justify-center shadow-sm">
+                    {{> "components/icon" name="circle-user-round" class="size-5 text-muted-foreground" ariaLabel="user
+                    icon"}}
                 </div>
+                {{/if}}
                 {{/foreach}}
             </div>
-        </div>
 
+            {{!-- Author Names --}}
+            <div class="text-sm font-medium text-foreground">
+                By {{#foreach authors}}<a href="{{url}}" rel="author"
+                    class="hover:underline font-semibold text-heading">{{name}}</a>{{#unless @last}},
+                {{/unless}}{{/foreach}}
+            </div>
+        </div>
         {{/if}}
-        <div class="my-12 space-x-5">
 
-            {{#foreach tags visibility="public"}}
-            <a href="{{url}}"
-                class="bg-purple-100 text-purple-800 text-xs font-medium no-underline hover:underline me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400">
-                # {{name}}</a>
-            {{/foreach}}
+        {{!-- Post Meta Bar: Date on Left, Reading Time on Right --}}
+        <div
+            class="flex flex-row items-center justify-between w-full max-w-4xl not-prose py-3.5 my-6 text-sm text-muted-foreground">
+            <time datetime="{{date format='YYYY-MM-DD'}}" class="flex items-center gap-1.5 font-medium">
+                {{> "components/icon" name="calendar" class="size-4" ariaLabel="Calendar icon"}}
+                {{date format="DD MMMM YYYY"}}
+            </time>
 
+            <div class="flex items-center gap-1.5 font-medium">
+                {{> "components/icon" name="clock" class="size-4" ariaLabel="Clock icon"}}
+                {{reading_time minute="1 min read" minutes="% min read"}}
+            </div>
         </div>
-
     </section>
 
     {{!-- Feature Image --}}
     {{> featureImage}}
 
-    {{!-- Content --}}
-        <section class="prose prose-fastest w-full max-w-4xl prose-sm prose-pre:px-0 sm:prose-base lg:prose-lg mx-auto"> {{content}} </section>
+    {{!-- Main Post Section with Sticky Share Sidebar --}}
+    <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-14 justify-center items-start">
+
+            {{!-- Sticky Left Share Bar --}}
+            {{> "share"}}
+
+            {{!-- Content --}}
+            <section
+                class="prose prose-fastest text-base/6 w-full max-w-3xl prose-sm prose-pre:px-0 sm:prose-base lg:prose-lg flex-1">
+                {{content}}
+            </section>
+
+        </div>
+    </div>
 
     </article>
 
@@ -75,7 +98,7 @@
 
 
     {{!-- Show related posts --}}
-    {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors"}}
+    {{#get "posts" filter="primary_author:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors"}}
 
     {{!-- if posts is available then show it --}}
     {{#if posts}}
@@ -92,19 +115,3 @@
 
 
     {{/post}}
-
-
-
-    {{!-- Download Highlight.js Scripts --}}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/jsx.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
-
-    {{!-- Highlight code and config the copy code button on code block --}}
-        <script src="{{asset "dist/js/post.js"}}"></script>
