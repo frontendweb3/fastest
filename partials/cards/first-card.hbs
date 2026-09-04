@@ -1,23 +1,31 @@
-<div class="group  mx-auto h-100 w-full lg:w-6/6 xl:w-5/6 bg-card text-card-foreground md:mx-auto grid rounded-xl shadow-md grid-cols-2 lg:grid-cols-4">
+<article
+  class="relative group mx-auto w-full lg:w-6/6 xl:w-5/6 text-card-foreground md:mx-auto grid rounded-xl shadow-lg grid-cols-1 lg:grid-cols-4 overflow-hidden">
 
-  <div class="rounded-t-sm h-100 col-span-2 justify-self-auto relative m-0 overflow-hidden lg:rounded-l-xl shrink-0">
-    {{#if feature_image}}
+  {{!-- Clickable Overlay Link --}}
+  <a href="{{url}}" class="absolute inset-0 z-10" aria-label="{{title}}">
+    <span class="sr-only">{{title}}</span>
+  </a>
+
+  {{#if feature_image}}
+  <div class="col-span-1 lg:col-span-2 relative w-full h-64 sm:h-80 lg:h-full lg:min-h-full overflow-hidden shrink-0">
     <img srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
       feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
       sizes="(max-width: 1000px) 400px, 700px" src="{{img_url feature_image size=" m"}}"
-      class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-120"
+      class="absolute inset-0 object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
       alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
-    {{/if}}
-
   </div>
+  {{/if}}
 
-  <div class="p-6 lg:p-8 col-span-2 flex flex-col justify-center lg:col-start-3 lg:col-end-5 ">
+  <div class="p-6 lg:p-8 col-span-1 lg:col-span-2 flex flex-col justify-between h-full">
 
     <div class="flex mt-2 flex-row justify-between">
 
-      {{#if primary_tag}}      
-      <a href="{{primary_tag.url}}" class="group no-underline hover:underline hover:underline-offset-4 flex items-center gap-2 px-2.5 py-1 text-base font-bold text-center uppercase align-middle animate-in fade-in duration-500 ease-in-out">
-        {{> "components/icon" name="tag" class="size-4 group-hover:animate-in group-hover:fade-in group-hover:-translate-x-1 group-hover:duration-500 group-hover:ease-in-out transition-transform" ariaLabel="tag icon"}}
+      {{#if primary_tag}}
+      <a href="{{primary_tag.url}}"
+        class="relative z-20 group/tag no-underline hover:underline hover:underline-offset-4 flex items-center gap-2 px-2.5 py-1 text-base font-bold text-center uppercase align-middle animate-in fade-in duration-500 ease-in-out">
+        {{> "components/icon" name="tag" class="size-4 group-hover/tag:animate-in group-hover/tag:fade-in
+        group-hover/tag:-translate-x-1 group-hover/tag:duration-500 group-hover/tag:ease-in-out transition-transform"
+        ariaLabel="tag icon"}}
         {{primary_tag.name}}
       </a>
       {{/if}}
@@ -29,19 +37,18 @@
         Members only
       </h6>
       {{else}}
-      <h6
-        class="flex items-center gap-2  text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
-        {{> 'components/icon' name='user-plus' class='size-4' ariaLabel='User Plus icon'}}
+      <h6 class="flex items-center gap-2 text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
+        {{> "components/icon" name="user-plus" class="size-4" ariaLabel="User Plus icon"}}
         Paid Members only
       </h6>
       {{/has}}
-
       {{/unless}}
 
     </div>
 
     <div class="flex mt-5 flex-col">
-      <h2 class="mb-2 text-2xl md:text-4xl antialiased font-semibold leading-snug tracking-normal">
+      <h2
+        class="mb-2 text-2xl md:text-3xl lg:text-4xl antialiased font-semibold leading-snug tracking-normal group-hover:underline">
         {{title}}
       </h2>
 
@@ -56,17 +63,17 @@
       <div class="hidden sm:flex items-center space-x-4">
 
         {{#if primary_author.profile_image}}
-        <img src="{{img_url primary_author.profile_image size=" s"}}" alt="{{primary_author.name}}" class="w-10 h-10 rounded-full " />
-
+        <img src="{{img_url primary_author.profile_image size=" s"}}" alt="{{primary_author.name}}"
+          class="w-10 h-10 rounded-full" />
         {{/if}}
 
-        <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-start items-start gap-1.5">
 
-          <a class="w-full" href="{{primary_author.url}}">
-            <h3 class="text-sm font-medium">{{primary_author.name}}</h3>
+          <a class="relative z-20 w-full" href="{{primary_author.url}}">
+            <h3 class="text-sm font-medium hover:underline">{{primary_author.name}}</h3>
           </a>
 
-          <time datetime="{{date format='YYYY-MM-DD'}}" class="text-sm ">
+          <time datetime="{{date format='YYYY-MM-DD'}}" class="text-sm">
             {{date format="DD MMMM YYYY"}}
           </time>
 
@@ -75,20 +82,19 @@
       </div>
 
       {{!-- author for small --}}
-      <a class="block sm:hidden text-sm font-medium" href="{{primary_author.url}}">
+      <a class="relative z-20 block sm:hidden text-sm font-medium hover:underline" href="{{primary_author.url}}">
         {{primary_author.name}}
       </a>
 
-      <a href="{{url}}" aria-label="Click here to read full article" class="group  inset-0 flex items-center gap-2 px-2.5 py-1 text-xs hover:underline underline-offset-4 font-bold text-center uppercase align-middle animate-in fade-in duration-500 ease-in-out">
-
+      <span
+        class="relative z-20 flex items-center gap-2 px-2.5 py-1 text-xs group-hover:underline underline-offset-4 font-bold text-center uppercase align-middle animate-in fade-in duration-500 ease-in-out pointer-events-none">
         Read More
-
-        {{> "components/icon" name="arrow-right" class="group-hover:animate-in group-hover:fade-in group-hover:translate-x-1 group-hover:duration-500 group-hover:ease-in-out transition-transform"}} {{!-- partials/icons/arrow.hbs --}}
-
-      </a>
+        {{> "components/icon" name="arrow-right" class="size-4 group-hover:animate-in group-hover:fade-in
+        group-hover:translate-x-1 group-hover:duration-500 group-hover:ease-in-out transition-transform"}}
+      </span>
 
     </div>
 
   </div>
-  
-</div>
+
+</article>
