@@ -1,21 +1,20 @@
-{{!< default}} 
-{{#tag}} 
+{{!< default}} {{#tag}} <section class="container mt-18 mb-28 mx-auto">
 
-<section class="container mt-18 mb-28 mx-auto">
-
-    <h1 class="group flex px-8 items-center gap-4 text-2xl md:text-3xl font-bold tracking-tight lg:text-5xl align-middle animate-in fade-in duration-500 ease-in-out">
-        {{> "components/icon" name="tag" class="size-10 group-hover:animate-in group-hover:fade-in group-hover:-translate-x-2 group-hover:duration-500 group-hover:ease-in-out transition-transform" ariaLabel="tag icon"}}
-        {{name}} 
+    <h1
+        class="group flex px-8 items-center gap-4 text-2xl md:text-3xl font-bold tracking-tight lg:text-5xl align-middle animate-in fade-in duration-500 ease-in-out">
+        {{name}}
     </h1>
+
     {{#if description}}
     <p class="px-8 mt-8 gap-4 text-sm font-light tracking-tight  md:text-xl"> {{description}} </p>
     {{/if}}
-    
-</section>
 
-    {{!-- get posts related to tag base on tag slug --}}
-    {{#get "posts" include="authors,tags" limit="3" filter="tag:{{slug}}" as |related|}}
-        {{> "posts-loop" posts=related layout=@custom.home_layout}}
-    {{/get}}
+    </section>
 
-{{/tag}}
+    {{/tag}}
+
+    {{> "posts-loop" posts=posts layout=@custom.home_layout}}
+
+    <div class="container mx-auto px-6 py-10 lg:py-12 lg:px-8">
+        {{pagination}}
+    </div>
