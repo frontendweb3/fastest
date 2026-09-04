@@ -1,0 +1,46 @@
+<aside class="w-full lg:w-auto lg:sticky lg:top-28 shrink-0 z-20">
+    <div class="flex flex-row lg:flex-col items-center justify-center gap-5">
+
+        {{!-- Share Icon --}}
+        <a href="#/share" aria-label="Share on Social Media"
+            class="text-foreground duration-200 hover:opacity-75 hover:bg-muted" title="Share on Social Media">
+            {{> "components/icon" name="share2" class="size-4" ariaLabel="Share icon"}}
+        </a>
+
+        {{!-- X / Twitter --}}
+        <a href="https://twitter.com/intent/tweet?text={{encode title}}&url={{url absolute=" true"}}" target="_blank"
+            rel="noopener noreferrer" aria-label="Share on X" class="text-foreground duration-200 hover:opacity-80"
+            title="Share on X">
+            {{> "icons/x"}}
+        </a>
+
+        {{!-- Facebook --}}
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute=" true"}}" target="_blank"
+            rel="noopener noreferrer" aria-label="Share on Facebook"
+            class="text-foreground duration-200 hover:opacity-80" title="Share on Facebook">
+            {{> "icons/facebook"}}
+        </a>
+
+        {{!-- LinkedIn --}}
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute=" true"}}&title={{encode title}}"
+            target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn"
+            class="text-foreground duration-200 hover:opacity-80" title="Share on LinkedIn">
+            {{> "icons/linkedin"}}
+        </a>
+
+        {{!-- Copy Link --}}
+        <button x-data="{ copied: false }" @click="navigator.clipboard.writeText('{{url absolute=" true"}}');
+            copied=true; setTimeout(()=> copied = false, 2000)"
+            type="button" aria-label="Copy link to post"
+            class="rounded-full text-foreground duration-200 hover:opacity-80 hover:bg-muted
+            relative cursor-pointer"
+            title="Copy Link">
+            <span x-show="!copied" class="flex items-center justify-center">
+                {{> "components/icon" name="copy" class="size-4" ariaLabel="Copy link icon"}}
+            </span>
+            <span x-show="copied" x-cloak class="flex items-center justify-center text-green-600 dark:text-green-400">
+                {{> "components/icon" name="copy-check" class="size-4" ariaLabel="Copied icon"}}
+            </span>
+        </button>
+    </div>
+</aside>
