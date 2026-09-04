@@ -1,15 +1,6 @@
-{{#if brand}}
-<i
-    data-brand-icon="{{name}}"
-    {{#if id}}id="{{id}}"{{/if}}
-    class="{{#if class}}{{class}}{{else}}w-5 h-5{{/if}}"
-    {{#if ariaLabel}}aria-label="{{ariaLabel}}"{{/if}}
-></i>
-{{else}}
 <i
     data-lucide="{{name}}"
     {{#if id}}id="{{id}}"{{/if}}
-    class="{{#if class}}{{class}}{{else}}w-5 h-5{{/if}}"
+    class="{{#if class}}{{class}}{{else}}size-4{{/if}}"
     {{#if ariaLabel}}aria-label="{{ariaLabel}}"{{/if}}
 ></i>
-{{/if}}
