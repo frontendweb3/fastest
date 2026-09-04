@@ -21,9 +21,6 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.2.1
         version: 4.2.1(vite@7.3.2(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.31.1))
-      '@thesvg/icons':
-        specifier: ^2.1.0
-        version: 2.1.0
       '@types/node':
         specifier: ^25.3.3
         version: 25.5.0
