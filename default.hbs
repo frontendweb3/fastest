@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{@site.title}}</title>
+
+    {{#is "error"}}
+    <meta name="robots" content="noindex,nofollow">
+    <title>{{statusCode}} — {{message}}</title>
+    {{/is}}
 
     <!-- BEGIN HMR DEV SCRIPT -->
     <script id="ghost-vite-hmr">
@@ -48,6 +54,9 @@
                         document.documentElement.classList.add('dark');
                     } else {
                         document.documentElement.classList.remove('dark');
+                    }
+                    if (typeof window.syncCommentTheme === 'function') {
+                        window.syncCommentTheme();
                     }
                 },
                 init() {
