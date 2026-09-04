@@ -1,18 +1,18 @@
-<header class="lg:sticky top-0 bg-background z-50 rounded-full container mx-auto w-full flex flex-col gap-10 lg:gap-0 lg:flex-row px-12 py-6 items-center justify-between backdrop-blur">
+<header
+    class="lg:sticky top-0 bg-background z-50 mx-auto w-full flex flex-col gap-10 lg:gap-0 lg:flex-row sm:px-6 sm:px-12 py-4 lg:py-6 items-center justify-between backdrop-blur">
 
-
-    <a class="flex items-center justify-center" href="{{@site.url}}">
+    <a class="flex items-center gap-3 justify-center" href="{{@site.url}}">
         {{#if @site.logo}}
-        <img width="120" height="120" class="block dark:hidden" src="{{@site.logo}}" alt="{{@site.title}}"
-            loading="lazy" decoding="async" />
-        {{#if @custom.logo_dark}}
-        <img width="120" height="120" class="hidden dark:block" src="{{@custom.logo_dark}}" alt="{{@site.title}}"
-            loading="lazy" decoding="async" />
-        {{else}}
-        <img width="120" height="120" class="hidden dark:block" src="{{@site.logo}}" alt="{{@site.title}}"
-            loading="lazy" decoding="async" />
+        <img class="block dark:hidden max-h-10 w-auto max-w-40 object-contain" src="{{@site.logo}}"
+            alt="{{@site.title}}" loading="lazy" decoding="async" />
         {{/if}}
-        {{else}}
+
+        {{#if @custom.logo_dark}}
+        <img class="hidden dark:block max-h-10 w-auto max-w-40 object-contain" src="{{@custom.logo_dark}}"
+            alt="{{@site.title}}" loading="lazy" decoding="async" />
+        {{/if}}
+
+        {{#if @custom.show_title_with_logo}}
         <span class="text-heading self-center text-lg font-semibold whitespace-nowrap">
             {{@site.title}}
         </span>
@@ -21,58 +21,64 @@
 
     {{!-- Navigation --}}
     {{navigation}}
-    
-    {{!-- Social Links, theme toggle button  and Search icon --}}
+
+    {{!-- Social Links, theme toggle button and Search icon --}}
     <div class="justify-center flex flex-wrap items-center gap-5">
 
         {{!-- Search Form --}}
-        {{#> "components/button" dataGhostSearch=true id="search-toggle" variant="icon" ariaLabel="Toggle search"}}
-            {{> "components/icon" class="size-5" name="search" id="search-icon" ariaLabel="Search icon"}}
-        {{/ "components/button"}}
+        <button data-ghost-search="true" id="search-toggle" type="button" aria-label="Toggle search"
+            class="inline-flex items-center cursor-pointer justify-center size-8 rounded-lg p-2 text-sm font-medium transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2">
+            {{> "icons/search"}}
+        </button>
 
         {{!-- Theme Toggle Button --}}
         <button x-data="themeSwitcher" @click="toggle" :aria-pressed="darkMode.toString()"
             :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'" type="button"
             class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full p-2 text-sm font-medium tracking-wide transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
-            <span x-show="!darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="sun" ariaLabel="sun icon"}}</span>
-            <span x-show="darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="moon" ariaLabel="moon icon"}}</span>
+            <span x-show="!darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="sun" class="size-4"
+                ariaLabel="sun icon"}}</span>
+            <span x-show="darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="moon" class="size-4"
+                ariaLabel="moon icon"}}</span>
             <span class="sr-only">Toggle color theme</span>
         </button>
 
-        {{#if @site.twitter}}
-        {{#> "components/button"  href=(social_url type="twitter")  target="_blank" size="lg" aria-label="Visit our Twitter profile"}}
-            {{> "components/icon" name="x" class="size-5 fill-current" brand="true" ariaLabel="Twitter icon"}}
-        {{/ "components/button"}}
-        {{/if}}
-
-        {{#if @site.facebook}}
-        {{#> "components/button" href=(social_url type="facebook")  target="_blank" size="lg" aria-label="Visit our Facebook profile"}}
-            {{> "components/icon" name="facebook" class="size-7" brand="true" ariaLabel="Facebook icon"}}
-        {{/ "components/button"}}
-        {{/if}}
+        {{#social_accounts @site}}
+        <a href="{{href}}" target="_blank" rel="noopener noreferrer" aria-label="Visit our {{name}} profile"
+            class="inline-flex items-center justify-center p-2 rounded-lg text-sm font-medium transition hover:opacity-75">
+            {{#> (concat "icons/" type)}}
+            {{> "icons/website"}}
+            {{/undefined}}
+        </a>
+        {{/social_accounts}}
 
         <div class="hidden sm:block h-5 rounded-3xl w-0.5 bg-black dark:bg-white"></div>
 
         {{#unless @member}}
-        <a class="flex items-center gap-2.5 shadow-lg rounded-full px-3 py-2 text-sm" style="background-color:{{@site.accent_color}}" href="#/portal/signup" data-portal="signup">
-            {{> "components/icon" name="crown" class="text-white" ariaLabel="Crown icon"}}
-            <span class="text-white!">Pro</span>
+        <a class="group flex items-center gap-2 shadow-lg rounded-full px-4 py-2 text-sm font-medium text-white transition-transform hover:scale-105"
+            style="background-color:{{@site.accent_color}}" href="#/portal/signin" data-portal="signin"
+            aria-label="Sign in">
+            {{> "components/icon" name="log-in" class="size-4 text-white transition-transform duration-300
+            group-hover:translate-x-1" ariaLabel="Sign in icon"}}
+            <span class="text-white">Sign in</span>
+        </a>
+        <a class="group flex items-center gap-2 shadow-lg rounded-full px-4 py-2 text-sm font-medium text-white transition-transform hover:scale-105"
+            style="background-color:{{@site.accent_color}}" href="#/portal/signup" data-portal="signup"
+            aria-label="Sign up">
+            {{> "components/icon" name="user-plus" class="size-4 text-white transition-transform duration-300
+            group-hover:scale-110 group-hover:-rotate-12" ariaLabel="Sign up icon"}}
+            <span class="text-white">Sign up</span>
         </a>
         {{else}}
         <a style="background-color:{{@site.accent_color}}" href="#/portal/account" aria-label="Open your account page"
-            class="hidden sm:flex items-center gap-2 shadow-lg text-white! rounded-full px-3.5 py-2.5 transition-transform hover:scale-110">
+            class="group flex items-center gap-2 shadow-lg text-white rounded-full xl:px-3.5 xl:py-2 transition-transform hover:scale-105">
             {{#if @member.avatar_image}}
-            {{!-- remove the query parameters from the Gravatar URL: https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
-            {{#foreach (split @member.avatar_image separator="?")}}
-            {{#if @first}}
-            <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar"
-                decoding="async" />
-            {{/if}}
-            {{/foreach}}
+            <img class="h-8 w-8 rounded-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="{{@member.avatar_image}}" alt="{{@member.name}} avatar" decoding="async" />
             {{else}}
-                {{> "components/icon" name="user-plus" class="text-white"   ariaLabel="User icon"}}
+            {{> "components/icon" name="user-round" class="size-5 text-white p-0.5 transition-transform duration-300
+            group-hover:scale-110" ariaLabel="User icon"}}
             {{/if}}
-            {{@member.name}}
+            <span class="hidden xl:inline text-white font-medium pr-1 xl:pr-0">{{@member.name}}</span>
         </a>
         {{/unless}}
 

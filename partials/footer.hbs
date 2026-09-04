@@ -2,25 +2,25 @@
 
     <div class="mb-5 mt-5 flex flex-col gap-10 md:flex-row w-full justify-between items-center">
 
-        <div class="mb-5 mt-5 flex items-center justify-center ps-2.5">
+        <div class="mb-5 mt-5 flex items-center justify-center gap-4">
             {{#if @site.logo}}
-            <img width="120" height="120" class="block dark:hidden" src="{{@site.logo}}" alt="{{@site.title}}"
-                loading="lazy" decoding="async" />
-            {{#if @custom.logo_dark}}
-            <img width="120" height="120" class="hidden dark:block" src="{{@custom.logo_dark}}" alt="{{@site.title}}"
-                loading="lazy" decoding="async" />
-            {{else}}
-            <img width="120" height="120" class="hidden dark:block" src="{{@site.logo}}" alt="{{@site.title}}"
-                loading="lazy" decoding="async" />
+            <img class="block dark:hidden max-h-10 w-auto max-w-40 object-contain" src="{{@site.logo}}"
+                alt="{{@site.title}}" loading="lazy" decoding="async" />
             {{/if}}
-            {{else}}
+
+            {{#if @custom.logo_dark}}
+            <img class="hidden dark:block max-h-10 w-auto max-w-40 object-contain" src="{{@custom.logo_dark}}"
+                alt="{{@site.title}}" loading="lazy" decoding="async" />
+            {{/if}}
+
+            {{#if @custom.show_title_with_logo}}
             <span class="text-heading self-center text-lg font-semibold whitespace-nowrap">
                 {{@site.title}}
             </span>
             {{/if}}
         </div>
 
-        <div aria-label="footer navigation">  {{navigation type="secondary"}}   </div>
+        <div aria-label="footer navigation"> {{navigation type="secondary"}} </div>
 
     </div>
 
@@ -31,13 +31,15 @@
             <a target="_blank" class="underline underline-offset-4 mx-1"
                 href="https://github.com/frontendweb3/">frontend web</a>.
         </p>
-        {{else}}
+    </div>
+    {{else}}
+    {{#if @custom.copyright_text}}
+    <div aria-label="Copyright information" class="mt-12 mx-auto">
         <p class="text-sm text-center">
-            {{#if @custom.copyright_text}}
             {{@custom.copyright_text}}
-            {{/if}}
         </p>
     </div>
+    {{/if}}
     {{/if}}
 
 </footer>
