@@ -2,7 +2,7 @@
     {{#if prev}}
     <a class="flex gap-2 h-16 w-28 items-center justify-center rounded-full text-md text-foreground transition-transform hover:scale-105"
         href="{{page_url prev}}" aria-label="Previous page">
-        {{> "components/icon" name="chevron-left" ariaLabel="Chevron Left icon"}}   Previous
+        {{> "components/icon" name="chevron-left" class="size-4" ariaLabel="Chevron Left icon"}}   Previous
     </a>
     {{/if}}
 
@@ -10,7 +10,7 @@
     <a class="ml-auto gap-2 flex h-16 w-28 items-center justify-center rounded-full animate-in text-md text-foreground transition-transform hover:scale-105"
         href="{{page_url next}}" aria-label="Next page">
         Next
-        {{> "components/icon" name="chevron-right" ariaLabel="Chevron Right icon"}}
+        {{> "components/icon" name="chevron-right" class="size-4" ariaLabel="Chevron Right icon"}}
     </a>
     {{/if}}
 </nav>
