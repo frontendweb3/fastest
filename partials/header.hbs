@@ -4,18 +4,20 @@
     <a class="flex items-center gap-3 justify-center" href="{{@site.url}}">
         {{#if @site.logo}}
         <img class="block dark:hidden max-h-10 w-auto max-w-40 object-contain" src="{{@site.logo}}"
-            alt="{{@site.title}}" loading="lazy" decoding="async" />
+            alt="{{@site.title}}" fetchpriority="high" decoding="async" />
         {{/if}}
 
         {{#if @custom.logo_dark}}
         <img class="hidden dark:block max-h-10 w-auto max-w-40 object-contain" src="{{@custom.logo_dark}}"
-            alt="{{@site.title}}" loading="lazy" decoding="async" />
+            alt="{{@site.title}}" fetchpriority="high" decoding="async" />
         {{/if}}
 
         {{#if @custom.show_title_with_logo}}
         <span class="text-heading self-center text-lg font-semibold whitespace-nowrap">
             {{@site.title}}
         </span>
+        {{else}}
+        <span class="sr-only">{{@site.title}}</span>
         {{/if}}
     </a>
 
@@ -34,7 +36,7 @@
         {{!-- Theme Toggle Button --}}
         <button x-data="themeSwitcher" @click="toggle" :aria-pressed="darkMode.toString()"
             :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'" type="button"
-            class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full p-2 text-sm font-medium tracking-wide transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
+            class="inline-flex cursor-pointer justify-center items-center aspect-square whitespace-nowrap rounded-full p-2 text-sm font-medium tracking-wide transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 disabled:opacity-75">
             <span x-show="!darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="sun" class="size-4"
                 ariaLabel="sun icon"}}</span>
             <span x-show="darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="moon" class="size-4"
@@ -48,10 +50,11 @@
             {{#> (concat "icons/" type)}}
             {{> "icons/website"}}
             {{/undefined}}
+            <span class="sr-only">Visit our {{name}} profile</span>
         </a>
         {{/social_accounts}}
 
-        <div class="hidden sm:block h-5 rounded-3xl w-0.5 bg-black dark:bg-white"></div>
+        <div class="hidden sm:block h-5 rounded-3xl w-0.5 bg-foreground"></div>
 
         {{#unless @member}}
         <a class="group flex items-center gap-2 shadow-lg rounded-full px-4 py-2 text-sm font-medium text-white transition-transform hover:scale-105"
