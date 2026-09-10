@@ -1,7 +1,7 @@
 {
   "name": "fastest",
   "description": "Fastest ghost cms base theme. Fastest is lite wight, modern open-source theme",
-  "version": "3.0.4",
+  "version": "4.0.0",
   "type": "module",
   "engines": {
     "ghost": ">=6.0.0"
