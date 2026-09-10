@@ -5,7 +5,7 @@
 
   <div class="group">
     <div class="size-34 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
-      <img class="h-full w-full object-cover" src="{{profile_image}}" alt="{{name}}" loading="lazy" decoding="async" />
+      <img class="h-full w-full object-cover" src="{{profile_image}}" alt="{{name}}" fetchpriority="high" decoding="async" />
     </div>
   </div>
 
@@ -35,6 +35,7 @@
         {{#> (concat "icons/" type)}}
           {{> "icons/website"}}
         {{/undefined}}
+        <span class="sr-only">Visit our {{name}} profile</span>
       </a>
       {{/social_accounts}}
     </div>

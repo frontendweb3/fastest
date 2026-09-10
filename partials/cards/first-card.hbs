@@ -7,7 +7,7 @@
     </a>
 
     {{#if feature_image}}
-    <div class="relative shrink-0 overflow-hidden lg:w-1/2">
+    <div class="relative h-64 sm:h-80 lg:h-auto shrink-0 overflow-hidden lg:w-1/2">
         <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url
             feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w"
             sizes="(max-width: 1000px) 400px, 700px" src="{{img_url feature_image size='m'}}"
@@ -18,7 +18,7 @@
     </div>
     {{/if}}
 
-    <div class="flex min-h-111.25 flex-1 flex-col p-7 sm:p-9 lg:p-10">
+    <div class="flex min-h-auto lg:min-h-111.25 flex-1 flex-col p-7 sm:p-9 lg:p-10">
         <div
             class="flex items-center justify-between gap-4 text-xs font-bold uppercase tracking-tight text-card-foreground sm:text-sm">
             <span class="group flex items-center gap-2">
