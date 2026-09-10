@@ -8,9 +8,9 @@
 
   {{#if feature_image}}
   <div class="relative w-full h-60 sm:h-72 overflow-hidden shrink-0">
-    <img srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
-      feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
-      sizes="(max-width: 1000px) 400px, 700px" src="{{img_url feature_image size=" m"}}"
+    <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m' }} 600w, {{img_url
+      feature_image size='l' }} 1000w, {{img_url feature_image size='xl' }} 2000w"
+      sizes="(max-width: 1000px) 400px, 700px" src="{{img_url feature_image size='m'}}"
       class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
       alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
   </div>
@@ -32,14 +32,12 @@
 
       {{#unless access}}
       {{#has visibility="members"}}
-      <h6
-        class="mb-4 flex items-center gap-2 text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
+      <h6 class="flex items-center gap-2 text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
         {{> "components/icon" name="lock" class="size-4" ariaLabel="Lock icon"}}
         Members only
       </h6>
       {{else}}
-      <h6
-        class="mb-4 flex items-center gap-2 text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
+      <h6 class="flex items-center gap-2 text-base antialiased font-semibold leading-relaxed tracking-normal uppercase">
         {{> "components/icon" name="user-plus" class="size-4" ariaLabel="User Plus icon"}}
         Paid Members only
       </h6>
