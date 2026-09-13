@@ -2,52 +2,69 @@
 
 Minimal, fast Ghost theme with Tailwind CSS and dark mode.
 
-<details>
-<summary> Demo </summary>
+🖥️ **Live Screenshots Demo**: [https://frontendweb3.github.io/fastest/screenshots/](https://frontendweb3.github.io/fastest/screenshots/)
 
-<video src="https://github.com/user-attachments/assets/612c6f95-d7af-4caa-8e13-ceb2c49a1c16" width="600"></video>
 
-<div style="display:flex;gap:12px;flex-wrap:wrap;">
+## Installation Guide
 
-> Image 1
-![Desktop Demo](./assets/demo.png)
-> Image 2
-![Desktop Demo 2](./assets/demo-2.png)
-> Image 3
-![Desktop Demo 3](./assets/demo-3.png)
-> Image 4
-![Desktop Demo 4](./assets/demo-4.png)
-> Image 5
-![Desktop Demo 5](./assets/demo-5.png)
-> Image 6
-![Desktop Demo 6](./assets/demo-6.png)
-> Image 7
-![Desktop](./assets/desktop.png)
-> Image 8
-![Mobile](./assets/mobile.png)
+Installing the Fastest theme on your Ghost blog is a straightforward process. Follow these simple steps:
 
-</div>
+1. **Download the Theme**
+   - Navigate to the [releases page](https://github.com/frontendweb3/fastest/releases) of this repository.
+   - Download the latest `fastest.zip` file from the latest release.
 
-</details>
+2. **Upload to Ghost**
+   - Log in to your Ghost admin panel.
+   - Go to **Settings** -> **Design**.
+   - Click on **Change theme** and then click the **Upload theme** button.
+   - Select the `fastest.zip` file you downloaded.
 
-## Install (zip from latest release)
+3. **Activate the Theme**
+   - Once the upload is complete, click **Activate** to start using the fastest theme on your site.
 
-1. Visit the latest releases page: <https://github.com/frontendweb3/fastest/releases/latest>
-2. Download the packaged theme zip (e.g., `fastest-3.0.3.zip`).
-3. In Ghost Admin: `Settings → Design → Change theme → Upload theme`, pick the downloaded zip, then Activate.
+That's it! Your Ghost blog is now using the fastest theme.
 
-## Install (from source)
+&nbsp;
 
-1. `git clone https://github.com/frontendweb3/fastest.git && cd fastest`
-2. `pnpm install` (or `npm install` / `yarn install`)
-3. Build or watch assets:
-	- Install package: `pnpm install`
-	- Watch: `pnpm dev`
-	- Build: `pnpm build`
-4. Upload the generated zip (if you create one) or the repo zip via Ghost Admin as above.
+## Development
 
-## Customization
+If you're a developer and want to customize the theme, you can set up a local development environment.
 
-- Configure colors, logos, and toggles in Ghost Admin → Settings → Design → Theme settings.
-- Typography and prose colors respect the theme custom settings for light/dark modes.
-- Includes search, comments, code highlighting, and responsive cards.
+### 1. Setup
+
+Clone the repository and install the dependencies. We recommend using `pnpm` for package management.
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/fastest.git
+
+# Navigate to the theme directory
+cd fastest
+
+# Install dependencies
+pnpm install
+```
+
+### 2. Run Development Server
+
+Start the development server to see live changes as you edit the files.
+
+```bash
+pnpm run dev
+```
+
+This will compile the assets and enable live reloading. Any changes to CSS, JavaScript, or Handlebars (`.hbs`) files will be reflected in your browser automatically.
+
+### 3. Build for Production
+
+When you're ready to deploy your changes, build the theme assets for production and  create a zip file.
+
+```bash
+pnpm run build
+```
+
+This will create a `fastest.zip` file in the root of the project, which you can then upload to your Ghost blog.
+
+## Copyright & License
+
+Copyright (c) 2023-2026 fastest - Released under the [MIT license](LICENSE).
